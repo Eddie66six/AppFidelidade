@@ -1,5 +1,0 @@
-C:\Users\eddie\Documents\Visual Studio 2015\Projects\AppFidelidade\src\AppFidelidade.Dominio\bin\Debug\AppFidelidade.Dominio.dll
-C:\Users\eddie\Documents\Visual Studio 2015\Projects\AppFidelidade\src\AppFidelidade.Dominio\bin\Debug\AppFidelidade.Dominio.pdb
-C:\Users\eddie\Documents\Visual Studio 2015\Projects\AppFidelidade\src\AppFidelidade.Dominio\obj\Debug\AppFidelidade.Dominio.dll
-C:\Users\eddie\Documents\Visual Studio 2015\Projects\AppFidelidade\src\AppFidelidade.Dominio\obj\Debug\AppFidelidade.Dominio.pdb
-C:\Users\eddie\Documents\Visual Studio 2015\Projects\AppFidelidade\src\AppFidelidade.Dominio\obj\Debug\AppFidelidade.Dominio.csprojResolveAssemblyReference.cache
