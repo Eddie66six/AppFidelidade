@@ -7,12 +7,13 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
     {
         protected Carteira()
         {
-
+            Clientes = new List<Cliente>();
+            Compras = new List<Compra>();
         }
         #region attr
-        public int IdCarteira { get; set; }
-        public List<Cliente> Clientes { get; set; }
-        public List<Compra> Compras { get; set; }
+        public int IdCarteira { get; private set; }
+        public List<Cliente> Clientes { get; private set; }
+        public List<Compra> Compras { get; private set; }
         #endregion
     }
 }

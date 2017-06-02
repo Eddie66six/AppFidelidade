@@ -7,14 +7,16 @@ namespace AppFidelidade.Dominio.Funcionario.Entidade
         protected Funcionario()
         {
             RegrasCadastradas = new List<Administracao.Entidade.Regra>();
+            Filiais = new List<Administracao.Entidade.Filial>();
+            Vendas = new List<Cliente.Entidade.Compra>();
         }
 
         #region attr
-        public int IdFuncionario { get; set; }
-        public string Nome { get; set; }
-        public List<Administracao.Entidade.Regra> RegrasCadastradas { get; set; }
-        public List<Administracao.Entidade.Filial> Filiais { get; set; }
-        public List<Cliente.Entidade.Compra> Vendas { get; set; }
+        public int IdFuncionario { get; private set; }
+        public string Nome { get; private set; }
+        public List<Administracao.Entidade.Regra> RegrasCadastradas { get; private set; }
+        public List<Administracao.Entidade.Filial> Filiais { get; private set; }
+        public List<Cliente.Entidade.Compra> Vendas { get; private set; }
         #endregion
     }
 }

@@ -6,16 +6,17 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
     {
         protected Cliente()
         {
-
+            Filiais = new List<Administracao.Entidade.Filial>();
+            Compras = new List<Compra>();
         }
 
         #region attr
-        public int IdCliente { get; set; }
-        public string Nome { get; set; }
-        public int IdCarteira { get; set; }
-        public virtual Carteira Carteira { get; set; }
-        public List<Administracao.Entidade.Filial> Filiais { get; set; }
-        public List<Compra> Compras { get; set; }
+        public int IdCliente { get; private set; }
+        public string Nome { get; private set; }
+        public int IdCarteira { get; private set; }
+        public virtual Carteira Carteira { get; private set; }
+        public List<Administracao.Entidade.Filial> Filiais { get; private set; }
+        public List<Compra> Compras { get; private set; }
         #endregion
     }
 }

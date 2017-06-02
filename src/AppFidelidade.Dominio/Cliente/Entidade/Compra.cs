@@ -10,19 +10,19 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         }
 
         #region attr
-        public int IdCompra { get; set; }
-        public decimal ValorCompra { get; set; }
-        public DateTime Data { get; set; }
-        public int IdFilial { get; set; }
-        public virtual Administracao.Entidade.Filial Filial { get; set; }
-        public int IdFuncionario { get; set; }
-        public virtual Funcionario.Entidade.Funcionario Funcionario { get; set; }
-        public int IdCliente { get; set; }
-        public virtual Cliente Cliente { get; set; }
-        public int? IdCarteira { get; set; }
-        public virtual Carteira Carteira { get; set; }
-        public int? IdRegra { get; set; }
-        public virtual Administracao.Entidade.Regra Regra { get; set; }
+        public int IdCompra { get; private set; }
+        public decimal ValorCompra { get; private set; }
+        public DateTime Data { get; private set; }
+        public int IdFilial { get; private set; }
+        public virtual Administracao.Entidade.Filial Filial { get; private set; }
+        public int IdFuncionario { get; private set; }
+        public virtual Funcionario.Entidade.Funcionario Funcionario { get; private set; }
+        public int IdCliente { get; private set; }
+        public virtual Cliente Cliente { get; private set; }
+        public int? IdCarteira { get; private set; }
+        public virtual Carteira Carteira { get; private set; }
+        public int? IdRegra { get; private set; }
+        public virtual Administracao.Entidade.Regra Regra { get; private set; }
         #endregion
     }
 }

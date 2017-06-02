@@ -10,8 +10,8 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         }
 
         #region attr
-        public int IdEmpresa { get; set; }
-        public List<Filial> Filiais { get; set; }
+        public int IdEmpresa { get; private set; }
+        public List<Filial> Filiais { get; private set; }
         #endregion
     }
 }
