@@ -11,15 +11,15 @@ namespace AppFidelidade.Infra.Data
             Configuration.ProxyCreationEnabled = false;
         }
         //administracao
-        public DbSet<Dominio.Administracao.Empresa> Empresa { get; set; }
-        public DbSet<Dominio.Administracao.Filial> Filial { get; set; }
-        public DbSet<Dominio.Administracao.Regra> Regra { get; set; }
+        public DbSet<Dominio.Administracao.Entidade.Empresa> Empresa { get; set; }
+        public DbSet<Dominio.Administracao.Entidade.Filial> Filial { get; set; }
+        public DbSet<Dominio.Administracao.Entidade.Regra> Regra { get; set; }
         //cliente
-        public DbSet<Dominio.Cliente.Carteira> Carteira { get; set; }
-        public DbSet<Dominio.Cliente.Cliente> Cliente { get; set; }
-        public DbSet<Dominio.Cliente.Compra> Compra { get; set; }
+        public DbSet<Dominio.Cliente.Entidade.Carteira> Carteira { get; set; }
+        public DbSet<Dominio.Cliente.Entidade.Cliente> Cliente { get; set; }
+        public DbSet<Dominio.Cliente.Entidade.Compra> Compra { get; set; }
         //funcionario
-        public DbSet<Dominio.Funcionario.Funcionario> Funcionario { get; set; }
+        public DbSet<Dominio.Funcionario.Entidade.Funcionario> Funcionario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

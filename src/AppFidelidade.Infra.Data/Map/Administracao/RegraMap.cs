@@ -2,7 +2,7 @@
 
 namespace AppFidelidade.Infra.Data.Map.Administracao
 {
-    class RegraMap : EntityTypeConfiguration<Dominio.Administracao.Regra>
+    class RegraMap : EntityTypeConfiguration<Dominio.Administracao.Entidade.Regra>
     {
         public RegraMap()
         {

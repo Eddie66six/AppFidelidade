@@ -2,7 +2,7 @@
 
 namespace AppFidelidade.Infra.Data.Map.Cliente
 {
-    public class CarteiraMap : EntityTypeConfiguration<Dominio.Cliente.Carteira>
+    public class CarteiraMap : EntityTypeConfiguration<Dominio.Cliente.Entidade.Carteira>
     {
         public CarteiraMap()
         {

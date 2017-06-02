@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AppFidelidade.Dominio.Administracao
+namespace AppFidelidade.Dominio.Administracao.Entidade
 {
     public class Empresa
     {

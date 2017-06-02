@@ -2,7 +2,7 @@
 
 namespace AppFidelidade.Infra.Data.Map.Administracao
 {
-    class FilialMap : EntityTypeConfiguration<Dominio.Administracao.Filial>
+    class FilialMap : EntityTypeConfiguration<Dominio.Administracao.Entidade.Filial>
     {
         public FilialMap()
         {

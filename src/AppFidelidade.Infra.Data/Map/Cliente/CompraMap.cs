@@ -2,7 +2,7 @@
 
 namespace AppFidelidade.Infra.Data.Map.Cliente
 {
-    class CompraMap : EntityTypeConfiguration<Dominio.Cliente.Compra>
+    class CompraMap : EntityTypeConfiguration<Dominio.Cliente.Entidade.Compra>
     {
         public CompraMap()
         {
@@ -15,9 +15,12 @@ namespace AppFidelidade.Infra.Data.Map.Cliente
             HasRequired(p => p.Cliente)
                 .WithMany(p => p.Compras)
                 .HasForeignKey(p => p.IdCliente);
-            HasRequired(p => p.Carteira)
+            HasOptional(p => p.Carteira)
                 .WithMany(p => p.Compras)
                 .HasForeignKey(p => p.IdCarteira);
+            HasOptional(p => p.Regra)
+                .WithMany(p => p.Compras)
+                .HasForeignKey(p => p.IdRegra);
         }
     }
 }

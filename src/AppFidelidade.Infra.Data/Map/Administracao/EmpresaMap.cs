@@ -2,7 +2,7 @@
 
 namespace AppFidelidade.Infra.Data.Map.Administracao
 {
-    class EmpresaMap : EntityTypeConfiguration<Dominio.Administracao.Empresa>
+    class EmpresaMap : EntityTypeConfiguration<Dominio.Administracao.Entidade.Empresa>
     {
         public EmpresaMap()
         {

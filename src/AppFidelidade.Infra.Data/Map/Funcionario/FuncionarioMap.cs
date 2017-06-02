@@ -2,7 +2,7 @@
 
 namespace AppFidelidade.Infra.Data.Map.Funcionario
 {
-    public class FuncionarioMap : EntityTypeConfiguration<Dominio.Funcionario.Funcionario>
+    public class FuncionarioMap : EntityTypeConfiguration<Dominio.Funcionario.Entidade.Funcionario>
     {
         public FuncionarioMap()
         {

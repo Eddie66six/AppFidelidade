@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace AppFidelidade.Dominio.Cliente
+namespace AppFidelidade.Dominio.Cliente.Entidade
 {
     public class Carteira
     {
