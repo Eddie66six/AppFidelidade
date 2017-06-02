@@ -5,6 +5,8 @@ namespace AppFidelidade.Infra.Data
 {
     public class Contexto : DbContext
     {
+        //(localdb)\MSSQLLocalDB
+        //.\\SQLEXPRESS
         public Contexto() : base("Data Source=.\\SQLEXPRESS;Initial Catalog=AppFidelidade;Integrated Security=true")
         {
             Configuration.LazyLoadingEnabled = false;
