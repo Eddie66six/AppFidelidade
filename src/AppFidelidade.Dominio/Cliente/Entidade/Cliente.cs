@@ -9,7 +9,22 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             Filiais = new List<Administracao.Entidade.Filial>();
             Compras = new List<Compra>();
         }
+        public Cliente(string nome)
+        {
+            Filiais = new List<Administracao.Entidade.Filial>();
+            Compras = new List<Compra>();
+            Nome = nome;
+        }
 
+        #region Metodos
+        public void AdicionarCompra(Compra compra)
+        {
+            if (Carteira == null)
+                Carteira = new Carteira();
+
+            Carteira.Compras.Add(compra);
+        }
+        #endregion
         #region attr
         public int IdCliente { get; private set; }
         public string Nome { get; private set; }

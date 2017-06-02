@@ -1,4 +1,7 @@
-﻿using System.Data.Entity.Migrations;
+﻿using AppFidelidade.Dominio.Administracao.Entidade;
+using AppFidelidade.Dominio.Cliente.Entidade;
+using AppFidelidade.Dominio.Funcionario.Entidade;
+using System.Data.Entity.Migrations;
 
 namespace AppFidelidade.Infra.Data
 {
@@ -11,26 +14,14 @@ namespace AppFidelidade.Infra.Data
 
         protected override void Seed(Contexto contexto)
         {
-            //Professor professor1 = new Professor();
-            //professor1.Nome = "Professor Um";
-
-            //Professor professor2 = new Professor();
-            //professor2.Nome = "Professor Dois";
-
-            //Curso curso1 = new Curso();
-            //curso1.Numero = "70-480";
-            //curso1.Descricao = "Programming in HTML5 with JavaScript and CSS3";
-            //curso1.ProfessorLista.Add(professor1);
-            //curso1.ProfessorLista.Add(professor2);
-
-            //Curso curso2 = new Curso();
-            //curso2.Numero = "70-486";
-            //curso2.Descricao = "Developing ASP.NET MVC 4 Web Applications";
-            //curso2.ProfessorLista.Add(professor2);
-
-            //context.Cursos.Add(curso1);
-            //context.Cursos.Add(curso2);
-
+            var empresa = new Empresa("G2x");
+            var filial = empresa.CriarFilial(new Filial("12123", "G2x unidade1", "eddie G2x"));
+            var funcionario = filial.AdicionarFuncionario(new Funcionario("Guilherme funcionario"));
+            var regra = filial.AdicionarRegra(new Regra(Dominio.Administracao.Enum.ETipoDesconto.Dinheiro, 0, 10, 1, filial, funcionario));
+            var cliente = new Cliente("Guilherme cliente");
+            var compra = filial.InserirCompra(new Compra(10, filial, funcionario, cliente));
+            contexto.Empresa.Add(empresa);
+            contexto.SaveChanges();
         }
     }
 }

@@ -9,9 +9,21 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Compras = new List<Cliente.Entidade.Compra>();
         }
 
+        public Regra(Enum.ETipoDesconto tipoDesconto, decimal valorInicial, decimal valorFinal,decimal valorDaRegra, Filial filial, Funcionario.Entidade.Funcionario funcionarioCadastro)
+        {
+            Compras = new List<Cliente.Entidade.Compra>();
+            TipoDesconto = tipoDesconto;
+            ValorInicial = valorInicial;
+            ValorFinal = valorFinal;
+            ValorDaRegra = valorDaRegra;
+            Filial = filial;
+            FuncionarioCadastro = funcionarioCadastro;
+        }
+
         #region attr
         public int IdRegra { get; private set; }
         public Enum.ETipoDesconto TipoDesconto { get; private set; }
+        public decimal ValorDaRegra { get;private set; }
         public decimal ValorInicial { get; private set; }
         public decimal ValorFinal { get; private set; }
         public bool Inativo { get; private set; }

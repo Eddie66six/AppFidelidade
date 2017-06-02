@@ -11,6 +11,14 @@ namespace AppFidelidade.Dominio.Funcionario.Entidade
             Vendas = new List<Cliente.Entidade.Compra>();
         }
 
+        public Funcionario(string nome)
+        {
+            RegrasCadastradas = new List<Administracao.Entidade.Regra>();
+            Filiais = new List<Administracao.Entidade.Filial>();
+            Vendas = new List<Cliente.Entidade.Compra>();
+            Nome = nome;
+        }
+
         #region attr
         public int IdFuncionario { get; private set; }
         public string Nome { get; private set; }

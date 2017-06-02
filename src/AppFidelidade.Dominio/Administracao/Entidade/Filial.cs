@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using AppFidelidade.Dominio.Cliente.Entidade;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AppFidelidade.Dominio.Administracao.Entidade
 {
@@ -9,8 +11,43 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Funcionarios = new List<Funcionario.Entidade.Funcionario>();
             Clientes = new List<Cliente.Entidade.Cliente>();
             Regras = new List<Regra>();
-            Compras = new List<Cliente.Entidade.Compra>();
+            Compras = new List<Compra>();
         }
+        public Filial(string cnpj, string razaoSocial,string nomeFantasia)
+        {
+            Funcionarios = new List<Funcionario.Entidade.Funcionario>();
+            Clientes = new List<Cliente.Entidade.Cliente>();
+            Regras = new List<Regra>();
+            Compras = new List<Compra>();
+
+            Cnpj = cnpj;
+            RazaoSocial = razaoSocial;
+            NomeFantasia = nomeFantasia;
+        }
+
+        #region Metodos
+        public Funcionario.Entidade.Funcionario AdicionarFuncionario(Funcionario.Entidade.Funcionario funcionario)
+        {
+            Funcionarios.Add(funcionario);
+            return funcionario;
+        }
+        public Regra AdicionarRegra(Regra regra)
+        {
+            Regras.Add(regra);
+            return regra;
+        }
+
+        public Regra ObterRegra(decimal valorDaCompra)
+        {
+            return Regras.FirstOrDefault(p => p.ValorInicial <= valorDaCompra && p.ValorFinal >= valorDaCompra);
+        }
+
+        public Compra InserirCompra(Compra compra)
+        {
+            Compras.Add(compra);
+            return compra;
+        }
+        #endregion
         #region attr
         public int IdFilial { get; private set; }
         public string Cnpj { get; private set; }

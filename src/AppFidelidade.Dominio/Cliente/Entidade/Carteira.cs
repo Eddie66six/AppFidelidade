@@ -5,7 +5,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
 {
     public class Carteira
     {
-        protected Carteira()
+        public Carteira()
         {
             Clientes = new List<Cliente>();
             Compras = new List<Compra>();
