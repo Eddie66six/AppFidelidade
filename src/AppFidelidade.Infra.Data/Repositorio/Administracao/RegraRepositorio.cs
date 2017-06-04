@@ -4,7 +4,7 @@ using AppFidelidade.Infra.Data.Repositorio._Comum;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Administracao
 {
-    public class EmpresaRepositorio : BaseRepositorio<Empresa>, IEmpresaRepositorio
+    class RegraRepositorio: BaseRepositorio<Regra>, IRegraRepositorio
     {
     }
 }

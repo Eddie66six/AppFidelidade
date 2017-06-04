@@ -8,7 +8,7 @@ namespace AppFidelidade.Dominio._Comum.Interface.Repositorio
         T ObterPorId(int id);
         IEnumerable<T> ObterTodos();
         void Atualizar(T obj);
-        void Remover(int id);
+        //void Remover(int id);
         void Dispose();
     }
 }

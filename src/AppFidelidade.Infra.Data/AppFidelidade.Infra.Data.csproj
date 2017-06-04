@@ -60,6 +60,8 @@
     <Compile Include="Map\Funcionario\FuncionarioMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\Administracao\EmpresaRepositorio.cs" />
+    <Compile Include="Repositorio\Administracao\FilialRepositorio.cs" />
+    <Compile Include="Repositorio\Administracao\RegraRepositorio.cs" />
     <Compile Include="Repositorio\_Comum\BaseRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,8 @@
     <Compile Include="Administracao\Entidade\Regra.cs" />
     <Compile Include="Administracao\Enum\ETipoDesconto.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IEmpresaRepositorio.cs" />
+    <Compile Include="Administracao\Interface\Repositorio\IFilialRepositorio.cs" />
+    <Compile Include="Administracao\Interface\Repositorio\IRegraRepositorio.cs" />
     <Compile Include="Cliente\Entidade\Cliente.cs" />
     <Compile Include="Cliente\Entidade\Compra.cs" />
     <Compile Include="Cliente\Entidade\FilialCliente.cs" />

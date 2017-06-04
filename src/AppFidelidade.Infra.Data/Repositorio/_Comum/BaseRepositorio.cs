@@ -11,14 +11,12 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
         public T Adicionar(T obj)
         {
             Db.Set<T>().Add(obj);
-            Db.SaveChanges();
             return obj;
         }
 
         public void Atualizar(T obj)
         {
             Db.Entry(obj).State = EntityState.Modified;
-            Db.SaveChanges();
         }
 
         public void Dispose()
@@ -36,11 +34,11 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
             return Db.Set<T>().ToList();
         }
 
-        public void Remover(int id)
-        {
-            var obj = ObterPorId(id);
-            Db.Set<T>().Remove(obj);
-            Db.SaveChanges();
-        }
+        //public void Remover(int id)
+        //{
+        //    var obj = ObterPorId(id);
+        //    Db.Set<T>().Remove(obj);
+        //    Db.SaveChanges();
+        //}
     }
 }
