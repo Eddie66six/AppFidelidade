@@ -54,9 +54,9 @@
     <Compile Include="Map\Administracao\EmpresaMap.cs" />
     <Compile Include="Map\Administracao\FilialMap.cs" />
     <Compile Include="Map\Administracao\RegraMap.cs" />
-    <Compile Include="Map\Cliente\CarteiraMap.cs" />
     <Compile Include="Map\Cliente\ClienteMap.cs" />
     <Compile Include="Map\Cliente\CompraMap.cs" />
+    <Compile Include="Map\Cliente\FilialClienteMap.cs" />
     <Compile Include="Map\Funcionario\FuncionarioMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

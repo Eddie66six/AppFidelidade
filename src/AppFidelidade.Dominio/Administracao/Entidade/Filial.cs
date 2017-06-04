@@ -13,7 +13,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Regras = new List<Regra>();
             Compras = new List<Compra>();
         }
-        public Filial(string cnpj, string razaoSocial,string nomeFantasia)
+        public Filial(string cnpj, string razaoSocial,string nomeFantasia, decimal valorCreditoMaximoPermitidoPorUso)
         {
             Funcionarios = new List<Funcionario.Entidade.Funcionario>();
             Clientes = new List<Cliente.Entidade.Cliente>();
@@ -23,6 +23,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Cnpj = cnpj;
             RazaoSocial = razaoSocial;
             NomeFantasia = nomeFantasia;
+            ValorCreditoMaximoPermitidoPorUso = valorCreditoMaximoPermitidoPorUso;
         }
 
         #region Metodos
@@ -53,12 +54,14 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public string Cnpj { get; private set; }
         public string RazaoSocial { get; private set; }
         public string NomeFantasia { get; private set; }
+        public decimal ValorCreditoMaximoPermitidoPorUso { get; set; }
         public int IdEmpresa { get; private set; }
         public virtual Empresa Empresa { get; private set; }
         public List<Funcionario.Entidade.Funcionario> Funcionarios { get; private set; }
         public List<Cliente.Entidade.Cliente> Clientes { get; private set; }
         public List<Regra> Regras { get; private set; }
         public List<Cliente.Entidade.Compra> Compras { get; private set; }
+        public List<FilialCliente> Filiais { get; private set; }
         #endregion
     }
 }

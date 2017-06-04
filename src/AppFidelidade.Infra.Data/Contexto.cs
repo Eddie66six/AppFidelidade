@@ -7,7 +7,7 @@ namespace AppFidelidade.Infra.Data
     {
         //(localdb)\MSSQLLocalDB
         //.\\SQLEXPRESS
-        public Contexto() : base("Data Source=.\\SQLEXPRESS;Initial Catalog=AppFidelidade;Integrated Security=true")
+        public Contexto() : base("Data Source=EDDIE-PC\\SQLEXPRESS;Initial Catalog=AppFidelidade;Integrated Security=true")
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
@@ -17,9 +17,9 @@ namespace AppFidelidade.Infra.Data
         public DbSet<Dominio.Administracao.Entidade.Filial> Filial { get; set; }
         public DbSet<Dominio.Administracao.Entidade.Regra> Regra { get; set; }
         //cliente
-        public DbSet<Dominio.Cliente.Entidade.Carteira> Carteira { get; set; }
         public DbSet<Dominio.Cliente.Entidade.Cliente> Cliente { get; set; }
         public DbSet<Dominio.Cliente.Entidade.Compra> Compra { get; set; }
+        public DbSet<Dominio.Cliente.Entidade.FilialCliente> FiliaisCliente { get; set; }
         //funcionario
         public DbSet<Dominio.Funcionario.Entidade.Funcionario> Funcionario { get; set; }
 
@@ -50,7 +50,9 @@ namespace AppFidelidade.Infra.Data
            chave primária, caso não tenha sido especificado*/
             modelBuilder.Properties()
                .Where(p => p.Name == "Id" + p.ReflectedType.Name)
-               .Configure(p => p.IsKey());
+               .Configure(p =>
+                p.HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)
+                .IsKey().HasColumnOrder(0));
             #endregion
             #region map
             //administracao
@@ -58,9 +60,9 @@ namespace AppFidelidade.Infra.Data
             modelBuilder.Configurations.Add(new Map.Administracao.FilialMap());
             modelBuilder.Configurations.Add(new Map.Administracao.RegraMap());
             //cliente
-            modelBuilder.Configurations.Add(new Map.Cliente.CarteiraMap());
             modelBuilder.Configurations.Add(new Map.Cliente.ClienteMap());
             modelBuilder.Configurations.Add(new Map.Cliente.CompraMap());
+            modelBuilder.Configurations.Add(new Map.Cliente.FilialClienteMap());
             //funcionario
             modelBuilder.Configurations.Add(new Map.Funcionario.FuncionarioMap());
             #endregion

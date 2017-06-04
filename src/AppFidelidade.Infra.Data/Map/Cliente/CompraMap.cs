@@ -15,9 +15,6 @@ namespace AppFidelidade.Infra.Data.Map.Cliente
             HasRequired(p => p.Cliente)
                 .WithMany(p => p.Compras)
                 .HasForeignKey(p => p.IdCliente);
-            HasOptional(p => p.Carteira)
-                .WithMany(p => p.Compras)
-                .HasForeignKey(p => p.IdCarteira);
             HasOptional(p => p.Regra)
                 .WithMany(p => p.Compras)
                 .HasForeignKey(p => p.IdRegra);

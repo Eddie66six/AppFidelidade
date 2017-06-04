@@ -15,11 +15,17 @@ namespace AppFidelidade.Infra.Data
         protected override void Seed(Contexto contexto)
         {
             var empresa = new Empresa("G2x");
-            var filial = empresa.CriarFilial(new Filial("12123", "G2x unidade1", "eddie G2x"));
+            var filial = empresa.CriarFilial(new Filial("12123", "G2x unidade1", "eddie G2x",0));
             var funcionario = filial.AdicionarFuncionario(new Funcionario("Guilherme funcionario"));
-            var regra = filial.AdicionarRegra(new Regra(Dominio.Administracao.Enum.ETipoDesconto.Dinheiro, 0, 10, 1, filial, funcionario));
+            var regra = filial.AdicionarRegra(new Regra(Dominio.Administracao.Enum.ETipoDesconto.Dinheiro, 0, 10, 5, filial, funcionario));
             var cliente = new Cliente("Guilherme cliente");
-            var compra = filial.InserirCompra(new Compra(10, filial, funcionario, cliente));
+            //compra que pode ganhar credito
+            var compra = filial.InserirCompra(new Compra(10, filial, funcionario, cliente, null));
+            //compartilhou
+            compra.Creditar(cliente);
+            //compra utilizando credito
+            if(cliente.ObterCreditoNaFilial(filial) >= 5)
+                filial.InserirCompra(new Compra(30, filial, funcionario, cliente, 5));
             contexto.Empresa.Add(empresa);
             contexto.SaveChanges();
         }
