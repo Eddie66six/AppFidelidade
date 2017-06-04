@@ -44,7 +44,11 @@
     <Compile Include="Cliente\Entidade\Cliente.cs" />
     <Compile Include="Cliente\Entidade\Compra.cs" />
     <Compile Include="Cliente\Entidade\FilialCliente.cs" />
+    <Compile Include="Cliente\Repositorio\IClienteRepositorio.cs" />
+    <Compile Include="Cliente\Repositorio\ICompraRepositorio.cs" />
+    <Compile Include="Cliente\Repositorio\IFilialClienteRepositorio.cs" />
     <Compile Include="Funcionario\Entidade\Funcionario.cs" />
+    <Compile Include="Funcionario\Repositorio\IFuncionarioRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Comum\Interface\Repositorio\IBaseRepositorio.cs" />
   </ItemGroup>

@@ -62,6 +62,10 @@
     <Compile Include="Repositorio\Administracao\EmpresaRepositorio.cs" />
     <Compile Include="Repositorio\Administracao\FilialRepositorio.cs" />
     <Compile Include="Repositorio\Administracao\RegraRepositorio.cs" />
+    <Compile Include="Repositorio\Cliente\ClienteRepositorio.cs" />
+    <Compile Include="Repositorio\Cliente\CompraRepositorio.cs" />
+    <Compile Include="Repositorio\Cliente\IFilialClienteRepositorio.cs" />
+    <Compile Include="Repositorio\Funcionario\FuncionarioRepositorio.cs" />
     <Compile Include="Repositorio\_Comum\BaseRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
