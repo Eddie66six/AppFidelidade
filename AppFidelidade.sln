@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1-Data", "4.1-Data", "{1F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFidelidade.Infra.Data", "src\AppFidelidade.Infra.Data\AppFidelidade.Infra.Data.csproj", "{3F9FB413-15DD-4C33-A82E-A99C8C0AC9DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFidelidade.Aplicacao", "src\AppFidelidade.Aplicacao\AppFidelidade.Aplicacao.csproj", "{1C1399C8-9342-4670-A09B-F3E12B4EFF8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3F9FB413-15DD-4C33-A82E-A99C8C0AC9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F9FB413-15DD-4C33-A82E-A99C8C0AC9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F9FB413-15DD-4C33-A82E-A99C8C0AC9DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1399C8-9342-4670-A09B-F3E12B4EFF8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1399C8-9342-4670-A09B-F3E12B4EFF8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1399C8-9342-4670-A09B-F3E12B4EFF8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1399C8-9342-4670-A09B-F3E12B4EFF8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +47,6 @@ Global
 		{34916704-ECEB-461B-A711-BFDDE881F287} = {73275F98-073D-4E51-BA71-26783EB74EDE}
 		{1FC46C87-57D1-4B92-A7BF-C65731E615C6} = {4910CD6A-51F4-4BC0-AEE3-71CF6D0B8D34}
 		{3F9FB413-15DD-4C33-A82E-A99C8C0AC9DE} = {1FC46C87-57D1-4B92-A7BF-C65731E615C6}
+		{1C1399C8-9342-4670-A09B-F3E12B4EFF8E} = {8CD4C793-094B-462F-8D13-FBC3C1390B61}
 	EndGlobalSection
 EndGlobal

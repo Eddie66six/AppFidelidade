@@ -1,4 +1,4 @@
-﻿using AppFidelidade.Dominio.Cliente.Repositorio;
+﻿using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Cliente

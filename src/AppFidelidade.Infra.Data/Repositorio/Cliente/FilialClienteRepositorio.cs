@@ -3,7 +3,7 @@ using AppFidelidade.Infra.Data.Repositorio._Comum;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Cliente
 {
-    public class CompraRepositorio: BaseRepositorio<Dominio.Cliente.Entidade.Compra>, ICompraRepositorio
+    public class FilialClienteRepositorio : BaseRepositorio<Dominio.Cliente.Entidade.FilialCliente>, IFilialClienteRepositorio
     {
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AppFidelidade.Dominio.Administracao.Entidade;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,25 +22,29 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         #region Metodos
         public decimal ObterCreditoNaFilial(Filial filial)
         {
-            var filialCredito = Filiais.FirstOrDefault(p => p.Filial == filial);
-            if (filialCredito == null)
+            var creditoCompras = Compras.Where(p => p.Filial == filial && p.ValorRestanteCredito > 0);
+            if (creditoCompras == null)
                 return 0;
-            return filialCredito.ValorCreditoNaFilial;
+            return creditoCompras.Sum(p => p.ValorRestanteCredito);
         }
         public bool RetirarCredito(decimal valor, Filial filial)
         {
-            var filialCredito = Filiais.FirstOrDefault(p => p.Filial == filial);
-            if (filialCredito == null)
+            if (ObterCreditoNaFilial(filial) < valor)
                 return false;
-            filialCredito.RemoverCredito(valor);
-            return true;
-        }
-        public bool InserirCredito(decimal valor, Filial filial)
-        {
-            var filialCredito = Filiais.FirstOrDefault(p => p.Filial == filial);
-            if (filialCredito == null)
-                return false;
-            filialCredito.InserirCredito(valor);
+            foreach (var item in Compras.Where(p => p.Filial == filial && p.ValorRestanteCredito > 0))
+            {
+                var credito = valor - item.ValorRestanteCredito;
+                if (credito <= 0)
+                {
+                    item.RetirarCredito(valor);
+                    break;
+                }
+                else
+                {
+                    item.RetirarCredito(item.ValorRestanteCredito);
+                }
+
+            }
             return true;
         }
         #endregion

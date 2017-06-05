@@ -1,5 +1,6 @@
 ﻿using AppFidelidade.Dominio.Administracao.Entidade;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AppFidelidade.Dominio.Cliente.Entidade
@@ -32,7 +33,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
                 Regra = Filial.ObterRegra(ValorCompra);
             else
             {
-                if (Cliente.Filiais.First(p => p.Filial == Filial).ValorCreditoNaFilial >= desconto)
+                if (Cliente.ObterCreditoNaFilial(Filial) >= desconto)
                 {
                     Cliente.RetirarCredito(desconto.Value, Filial);
                     ValorCompra -= desconto.Value;
@@ -41,12 +42,21 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         }
         public void Creditar(Cliente cliente)
         {
-            cliente.InserirCredito(Regra.ValorDaRegra, Filial);
+            InserirCredito(Regra.ValorDaRegra);
             DataRetiradaCredito = DateTime.Now;
+        }
+
+        public void InserirCredito(decimal valor)
+        {
+            ValorRestanteCredito += valor;
+        }
+        public void RetirarCredito(decimal valor)
+        {
+            ValorRestanteCredito -= valor;
         }
         #endregion
         #region attr
-        public int IdCompra { get; private set; }
+        public long IdCompra { get; private set; }
         public decimal ValorCompra { get; private set; }
         public DateTime Data { get; private set; }
         public DateTime? DataRetiradaCredito { get; private set; }
@@ -59,6 +69,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         public virtual Cliente Cliente { get; private set; }
         public int? IdRegra { get; private set; }
         public virtual Regra Regra { get; private set; }
+        public decimal ValorRestanteCredito { get; set; }
         #endregion
     }
 }
