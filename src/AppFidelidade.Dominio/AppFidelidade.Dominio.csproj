@@ -38,26 +38,30 @@
     <Compile Include="Administracao\Entidade\Filial.cs" />
     <Compile Include="Administracao\Entidade\Regra.cs" />
     <Compile Include="Administracao\Enum\ETipoDesconto.cs" />
+    <Compile Include="Administracao\Interface\Applicacao\IEmpresaAplicacao.cs" />
+    <Compile Include="Administracao\Interface\Applicacao\IFilialAplicacao.cs" />
+    <Compile Include="Administracao\Interface\Applicacao\IRegraAplicacao.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IEmpresaRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IFilialRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IRegraRepositorio.cs" />
     <Compile Include="Cliente\Entidade\Cliente.cs" />
     <Compile Include="Cliente\Entidade\Compra.cs" />
     <Compile Include="Cliente\Entidade\FilialCliente.cs" />
+    <Compile Include="Cliente\Interface\Aplicacao\IClienteAplicacao.cs" />
+    <Compile Include="Cliente\Interface\Aplicacao\ICompraAplicacao.cs" />
+    <Compile Include="Cliente\Interface\Aplicacao\IFilialClienteAplicacao.cs" />
     <Compile Include="Cliente\Interface\Repositorio\IClienteRepositorio.cs" />
     <Compile Include="Cliente\Interface\Repositorio\ICompraRepositorio.cs" />
     <Compile Include="Cliente\Interface\Repositorio\IFilialClienteRepositorio.cs" />
     <Compile Include="Funcionario\Entidade\Funcionario.cs" />
+    <Compile Include="Funcionario\Interface\Applicacao\IFuncionarioAplicacao.cs" />
     <Compile Include="Funcionario\Interface\Repositorio\IFuncionarioRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Servico\_Comum\BaseServico.cs" />
     <Compile Include="_Comum\Interface\Repositorio\IBaseRepositorio.cs" />
-    <Compile Include="_Comum\Interface\Servico\IBaseServico.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administracao\Interface\Servico\" />
-    <Folder Include="Funcionario\Interface\Servico\" />
     <Folder Include="_Comum\Enum\" />
+    <Folder Include="_Comum\Interface\Applicacao\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
