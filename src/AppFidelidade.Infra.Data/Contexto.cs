@@ -5,9 +5,9 @@ namespace AppFidelidade.Infra.Data
 {
     public class Contexto : DbContext
     {
-        //(localdb)\MSSQLLocalDB
-        //.\\SQLEXPRESS
-        public Contexto() : base("Data Source=EDDIE-PC\\SQLEXPRESS;Initial Catalog=AppFidelidade;Integrated Security=true")
+        //(localdb)\\MSSQLLocalDB
+        //EDDIE-PC\\SQLEXPRESS
+        public Contexto() : base("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AppFidelidade;Integrated Security=true")
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;

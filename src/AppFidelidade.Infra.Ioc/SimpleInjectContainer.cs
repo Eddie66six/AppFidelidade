@@ -21,7 +21,7 @@ namespace AppFidelidade.Infra.Ioc
         public static Container RegistrarIoc()
         {
             var registro = new Container();
-            registro.Register<ITransacaoRepositorio, TransacaoRepositorio>();
+            registro.Register<IUnitOfWork, UnitOfWork>();
 
             #region Administracao
             #region Repositorio

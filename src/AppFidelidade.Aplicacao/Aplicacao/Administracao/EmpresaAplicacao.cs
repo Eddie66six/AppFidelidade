@@ -9,10 +9,11 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
     public class EmpresaAplicacao : AppBase, IEmpresaAplicacao
     {
         private readonly IEmpresaRepositorio _empresaRepositorio;
-        private readonly ITransacaoRepositorio _transacaoRepositorio;
-        public EmpresaAplicacao(IEmpresaRepositorio empresaRepositorio, ITransacaoRepositorio transacaoRepositorio) : base(transacaoRepositorio)
+        private readonly IUnitOfWork _unitOfWork;
+        public EmpresaAplicacao(IEmpresaRepositorio empresaRepositorio, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _empresaRepositorio = empresaRepositorio;
+            _unitOfWork = unitOfWork;
         }
 
         public Empresa Adicionar(Empresa obj)

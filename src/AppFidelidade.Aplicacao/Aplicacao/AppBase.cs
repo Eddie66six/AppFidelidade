@@ -4,15 +4,15 @@ namespace AppFidelidade.Aplicacao.Aplicacao
 {
     public class AppBase
     {
-        private readonly ITransacaoRepositorio _transacaoRepositorio;
-        protected AppBase(ITransacaoRepositorio transacaoRepositorio)
+        private readonly IUnitOfWork _unitOfWork;
+        protected AppBase(IUnitOfWork unitOfWork)
         {
-            _transacaoRepositorio = transacaoRepositorio;
+            _unitOfWork = unitOfWork;
         }
 
         public bool Commit()
         {
-            return _transacaoRepositorio.Commit();
+            return _unitOfWork.Commit();
         }
     }
 }

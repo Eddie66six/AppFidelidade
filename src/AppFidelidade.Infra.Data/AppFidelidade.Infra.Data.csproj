@@ -67,7 +67,7 @@
     <Compile Include="Repositorio\Cliente\FilialClienteRepositorio.cs" />
     <Compile Include="Repositorio\Funcionario\FuncionarioRepositorio.cs" />
     <Compile Include="Repositorio\_Comum\BaseRepositorio.cs" />
-    <Compile Include="Repositorio\_Comum\TransacaoRepositorio.cs" />
+    <Compile Include="Repositorio\_Comum\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
