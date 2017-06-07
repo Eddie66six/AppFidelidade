@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AppFidelidade.Dominio.Administracao.Entidade
 {
@@ -23,6 +24,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         #region attr
         public int IdEmpresa { get; private set; }
         public string Nome { get; set; }
+        public DateTime? DataExclusao { get; set; }
         public List<Filial> Filiais { get; private set; }
         #endregion
     }

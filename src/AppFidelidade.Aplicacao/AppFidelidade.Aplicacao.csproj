@@ -43,6 +43,7 @@
     <Compile Include="Aplicacao\Administracao\EmpresaAplicacao.cs" />
     <Compile Include="Aplicacao\Administracao\FilialAplicacao.cs" />
     <Compile Include="Aplicacao\Administracao\RegraAplicacao.cs" />
+    <Compile Include="Aplicacao\AppBase.cs" />
     <Compile Include="Aplicacao\Cliente\ClienteAplicacao.cs" />
     <Compile Include="Aplicacao\Cliente\CompraAplicacao.cs" />
     <Compile Include="Aplicacao\Cliente\FilialClienteAplicacao.cs" />

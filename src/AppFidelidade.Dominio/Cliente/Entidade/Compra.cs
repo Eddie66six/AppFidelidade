@@ -17,7 +17,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             Filial = filial;
             Funcionario = funcionario;
             Cliente = cliente;
-            Data = DateTime.Now;
+            Data = DateTime.UtcNow;
             valorCredito = desconto;
 
             _FinalizarCompra(desconto);
@@ -43,7 +43,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         public void Creditar(Cliente cliente)
         {
             InserirCredito(Regra.ValorDaRegra);
-            DataRetiradaCredito = DateTime.Now;
+            DataRetiradaCredito = DateTime.UtcNow;
         }
 
         public void InserirCredito(decimal valor)

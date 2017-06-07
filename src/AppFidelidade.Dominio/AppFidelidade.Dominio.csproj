@@ -58,6 +58,7 @@
     <Compile Include="Funcionario\Interface\Repositorio\IFuncionarioRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Comum\Interface\Repositorio\IBaseRepositorio.cs" />
+    <Compile Include="_Comum\Interface\Repositorio\ITransacaoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Comum\Enum\" />
