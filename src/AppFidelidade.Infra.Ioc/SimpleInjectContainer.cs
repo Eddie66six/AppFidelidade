@@ -8,6 +8,7 @@ using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Dominio.Funcionario.Interface.Applicacao;
 using AppFidelidade.Dominio.Funcionario.Interface.Repositorio;
+using AppFidelidade.Infra.Data;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
 using AppFidelidade.Infra.Data.Repositorio.Administracao;
 using AppFidelidade.Infra.Data.Repositorio.Cliente;
@@ -21,6 +22,8 @@ namespace AppFidelidade.Infra.Ioc
         public static Container RegistrarIoc()
         {
             var registro = new Container();
+            registro.Register<Contexto>();
+            registro.Register<ContextoManager>();
             registro.Register<IUnitOfWork, UnitOfWork>();
 
             #region Administracao

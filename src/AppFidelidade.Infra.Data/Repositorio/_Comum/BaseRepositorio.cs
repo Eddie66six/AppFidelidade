@@ -7,7 +7,13 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
 {
     public class BaseRepositorio<T> : IBaseRepositorio<T> where T : class
     {
-        protected readonly Contexto Db = new Contexto();
+        //protected readonly Contexto Db = new Contexto();
+        protected Contexto Db => _contextManager.GetContext();
+        protected readonly ContextoManager _contextManager;
+        public BaseRepositorio(ContextoManager contextManager)
+        {
+            _contextManager = contextManager;
+        }
         public T Adicionar(T obj)
         {
             Db.Set<T>().Add(obj);

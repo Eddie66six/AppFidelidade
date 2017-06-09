@@ -5,16 +5,17 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
 {
     public sealed class UnitOfWork : IUnitOfWork
     {
-        private Contexto _db;
-        public UnitOfWork(Contexto db)
+        private readonly ContextoManager _contextoManager;
+        private Contexto contexto => _contextoManager.GetContext();
+        public UnitOfWork(ContextoManager contextoManager)
         {
-            _db = db;
+            _contextoManager = contextoManager;
         }
         public bool Commit()
         {
             try
             {
-                _db.SaveChanges();
+                contexto.SaveChanges();
                 return true;
             }
             catch (Exception)
@@ -31,14 +32,14 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
 
         private void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                if (_db != null)
-                {
-                    _db.Dispose();
-                    _db = null;
-                }
-            }
+            //if (disposing)
+            //{
+            //    if (contexto != null)
+            //    {
+            //        contexto.Dispose();
+            //        contexto = null;
+            //    }
+            //}
         }
     }
 }

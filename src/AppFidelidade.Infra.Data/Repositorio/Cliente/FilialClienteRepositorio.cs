@@ -5,5 +5,8 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
 {
     public class FilialClienteRepositorio : BaseRepositorio<Dominio.Cliente.Entidade.FilialCliente>, IFilialClienteRepositorio
     {
+        public FilialClienteRepositorio(ContextoManager contextManager) : base(contextManager)
+        {
+        }
     }
 }

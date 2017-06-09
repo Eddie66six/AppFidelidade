@@ -6,5 +6,8 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
 {
     public class FilialRepositorio : BaseRepositorio<Filial>, IFilialRepositorio
     {
+        public FilialRepositorio(ContextoManager contextManager) : base(contextManager)
+        {
+        }
     }
 }
