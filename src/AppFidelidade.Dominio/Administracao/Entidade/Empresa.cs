@@ -21,10 +21,16 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             return filial;
         }
 
+        #region Metodos
+        public void Excluir()
+        {
+            DataExclusao = DateTime.UtcNow;
+        }
+        #endregion
         #region attr
         public int IdEmpresa { get; private set; }
-        public string Nome { get; set; }
-        public DateTime? DataExclusao { get; set; }
+        public string Nome { get; private set; }
+        public DateTime? DataExclusao { get; private set; }
         public List<Filial> Filiais { get; private set; }
         #endregion
     }

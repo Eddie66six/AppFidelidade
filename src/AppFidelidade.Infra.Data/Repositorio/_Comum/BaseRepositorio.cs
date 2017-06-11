@@ -7,7 +7,6 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
 {
     public class BaseRepositorio<T> : IBaseRepositorio<T> where T : class
     {
-        //protected readonly Contexto Db = new Contexto();
         protected Contexto Db => _contextManager.GetContext();
         protected readonly ContextoManager _contextManager;
         public BaseRepositorio(ContextoManager contextManager)
@@ -21,6 +20,11 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
         }
 
         public void Atualizar(T obj)
+        {
+            Db.Entry(obj).State = EntityState.Modified;
+        }
+
+        public void Remover(T obj)
         {
             Db.Entry(obj).State = EntityState.Modified;
         }

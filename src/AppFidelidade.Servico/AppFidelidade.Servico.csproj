@@ -103,6 +103,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Administracao\EmpresaController.cs" />
+    <Compile Include="Controllers\Administracao\FilialController.cs" />
+    <Compile Include="Controllers\Administracao\RegraController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -125,6 +127,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppFidelidade.Aplicacao\AppFidelidade.Aplicacao.csproj">
+      <Project>{1C1399C8-9342-4670-A09B-F3E12B4EFF8E}</Project>
+      <Name>AppFidelidade.Aplicacao</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AppFidelidade.Dominio\AppFidelidade.Dominio.csproj">
       <Project>{34916704-ECEB-461B-A711-BFDDE881F287}</Project>
       <Name>AppFidelidade.Dominio</Name>

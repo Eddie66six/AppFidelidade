@@ -1,4 +1,5 @@
 ﻿using AppFidelidade.Dominio.Cliente.Entidade;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,13 +49,19 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Compras.Add(compra);
             return compra;
         }
+
+        public void Excluir()
+        {
+            DataExclusao = DateTime.UtcNow;
+        }
         #endregion
         #region attr
         public int IdFilial { get; private set; }
         public string Cnpj { get; private set; }
         public string RazaoSocial { get; private set; }
         public string NomeFantasia { get; private set; }
-        public decimal ValorCreditoMaximoPermitidoPorUso { get; set; }
+        public decimal ValorCreditoMaximoPermitidoPorUso { get; private set; }
+        public DateTime? DataExclusao { get; private set; }
         public int IdEmpresa { get; private set; }
         public virtual Empresa Empresa { get; private set; }
         public List<Funcionario.Entidade.Funcionario> Funcionarios { get; private set; }

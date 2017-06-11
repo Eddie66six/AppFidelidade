@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AppFidelidade.Dominio.Administracao.Entidade
 {
@@ -20,6 +21,13 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             FuncionarioCadastro = funcionarioCadastro;
         }
 
+        #region Metodo
+        public void Excluir()
+        {
+            DataExclusao = DateTime.UtcNow;
+        }
+        #endregion
+
         #region attr
         public int IdRegra { get; private set; }
         public Enum.ETipoDesconto TipoDesconto { get; private set; }
@@ -27,6 +35,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public decimal ValorInicial { get; private set; }
         public decimal ValorFinal { get; private set; }
         public bool Inativo { get; private set; }
+        public DateTime? DataExclusao { get;private set; }
         public int IdFilial { get; private set; }
         public virtual Filial Filial { get; private set; }
         public int IdFuncionario { get; private set; }

@@ -9,11 +9,9 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
     public class EmpresaAplicacao : AppBase, IEmpresaAplicacao
     {
         private readonly IEmpresaRepositorio _empresaRepositorio;
-        private readonly IUnitOfWork _unitOfWork;
         public EmpresaAplicacao(IEmpresaRepositorio empresaRepositorio, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _empresaRepositorio = empresaRepositorio;
-            _unitOfWork = unitOfWork;
         }
 
         public Empresa Adicionar(Empresa obj)
@@ -30,7 +28,12 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
 
         public void Remover(int id)
         {
-            _empresaRepositorio.Remover(id);
+            var empresa = _empresaRepositorio.ObterPorId(id, new string[0]);
+            if(empresa != null)
+            {
+                empresa.Excluir();
+                _empresaRepositorio.Remover(empresa);
+            }
             Commit();
         }
 
@@ -40,10 +43,10 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
             return _empresaRepositorio.ObterPorId(id, includes);
         }
 
-        public IEnumerable<Empresa> ObterTodos()
+        public IEnumerable<Empresa> ObterTodos(int idEmpresa)
         {
             string[] includes = { "Filiais" };
-            return _empresaRepositorio.ObterTodos(includes);
+            return _empresaRepositorio.ObterTodos(idEmpresa,includes);
         }
     }
 }

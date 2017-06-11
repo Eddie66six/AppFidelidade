@@ -16,33 +16,33 @@ namespace AppFidelidade.Servico.Controllers.Administracao
             _empresaAplicacao = empresaAplicacao;
         }
 
-        [Route("get")]
+        [Route("obter")]
         [HttpGet]
-        public Task<HttpResponseMessage> Get()
+        public Task<HttpResponseMessage> ObterTodos(int idEmpresa)
         {
-            return CreateResponse(HttpStatusCode.OK, _empresaAplicacao.ObterTodos());
+            return CreateResponse(HttpStatusCode.OK, _empresaAplicacao.ObterTodos(idEmpresa));
         }
-        [Route("get/{id}")]
+        [Route("obter")]
         [HttpGet]
-        public Task<HttpResponseMessage> Get(int id)
+        public Task<HttpResponseMessage> ObterPorId(int id)
         {
             return CreateResponse(HttpStatusCode.OK, _empresaAplicacao.ObterPorId(id));
         }
 
-        [Route("delete/{id}")]
+        [Route("deletar")]
         [HttpDelete]
         public Task<HttpResponseMessage> Delete(int id)
         {
             _empresaAplicacao.Remover(id);
             return CreateResponse(HttpStatusCode.OK, "");
         }
-        [Route("post")]
+        [Route("adicionar")]
         [HttpPost]
         public Task<HttpResponseMessage> Adicionar(Empresa obj)
         {
             return CreateResponse(HttpStatusCode.OK, _empresaAplicacao.Adicionar(obj));
         }
-        [Route("put/{id}")]
+        [Route("atualizar")]
         [HttpPut]
         public Task<HttpResponseMessage> Atualizar(Empresa obj)
         {

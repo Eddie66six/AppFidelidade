@@ -6,5 +6,6 @@ namespace AppFidelidade.Dominio._Comum.Interface.Repositorio
     {
         T Adicionar(T obj);
         void Atualizar(T obj);
+        void Remover(T obj);
     }
 }
