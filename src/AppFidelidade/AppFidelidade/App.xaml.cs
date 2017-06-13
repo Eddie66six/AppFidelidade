@@ -1,24 +1,34 @@
-﻿using Prism.Unity;
-using AppFidelidade.Views;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 using Xamarin.Forms;
 
 namespace AppFidelidade
 {
-    public partial class App : PrismApplication
+    public partial class App : Application
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer) { }
-
-        protected override void OnInitialized()
+        public App()
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("NavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
+            MainPage = new AppFidelidade.Views.LoginPage();
         }
 
-        protected override void RegisterTypes()
+        protected override void OnStart()
         {
-            Container.RegisterTypeForNavigation<NavigationPage>();
-            Container.RegisterTypeForNavigation<MainPage>();
+            // Handle when your app starts
+        }
+
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+        }
+
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
         }
     }
 }
