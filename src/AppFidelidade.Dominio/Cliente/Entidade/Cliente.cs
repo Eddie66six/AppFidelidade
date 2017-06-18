@@ -1,4 +1,5 @@
-﻿using AppFidelidade.Dominio.Administracao.Entidade;
+﻿using AppFidelidade.Dominio._Comum.Entidade;
+using AppFidelidade.Dominio.Administracao.Entidade;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,14 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             Filiais = new List<FilialCliente>();
             Compras = new List<Compra>();
         }
-        public Cliente(string nome)
+        public Cliente(string nome, string sobrenome, DateTime dataNascimento, Endereco endereco)
         {
             Filiais = new List<FilialCliente>();
             Compras = new List<Compra>();
             Nome = nome;
+            Sobrenome = sobrenome;
+            DataNascimento = dataNascimento;
+            Endereco = endereco;
         }
 
         #region Metodos
@@ -51,6 +55,9 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         #region attr
         public int IdCliente { get; private set; }
         public string Nome { get; private set; }
+        public string Sobrenome { get; private set; }
+        public DateTime DataNascimento { get; private set; }
+        public virtual Endereco Endereco { get; private set; }
         public List<Compra> Compras { get; private set; }
         public List<FilialCliente> Filiais { get; private set; }
         #endregion

@@ -10,14 +10,12 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         protected Filial()
         {
             Funcionarios = new List<Funcionario.Entidade.Funcionario>();
-            Clientes = new List<Cliente.Entidade.Cliente>();
             Regras = new List<Regra>();
             Compras = new List<Compra>();
         }
         public Filial(string cnpj, string razaoSocial,string nomeFantasia, decimal valorCreditoMaximoPermitidoPorUso)
         {
             Funcionarios = new List<Funcionario.Entidade.Funcionario>();
-            Clientes = new List<Cliente.Entidade.Cliente>();
             Regras = new List<Regra>();
             Compras = new List<Compra>();
 
@@ -65,7 +63,6 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public int IdEmpresa { get; private set; }
         public virtual Empresa Empresa { get; private set; }
         public List<Funcionario.Entidade.Funcionario> Funcionarios { get; private set; }
-        public List<Cliente.Entidade.Cliente> Clientes { get; private set; }
         public List<Regra> Regras { get; private set; }
         public List<Cliente.Entidade.Compra> Compras { get; private set; }
         public List<FilialCliente> Filiais { get; private set; }
