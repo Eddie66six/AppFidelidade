@@ -1,9 +1,10 @@
-﻿using Prism.Navigation;
+﻿using AppFidelidadeMobile.ViewModels;
+using Prism.Navigation;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace AppFidelidadeMobile.ViewModels
+namespace AppFidelidadeMobileADM.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {

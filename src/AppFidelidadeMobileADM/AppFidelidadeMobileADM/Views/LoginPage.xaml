@@ -2,25 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:control="clr-namespace:AppFidelidadeMobile.Controls"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="AppFidelidadeMobile.Views.LoginPage">
+             x:Class="AppFidelidadeMobileADM.Views.LoginPage">
     <AbsoluteLayout Padding="5,10,5,50" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout>
-                    <Image Scale=".6" Source="logoGrande.png"></Image>
+                <StackLayout Padding="0,80,0,20">
+                    <Image WidthRequest="180" HeightRequest="200" Source="logoGrande.png"></Image>
                 </StackLayout>
-                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
-                    <control:ImageTapGesture
-                        ItemTappedCommand="{Binding LoginCommad}"
-                        IsEnabled="{Binding IsEnable}"
-                        Scale=".7"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="StartAndExpand"
-                        Aspect="AspectFill"
-                        Source="btnFb.png">
-                    </control:ImageTapGesture>
+                <StackLayout Padding="20" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                    <Entry Placeholder="Usuario" IsEnabled="{Binding IsEnable}"></Entry>
+                    <Entry Placeholder="Senha" IsPassword="True" IsEnabled="{Binding IsEnable}"></Entry>
+                    <Button Text="Logar" TextColor="White" BackgroundColor="#3e57f0" Command="{Binding LoginCommad}" IsEnabled="{Binding IsEnable}"></Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
