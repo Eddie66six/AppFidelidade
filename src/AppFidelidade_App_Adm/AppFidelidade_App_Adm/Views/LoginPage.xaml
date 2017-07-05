@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             x:Class="AppFidelidade_App_Adm.Views.LoginPage">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="White" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <StackLayout Padding="10,30,10,10">
+        <StackLayout>
+            <Image Source="logo.png" HeightRequest="200"></Image>
+        </StackLayout>
+        <StackLayout>
+            <StackLayout Padding="20,0,0,10">
+                <Label Text="Pronto para" FontSize="40" TextColor="White"></Label>
+                <Label Text="Começar?" FontSize="40" TextColor="White"></Label>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Label Text="Em instantes terá o melhor" TextColor="White"></Label>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Label Text="serviço de fidelização de clientes" TextColor="White"></Label>
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Label Text="na palma da sua mão" TextColor="White"></Label>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="10,20,10,0">
+            <Entry Placeholder="Usuario" TextColor="White"></Entry>
+            <Entry Placeholder="Senha" IsPassword="True" TextColor="White"></Entry>
+            <Button Text="Login" FontSize="Large" TextColor="White" BackgroundColor="Transparent" Command="{Binding LoginCommand}"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

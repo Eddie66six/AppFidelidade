@@ -15,7 +15,8 @@ namespace AppFidelidade.Infra.Data
         protected override void Seed(Contexto contexto)
         {
             var empresa = new Empresa("G2x");
-            var filial = empresa.CriarFilial(new Filial("12123", "G2x unidade1", "eddie G2x",0));
+            var contrato = new Contrato(5, 15.00m);
+            var filial = empresa.CriarFilial(new Filial("12123", "G2x unidade1", "eddie G2x",0, contrato));
             var funcionario = filial.AdicionarFuncionario(new Funcionario("Guilherme funcionario"));
             var regra = filial.AdicionarRegra(new Regra(Dominio.Administracao.Enum.ETipoDesconto.Dinheiro, 0, 10, 5, filial, funcionario));
             var cliente = new Cliente("Guilherme cliente", "Rodrigues",

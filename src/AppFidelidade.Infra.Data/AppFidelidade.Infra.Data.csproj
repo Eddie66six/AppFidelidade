@@ -53,6 +53,7 @@
     <Compile Include="ConfiguracaoMigration.cs" />
     <Compile Include="Contexto.cs" />
     <Compile Include="ContextoManager.cs" />
+    <Compile Include="Map\Administracao\ContratoMap.cs" />
     <Compile Include="Map\Administracao\EmpresaMap.cs" />
     <Compile Include="Map\Administracao\FilialMap.cs" />
     <Compile Include="Map\Administracao\RegraMap.cs" />

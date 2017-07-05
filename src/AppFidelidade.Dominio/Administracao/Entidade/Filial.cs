@@ -12,17 +12,20 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Funcionarios = new List<Funcionario.Entidade.Funcionario>();
             Regras = new List<Regra>();
             Compras = new List<Compra>();
+            Contratos = new List<Contrato>();
         }
-        public Filial(string cnpj, string razaoSocial,string nomeFantasia, decimal valorCreditoMaximoPermitidoPorUso)
+        public Filial(string cnpj, string razaoSocial,string nomeFantasia, decimal valorCreditoMaximoPermitidoPorUso, Contrato contrato)
         {
             Funcionarios = new List<Funcionario.Entidade.Funcionario>();
             Regras = new List<Regra>();
             Compras = new List<Compra>();
+            Contratos = new List<Contrato>();
 
             Cnpj = cnpj;
             RazaoSocial = razaoSocial;
             NomeFantasia = nomeFantasia;
             ValorCreditoMaximoPermitidoPorUso = valorCreditoMaximoPermitidoPorUso;
+            Contratos.Add(contrato);
         }
 
         #region Metodos
@@ -66,6 +69,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public List<Regra> Regras { get; private set; }
         public List<Cliente.Entidade.Compra> Compras { get; private set; }
         public List<FilialCliente> Filiais { get; private set; }
+        public List<Contrato> Contratos { get; private set; }
         #endregion
     }
 }

@@ -49,5 +49,11 @@ namespace AppFidelidade.Servico.Controllers.Administracao
             _filialAplicacao.Atualizar(obj);
             return CreateResponse(HttpStatusCode.OK, "");
         }
+        [Route("obterResumo")]
+        [HttpGet]
+        public Task<HttpResponseMessage> ObterResumo(int idFilial)
+        {
+            return CreateResponse(HttpStatusCode.OK, _filialAplicacao.ObterResumoPorId(idFilial));
+        }
     }
 }

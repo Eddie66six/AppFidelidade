@@ -6,15 +6,18 @@ namespace AppFidelidade.Infra.Data.Map.Funcionario
     {
         public FuncionarioMap()
         {
-            HasMany(p => p.Filiais)
+            //HasMany(p => p.Filiais)
+            //    .WithMany(p => p.Funcionarios)
+            //    .Map(p =>
+            //        {
+            //            p.MapLeftKey("IdFilial");
+            //            p.MapRightKey("IdFuncionario");
+            //            p.ToTable("FilialFuncionario");
+            //        }
+            //    );
+            HasRequired(p => p.Filial)
                 .WithMany(p => p.Funcionarios)
-                .Map(p =>
-                    {
-                        p.MapLeftKey("IdFilial");
-                        p.MapRightKey("IdFuncionario");
-                        p.ToTable("FilialFuncionario");
-                    }
-                );
+                .HasForeignKey(p => p.IdFilial);
         }
     }
 }

@@ -3,6 +3,8 @@ using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
 using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using System.Collections.Generic;
+using AppFidelidade.Dominio.Administracao.ViewModel;
+using System;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
 {
@@ -47,6 +49,27 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
         {
             string[] includes = { };
             return _filialRepositorio.ObterTodos(includes);
+        }
+
+        public FilialResumoViewModel ObterResumoPorId(int id)
+        {
+            string[] includes = { };
+            var filial = _filialRepositorio.ObterPorId(id, includes);
+            var contrato = _filialRepositorio.ObterContratoPorIdFilial(id, includes);
+            return new FilialResumoViewModel
+            {
+                IdFilial = filial.IdFilial,
+                Cnpj = filial.Cnpj,
+                RazaoSocial = filial.RazaoSocial,
+                NomeFantasia = filial.NomeFantasia,
+                ValorCreditoMaximoPermitidoPorUso = filial.ValorCreditoMaximoPermitidoPorUso,
+                IdContrato = contrato.IdContrato,
+                Descricao = contrato.Descricao,
+                Data = contrato.Data,
+                Valor = contrato.Valor,
+                MaxFuncionariosCadastrados = contrato.MaxFuncionariosCadastrados,
+                QuantidadeFuncionariosCadastrados = _filialRepositorio.ObterQuantidadeFuncionariosCadastrados(id)
+            };
         }
     }
 }

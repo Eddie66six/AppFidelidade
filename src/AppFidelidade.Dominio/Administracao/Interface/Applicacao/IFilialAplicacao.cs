@@ -6,6 +6,7 @@ namespace AppFidelidade.Dominio.Administracao.Interface.Applicacao
     {
         IEnumerable<Entidade.Filial> ObterTodos();
         Entidade.Filial ObterPorId(int id);
+        ViewModel.FilialResumoViewModel ObterResumoPorId(int id);
         Entidade.Filial Adicionar(Entidade.Filial obj);
         void Atualizar(Entidade.Filial obj);
         void Remover(int id);

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="AppFidelidade_App_Adm.Views.MenuMasterDetailPage"
+                  xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Default">
+            <StackLayout>
+                <StackLayout Margin="0,30,0,0">
+                    <Image Source="logo.png" HeightRequest="250"></Image>
+                </StackLayout>
+                <StackLayout>
+                    <ListView ItemsSource="{Binding ItensMenu}">
+                        <ListView.Behaviors>
+                            <b:EventToCommandBehavior Command="{Binding NavigateCommand}" 
+                                  EventName="ItemTapped"
+                                  EventArgsParameterPath="Item"/>
+                        </ListView.Behaviors>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding Nome}" TextColor="Gray" FontSize="Large" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

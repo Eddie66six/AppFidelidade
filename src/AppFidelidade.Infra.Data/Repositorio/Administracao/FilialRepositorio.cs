@@ -24,6 +24,16 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             return query.FirstOrDefault(p => p.IdEmpresa == id && p.DataExclusao == null);
         }
 
+        public Contrato ObterContratoPorIdFilial(int id, string[] includes)
+        {
+            var query = Db.Contrato.AsQueryable();
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            return query.FirstOrDefault(p => p.Filial.IdFilial == id && p.DataCancelamento == null);
+        }
+
         public List<Filial> ObterTodos(string[] includes)
         {
             var query = Db.Filial.AsQueryable();
@@ -32,6 +42,11 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
                 query = query.Include(include);
             }
             return query.Where(p => p.DataExclusao == null).ToList();
+        }
+
+        public int ObterQuantidadeFuncionariosCadastrados(int idFilial)
+        {
+            return Db.Funcionario.Count(p => p.IdFilial == idFilial);
         }
     }
 }

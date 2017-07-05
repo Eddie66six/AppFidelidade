@@ -17,6 +17,7 @@ namespace AppFidelidade.Infra.Data
         public DbSet<Dominio.Administracao.Entidade.Empresa> Empresa { get; set; }
         public DbSet<Dominio.Administracao.Entidade.Filial> Filial { get; set; }
         public DbSet<Dominio.Administracao.Entidade.Regra> Regra { get; set; }
+        public DbSet<Dominio.Administracao.Entidade.Contrato> Contrato { get; set; }
         //cliente
         public DbSet<Dominio.Cliente.Entidade.Cliente> Cliente { get; set; }
         public DbSet<Dominio.Cliente.Entidade.Compra> Compra { get; set; }
@@ -60,6 +61,7 @@ namespace AppFidelidade.Infra.Data
             modelBuilder.Configurations.Add(new Map.Administracao.EmpresaMap());
             modelBuilder.Configurations.Add(new Map.Administracao.FilialMap());
             modelBuilder.Configurations.Add(new Map.Administracao.RegraMap());
+            modelBuilder.Configurations.Add(new Map.Administracao.ContratoMap());
             //cliente
             modelBuilder.Configurations.Add(new Map.Cliente.ClienteMap());
             modelBuilder.Configurations.Add(new Map.Cliente.CompraMap());

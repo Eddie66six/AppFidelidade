@@ -34,6 +34,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracao\Entidade\Contrato.cs" />
     <Compile Include="Administracao\Entidade\Empresa.cs" />
     <Compile Include="Administracao\Entidade\Filial.cs" />
     <Compile Include="Administracao\Entidade\Regra.cs" />
@@ -44,6 +45,7 @@
     <Compile Include="Administracao\Interface\Repositorio\IEmpresaRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IFilialRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IRegraRepositorio.cs" />
+    <Compile Include="Administracao\ViewModel\FilialResumoViewModel.cs" />
     <Compile Include="Cliente\Entidade\Cliente.cs" />
     <Compile Include="Cliente\Entidade\Compra.cs" />
     <Compile Include="Cliente\Entidade\FilialCliente.cs" />
