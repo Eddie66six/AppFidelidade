@@ -16,6 +16,7 @@ namespace AppFidelidade_App_Adm.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);
             TabLayoutResource = Resource.Layout.tabs;
             ToolbarResource = Resource.Layout.toolbar;
 

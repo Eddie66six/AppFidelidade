@@ -24,8 +24,23 @@ namespace AppFidelidade_App_Adm.ViewModels
                 },
                 new ItemMenu
                 {
-                    Nome = "Login",
-                    Parametro = "MenuNavigationPage/LoginPage"
+                    Nome = "Gerar credito",
+                    Parametro = "MenuNavigationPage/GerarCreditoPage"
+                },
+                new ItemMenu
+                {
+                    Nome = "Resgatar creito",
+                    Parametro = "MenuNavigationPage/ResgatarCreditoPage"
+                },
+                new ItemMenu
+                {
+                    Nome = "Regras",
+                    Parametro = "MenuNavigationPage/RegrasPage"
+                },
+                new ItemMenu
+                {
+                    Nome = "Funcionarios",
+                    Parametro = "MenuNavigationPage/FuncionariosPage"
                 }
             };
         }

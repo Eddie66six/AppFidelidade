@@ -9,7 +9,7 @@
         <ContentPage Title="Default">
             <StackLayout>
                 <StackLayout Margin="0,30,0,0">
-                    <Image Source="logo.png" HeightRequest="250"></Image>
+                    <Image Source="logo.png" HeightRequest="200"></Image>
                 </StackLayout>
                 <StackLayout>
                     <ListView ItemsSource="{Binding ItensMenu}">

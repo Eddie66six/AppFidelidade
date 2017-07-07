@@ -35,8 +35,8 @@
         </StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand">
             <Grid>
-                <Button Text="Gerar Crédito" FontSize="Medium" Grid.Row="0" Grid.Column="0"></Button>
-                <Button Text="Resgatar Crédito" FontSize="Medium" Grid.Row="0" Grid.Column="1"></Button>
+                <Button Text="Gerar Crédito" FontSize="Medium" Grid.Row="0" Grid.Column="0" Command="{Binding GerarCreditoCommand}"></Button>
+                <Button Text="Resgatar Crédito" FontSize="Medium" Grid.Row="0" Grid.Column="1" Command="{Binding ResgatarCreditoCommand}"></Button>
             </Grid>
         </StackLayout>
     </StackLayout>

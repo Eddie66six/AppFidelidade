@@ -8,7 +8,7 @@
     <xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="White" StepPercentage="0" />
-            <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
+            <xfg:GradientStep StepColor="#3847d4" StepPercentage="1" />
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
     <StackLayout Padding="10,30,10,10">
@@ -33,7 +33,7 @@
         <StackLayout Padding="10,20,10,0">
             <Entry Placeholder="Usuario" TextColor="White"></Entry>
             <Entry Placeholder="Senha" IsPassword="True" TextColor="White"></Entry>
-            <Button Text="Login" FontSize="Large" TextColor="White" BackgroundColor="Transparent" Command="{Binding LoginCommand}"></Button>
+            <Button Text="Login" FontSize="Large" TextColor="White" BackgroundColor="#f48947" Command="{Binding LoginCommand}"></Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>

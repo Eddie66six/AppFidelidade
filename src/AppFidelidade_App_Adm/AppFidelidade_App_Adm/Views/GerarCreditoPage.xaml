@@ -2,7 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:util="clr-namespace:AppFidelidade_App_Adm.Util;assembly=AppFidelidade_App_Adm"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="AppFidelidade_App_Adm.Views.GerarCreditoPage">
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <util:CurrencyConverter x:Key="currencyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
+            <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Image Source="rewardApp.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200"></Image>
+            <Label FontSize="Large" Text="Nome do cliente" HorizontalOptions="CenterAndExpand"></Label>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Entry FontSize="30" Placeholder="Valor" Text="{Binding Valor, Converter={StaticResource currencyConverter}}" Keyboard="Numeric" />
+                <Entry FontSize="30" Placeholder="Identificado do cliente" Text="{Binding QrCode}"></Entry>
+                <Button Text="Ler Qr" Command="{Binding LerQrCodeCommand}"></Button>
+                <Button Text="Gerar"></Button>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

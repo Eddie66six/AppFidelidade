@@ -24,6 +24,8 @@ namespace AppFidelidade_App_Adm
             Container.RegisterTypeForNavigation<InicialPage>();
             Container.RegisterTypeForNavigation<GerarCreditoPage>();
             Container.RegisterTypeForNavigation<ResgatarCreditoPage>();
+            Container.RegisterTypeForNavigation<RegrasPage>();
+            Container.RegisterTypeForNavigation<FuncionariosPage>();
         }
     }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/csc.exe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/Microsoft.Build.Tasks.CodeAnalysis.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/Microsoft.CodeAnalysis.CSharp.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/Microsoft.CodeAnalysis.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/Microsoft.CodeAnalysis.VisualBasic.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/Microsoft.CSharp.Core.targets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/Microsoft.VisualBasic.Core.targets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/System.Collections.Immutable.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/System.Reflection.Metadata.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/vbc.exe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/VBCSCompiler.exe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.1.0.0/tools/VBCSCompiler.exe.config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Aplicacao" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Dominio" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Infra.Data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Infra.Ioc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Servico" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm.Droid" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm.iOS" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Aplicacao/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Aplicacao/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Dominio/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Dominio/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Infra.Data/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Infra.Data/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Infra.Ioc/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Infra.Ioc/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Servico/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade.Servico/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm.Droid/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm.Droid/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm.iOS/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm.iOS/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../src/AppFidelidade_App_Adm/AppFidelidade_App_Adm/obj" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
