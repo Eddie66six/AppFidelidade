@@ -12,28 +12,35 @@
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
     <StackLayout Padding="10,30,10,10">
-        <StackLayout>
-            <Image Source="logo.png" HeightRequest="200"></Image>
+        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout>
+                <Image Source="logo.png" HeightRequest="200"></Image>
+            </StackLayout>
+            <StackLayout>
+                <StackLayout Padding="20,0,0,10">
+                    <Label Text="Pronto para" FontSize="40" TextColor="White"></Label>
+                    <Label Text="Começar?" FontSize="40" TextColor="White"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="Em instantes terá o melhor" TextColor="White"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="serviço de fidelização de clientes" TextColor="White"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="na palma da sua mão" TextColor="White"></Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Padding="10,20,10,0">
+                <Entry Placeholder="Usuario" TextColor="White"></Entry>
+                <Entry Placeholder="Senha" IsPassword="True" TextColor="White"></Entry>
+                <Button Text="Login" FontSize="Large" TextColor="White" BackgroundColor="#f48947" Command="{Binding LoginCommand}"></Button>
+            </StackLayout>
         </StackLayout>
-        <StackLayout>
-            <StackLayout Padding="20,0,0,10">
-                <Label Text="Pronto para" FontSize="40" TextColor="White"></Label>
-                <Label Text="Começar?" FontSize="40" TextColor="White"></Label>
-            </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="Em instantes terá o melhor" TextColor="White"></Label>
-            </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="serviço de fidelização de clientes" TextColor="White"></Label>
-            </StackLayout>
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="na palma da sua mão" TextColor="White"></Label>
-            </StackLayout>
-        </StackLayout>
-        <StackLayout Padding="10,20,10,0">
-            <Entry Placeholder="Usuario" TextColor="White"></Entry>
-            <Entry Placeholder="Senha" IsPassword="True" TextColor="White"></Entry>
-            <Button Text="Login" FontSize="Large" TextColor="White" BackgroundColor="#f48947" Command="{Binding LoginCommand}"></Button>
-        </StackLayout>
+        <ActivityIndicator x:Name="actInd"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+            IsRunning="true"
+            IsVisible="true" />
     </StackLayout>
 </ContentPage>
