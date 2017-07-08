@@ -17,13 +17,13 @@
             <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
-    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Image Source="rewardApp.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200"></Image>
+    <StackLayout Padding="10" VerticalOptions="FillAndExpand" Spacing="0">
+        <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+            <Image Source="rewardApp.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="180" WidthRequest="180"></Image>
             <Label FontSize="Large" Text="Nome do cliente" HorizontalOptions="CenterAndExpand"></Label>
-            <StackLayout VerticalOptions="EndAndExpand">
-                <Entry FontSize="30" Placeholder="Valor" Text="{Binding Valor, Converter={StaticResource currencyConverter}}" Keyboard="Numeric" />
-                <Entry FontSize="30" Placeholder="Identificado do cliente" Text="{Binding QrCode}"></Entry>
+            <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
+                <Entry FontSize="Large" Placeholder="Valor" Text="{Binding Valor, Converter={StaticResource currencyConverter}}" Keyboard="Numeric" />
+                <Entry FontSize="Large" Placeholder="Identificado do cliente" Text="{Binding QrCode}"></Entry>
                 <Button Text="Ler Qr" Command="{Binding LerQrCodeCommand}"></Button>
                 <Button Text="Gerar"></Button>
             </StackLayout>

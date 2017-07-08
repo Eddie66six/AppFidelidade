@@ -11,15 +11,15 @@
             <xfg:GradientStep StepColor="#3847d4" StepPercentage="1" />
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>
-    <StackLayout Padding="10,30,10,10">
-        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
-            <StackLayout>
-                <Image Source="logo.png" HeightRequest="200"></Image>
+    <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0">
+            <StackLayout Margin="0,5,0,0" Spacing="0" VerticalOptions="StartAndExpand">
+                <Image Source="logo.png" HeightRequest="180"></Image>
             </StackLayout>
-            <StackLayout>
-                <StackLayout Padding="20,0,0,10">
-                    <Label Text="Pronto para" FontSize="40" TextColor="White"></Label>
-                    <Label Text="Começar?" FontSize="40" TextColor="White"></Label>
+            <StackLayout Spacing="0">
+                <StackLayout Spacing="0" Margin="10,0,0,0">
+                    <Label FontSize="35" TextColor="White" Text="Pronto para"></Label>
+                    <Label FontSize="35" TextColor="White" Text="Começar?"></Label>
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand">
                     <Label Text="Em instantes terá o melhor" TextColor="White"></Label>
@@ -31,16 +31,11 @@
                     <Label Text="na palma da sua mão" TextColor="White"></Label>
                 </StackLayout>
             </StackLayout>
-            <StackLayout Padding="10,20,10,0">
+            <StackLayout Margin="0,5,0,0" VerticalOptions="EndAndExpand" Spacing="0">
                 <Entry Placeholder="Usuario" TextColor="White"></Entry>
                 <Entry Placeholder="Senha" IsPassword="True" TextColor="White"></Entry>
                 <Button Text="Login" FontSize="Large" TextColor="White" BackgroundColor="#f48947" Command="{Binding LoginCommand}"></Button>
             </StackLayout>
         </StackLayout>
-        <ActivityIndicator x:Name="actInd"
-            AbsoluteLayout.LayoutFlags="PositionProportional"
-            AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
-            IsRunning="true"
-            IsVisible="true" />
     </StackLayout>
 </ContentPage>
