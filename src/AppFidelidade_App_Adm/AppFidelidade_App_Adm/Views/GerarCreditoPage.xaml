@@ -5,7 +5,8 @@
              xmlns:util="clr-namespace:AppFidelidade_App_Adm.Util;assembly=AppFidelidade_App_Adm"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
-             x:Class="AppFidelidade_App_Adm.Views.GerarCreditoPage">
+             x:Class="AppFidelidade_App_Adm.Views.GerarCreditoPage"
+             Title="Gerar Credito">
     <ContentPage.Resources>
         <ResourceDictionary>
             <util:CurrencyConverter x:Key="currencyConverter" />

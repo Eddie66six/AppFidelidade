@@ -7,11 +7,11 @@
                   xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms">
     <MasterDetailPage.Master>
         <ContentPage Title="Default">
-            <StackLayout>
-                <StackLayout Margin="0,30,0,0">
-                    <Image Source="logo.png" HeightRequest="200"></Image>
+            <StackLayout Spacing="0">
+                <StackLayout Margin="0,20,0,0">
+                    <Image Source="logo.png" HeightRequest="150"></Image>
                 </StackLayout>
-                <StackLayout>
+                <StackLayout Spacing="0">
                     <ListView ItemsSource="{Binding ItensMenu}">
                         <ListView.Behaviors>
                             <b:EventToCommandBehavior Command="{Binding NavigateCommand}" 
@@ -21,8 +21,9 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding Nome}" TextColor="Gray" FontSize="Large" VerticalOptions="CenterAndExpand"/>
+                                    <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Image Source="{Binding Icone}"></Image>
+                                        <Label Text="{Binding Nome}" TextColor="Gray" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

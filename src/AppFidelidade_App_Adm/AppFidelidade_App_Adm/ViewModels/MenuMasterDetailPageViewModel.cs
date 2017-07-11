@@ -19,28 +19,40 @@ namespace AppFidelidade_App_Adm.ViewModels
             {
                 new ItemMenu
                 {
+                    Icone = "inicio_black.png",
                     Nome = "Inicio",
                     Parametro = "MenuNavigationPage/InicialPage"
                 },
                 new ItemMenu
                 {
+                    Icone = "gerar_credito_black.png",
                     Nome = "Gerar credito",
                     Parametro = "MenuNavigationPage/GerarCreditoPage"
                 },
                 new ItemMenu
                 {
+                    Icone = "resgatar_credito_black.png",
                     Nome = "Resgatar creito",
                     Parametro = "MenuNavigationPage/ResgatarCreditoPage"
                 },
                 new ItemMenu
                 {
+                    Icone = "regra_black.png",
                     Nome = "Regras",
                     Parametro = "MenuNavigationPage/RegrasPage"
                 },
                 new ItemMenu
                 {
+                    Icone = "funcionario_black.png",
                     Nome = "Funcionarios",
                     Parametro = "MenuNavigationPage/FuncionariosPage"
+                }
+                ,
+                new ItemMenu
+                {
+                    Icone = "sobre_black.png",
+                    Nome = "Sobre",
+                    Parametro = "MenuNavigationPage/SobrePage"
                 }
             };
         }

@@ -26,10 +26,10 @@ namespace AppFidelidade_App_Adm.ViewModels
         public GerarCreditoPageViewModel()
         {
             LerQrCodeCommand = new Command(LerQrCode);
-            GerarCreditoCommand = new Command<string>(GerarCredito);
+            GerarCreditoCommand = new Command(GerarCredito);
         }
 
-        private void GerarCredito(string code)
+        private void GerarCredito()
         {
             
         }

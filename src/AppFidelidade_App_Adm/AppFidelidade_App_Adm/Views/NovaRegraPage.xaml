@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:util="clr-namespace:AppFidelidade_App_Adm.Util;assembly=AppFidelidade_App_Adm"
+             xmlns:control="clr-namespace:AppFidelidade_App_Adm.Controls;assembly=AppFidelidade_App_Adm"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFidelidade_App_Adm.Views.NovaRegraPage"
+             Title="Nova regra">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <util:CurrencyConverter x:Key="currencyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Padding="10">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Ativo" HorizontalOptions="EndAndExpand"></Label>
+            <Switch IsToggled="True"></Switch>
+        </StackLayout>
+        <control:CustomEntry Placeholder="Nome da regra" Text="" MaxLength="40"></control:CustomEntry>
+        <Entry Placeholder="Valor acima de" Text="{Binding Valor, Converter={StaticResource currencyConverter}}" Keyboard="Numeric" />
+        <control:CustomEntry Placeholder="Porcentagem do credito" Text="{Binding Porcentagem}" MaxLength="100" Keyboard="Numeric"></control:CustomEntry>
+        <Button Text="Salvar"></Button>
+    </StackLayout>
+</ContentPage>

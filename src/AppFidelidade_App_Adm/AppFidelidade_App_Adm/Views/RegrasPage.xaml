@@ -3,6 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="AppFidelidade_App_Adm.Views.RegrasPage">
-
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             x:Class="AppFidelidade_App_Adm.Views.RegrasPage"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             Title="Regras">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
+            <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="+" Icon="plus_black.png" Text="+" Priority="0" Command="{Binding NovaRegraCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <StackLayout Spacing="0">
+            <ListView ItemsSource="{Binding Regras}">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" EventArgsParameterPath="Item"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nome}" TextColor="White" Detail="{Binding Detalhes}" DetailColor="Black"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>
