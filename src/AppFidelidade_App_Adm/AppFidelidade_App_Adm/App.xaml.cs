@@ -54,8 +54,8 @@ namespace AppFidelidade_App_Adm
                     return false;
                 }
                 var novoLogin = await AppFidelidadeService.FuncionarioLogin(login.Usuario, login.Senha);
-                if (novoLogin == null) return false;
-                var sqlLogin = new Models.SqLiteLogin(login, novoLogin);
+                if (novoLogin == null || novoLogin.Contains("errors")) return false;
+                var sqlLogin = new Models.SqLiteLogin(login, JsonConvert.DeserializeObject<Models.FuncionarioLogin>(novoLogin));
                 storage.InserirLogin(sqlLogin);
             }
             return true;

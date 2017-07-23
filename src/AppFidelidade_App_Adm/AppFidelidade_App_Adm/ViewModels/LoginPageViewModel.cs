@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Prism.Navigation;
 using Prism.Services;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -30,14 +31,15 @@ namespace AppFidelidade_App_Adm.ViewModels
 
         private async void Logar()
         {
-            var loginData = await Services.AppFidelidadeService.FuncionarioLogin(Login.Usuario, Login.Senha);
-            if (loginData == null)
+            var loginData = await AppFidelidadeService.FuncionarioLogin(Login.Usuario, Login.Senha);
+            if (loginData == null || loginData.Contains("errors"))
             {
-                await _dialogService.DisplayAlertAsync("Erro", "Usuario Não encontrado", "OK");
+                var erros = JsonConvert.DeserializeObject<Models.Errors>(loginData);
+                await _dialogService.DisplayAlertAsync("Erro", erros.errors[0].Value, "OK");
                 return;
             }
             var storage = new StorageService();
-            storage.InserirLogin(new Models.SqLiteLogin { Login = JsonConvert.SerializeObject(Login), LoginData = JsonConvert.SerializeObject(loginData) });
+            storage.InserirLogin(new Models.SqLiteLogin { Login = JsonConvert.SerializeObject(Login), LoginData = loginData });
             await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
         }
     }

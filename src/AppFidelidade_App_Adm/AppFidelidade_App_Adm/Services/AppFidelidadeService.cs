@@ -22,22 +22,13 @@ namespace AppFidelidade_App_Adm.Services
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        public static async Task<Models.FuncionarioLogin> FuncionarioLogin(string usuario, string senha)
+        public static async Task<string> FuncionarioLogin(string usuario, string senha)
         {
             try
             {
                 init(false);
                 HttpResponseMessage response = await client.GetAsync($"{baseUrl}api/v1/auth/funcionario?usuario={usuario}&senha={senha}");
-                if (response.IsSuccessStatusCode)
-                {
-                    var jsonResult = await response.Content.ReadAsStringAsync();
-                    var login = JsonConvert.DeserializeObject<Models.FuncionarioLogin>(jsonResult);
-                    return login;
-                }
-                else
-                {
-                    return null;
-                }
+                return await response.Content.ReadAsStringAsync();
             }
             catch (Exception)
             {
