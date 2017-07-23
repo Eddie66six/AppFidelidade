@@ -1,4 +1,5 @@
-﻿using AppFidelidade.Infra.Ioc;
+﻿using AppFidelidade.Dominio.Compartilhado.DomainEvent;
+using AppFidelidade.Infra.Ioc;
 using SimpleInjector.Integration.WebApi;
 using System.Web.Http;
 
@@ -14,12 +15,6 @@ namespace AppFidelidade.Servico
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             // Web API routes
             config.MapHttpAttributeRoutes();
-
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
         }
     }
 }

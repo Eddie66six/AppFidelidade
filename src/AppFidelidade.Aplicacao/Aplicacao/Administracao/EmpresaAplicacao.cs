@@ -3,6 +3,7 @@ using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
 using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using AppFidelidade.Dominio._Comum.Interface.Repositorio;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
 {

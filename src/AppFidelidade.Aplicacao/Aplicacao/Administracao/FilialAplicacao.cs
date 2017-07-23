@@ -5,6 +5,7 @@ using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using System.Collections.Generic;
 using AppFidelidade.Dominio.Administracao.ViewModel;
 using System;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
 {

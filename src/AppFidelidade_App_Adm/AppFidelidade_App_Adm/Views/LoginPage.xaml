@@ -32,8 +32,8 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout Margin="0,5,0,0" VerticalOptions="EndAndExpand" Spacing="0">
-                <Entry Placeholder="Usuario" TextColor="White"></Entry>
-                <Entry Placeholder="Senha" IsPassword="True" TextColor="White"></Entry>
+                <Entry Placeholder="Usuario" TextColor="White" Text="{Binding Login.Usuario}"></Entry>
+                <Entry Placeholder="Senha" IsPassword="True" TextColor="White" Text="{Binding Login.Senha}"></Entry>
                 <Button Text="Login" FontSize="Large" TextColor="White" BackgroundColor="#f48947" Command="{Binding LoginCommand}"></Button>
             </StackLayout>
         </StackLayout>

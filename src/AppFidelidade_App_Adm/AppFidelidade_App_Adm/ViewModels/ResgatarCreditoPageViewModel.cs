@@ -12,6 +12,13 @@ namespace AppFidelidade_App_Adm.ViewModels
             get { return _qrCode; }
             set { SetProperty(ref _qrCode, value); }
         }
+        private decimal _valor;
+
+        public decimal Valor
+        {
+            get { return _valor; }
+            set { SetProperty(ref _valor, value); }
+        }
         public ICommand LerQrCodeCommand { get; }
         public ICommand ResgatarCreditoCommand { get; }
         public ResgatarCreditoPageViewModel()

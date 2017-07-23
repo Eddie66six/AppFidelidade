@@ -2,9 +2,10 @@
 using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
 using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
-using System.Collections.Generic;
 using AppFidelidade.Dominio.Administracao.Enum;
 using System;
+using AppFidelidade.Dominio.Administracao.ViewModel;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
 {
@@ -28,22 +29,22 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
             return _regraRepositorio.ObterPorId(id, includes);
         }
 
-        public List<Regra> ObterPorTipoDesconto(int idFilial, ETipoDesconto tipo)
+        public RegraListaViewModel ObterPorTipoDesconto(int idFilial, ETipoDesconto tipo, int take, int skip)
         {
             string[] includes = { };
-            return _regraRepositorio.ObterPorTipoDesconto(idFilial, tipo, includes);
+            return _regraRepositorio.ObterPorTipoDesconto(idFilial, tipo,take,skip, includes);
         }
 
-        public List<Regra> ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal)
+        public RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip)
         {
             string[] includes = { };
-            return _regraRepositorio.ObterPorValorInicialFinal(idFilial, valorInicial, valorFinal, includes);
+            return _regraRepositorio.ObterPorValorInicialFinal(idFilial, valorInicial, valorFinal,take,skip, includes);
         }
 
-        public List<Regra> ObterTodos(int idFilial)
+        public RegraListaViewModel ObterTodos(int idFilial, int take, int skip)
         {
             string[] includes = { };
-            return _regraRepositorio.ObterTodos(idFilial, includes);
+            return _regraRepositorio.ObterTodos(idFilial,take,skip, includes);
         }
     }
 }

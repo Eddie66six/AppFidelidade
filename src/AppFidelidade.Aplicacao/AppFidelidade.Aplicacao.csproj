@@ -48,12 +48,15 @@
     <Compile Include="Aplicacao\Cliente\CompraAplicacao.cs" />
     <Compile Include="Aplicacao\Cliente\FilialClienteAplicacao.cs" />
     <Compile Include="Aplicacao\Funcionario\FuncionarioAplicacao.cs" />
+    <Compile Include="Aplicacao\_Comum\AuthAplicacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Aplicacao\_Comum\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\AppFidelidade.Dominio.Compartilhado\AppFidelidade.Dominio.Compartilhado.csproj">
+      <Project>{f857f69c-c633-4d5f-afb8-622b7b157322}</Project>
+      <Name>AppFidelidade.Dominio.Compartilhado</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AppFidelidade.Dominio\AppFidelidade.Dominio.csproj">
       <Project>{34916704-ECEB-461B-A711-BFDDE881F287}</Project>
       <Name>AppFidelidade.Dominio</Name>

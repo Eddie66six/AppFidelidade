@@ -4,5 +4,15 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFidelidade_App_Adm.Views.SobrePage">
-
+    <StackLayout Padding="20" VerticalOptions="FillAndExpand">
+        <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10">
+            <Label Text="nossa empresa"></Label>
+        </StackLayout>
+        <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10">
+            <Label Text="empresa"></Label>
+        </StackLayout>
+        <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10">
+            <Label Text="app"></Label>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>

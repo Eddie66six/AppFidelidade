@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Dominio._Comum.Interface.Repositorio;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
 {
     public class ClienteAplicacao : AppBase, IClienteAplicacao
     {
         private readonly IClienteRepositorio _clienteRepositorio;
-        public ClienteAplicacao(IClienteRepositorio clienteRepositorio, IUnitOfWork unitOfWork): base(unitOfWork)
+        public ClienteAplicacao(IClienteRepositorio clienteRepositorio, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _clienteRepositorio = clienteRepositorio;
         }

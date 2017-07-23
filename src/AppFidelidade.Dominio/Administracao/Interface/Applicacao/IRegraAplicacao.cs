@@ -1,13 +1,13 @@
 ﻿using AppFidelidade.Dominio.Administracao.Entidade;
-using System.Collections.Generic;
+using AppFidelidade.Dominio.Administracao.ViewModel;
 
 namespace AppFidelidade.Dominio.Administracao.Interface.Applicacao
 {
     public interface IRegraAplicacao
     {
         Regra ObterPorId(int id);
-        List<Regra> ObterPorTipoDesconto(int idFilial, Enum.ETipoDesconto tipo);
-        List<Regra> ObterTodos(int idFilial);
-        List<Regra> ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal);
+        RegraListaViewModel ObterPorTipoDesconto(int idFilial, Enum.ETipoDesconto tipo, int take, int skip);
+        RegraListaViewModel ObterTodos(int idFilial, int take, int skip);
+        RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip);
     }
 }

@@ -24,7 +24,7 @@
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Nome}" TextColor="White" Detail="{Binding Detalhes}" DetailColor="Black"></TextCell>
+                        <TextCell Text="{Binding Nome}" TextColor="Black" Detail="{Binding Detalhes}" DetailColor="Gray"></TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

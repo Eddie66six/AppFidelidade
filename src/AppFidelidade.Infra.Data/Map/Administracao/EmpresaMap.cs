@@ -6,7 +6,6 @@ namespace AppFidelidade.Infra.Data.Map.Administracao
     {
         public EmpresaMap()
         {
-            
         }
     }
 }

@@ -30,6 +30,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
 
         #region attr
         public int IdRegra { get; private set; }
+        public string Nome { get; set; }
         public Enum.ETipoDesconto TipoDesconto { get; private set; }
         public decimal ValorDaRegra { get;private set; }
         public decimal ValorInicial { get; private set; }

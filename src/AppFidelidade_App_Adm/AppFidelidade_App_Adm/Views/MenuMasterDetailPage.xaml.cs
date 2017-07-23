@@ -1,4 +1,4 @@
-﻿using Prism.Navigation;
+﻿using AppFidelidade_App_Adm.Interfaces;
 using Xamarin.Forms;
 
 namespace AppFidelidade_App_Adm.Views
@@ -9,9 +9,12 @@ namespace AppFidelidade_App_Adm.Views
         {
             InitializeComponent();
         }
-        //public bool IsPresentedAfterNavigation
-        //{
-        //    get { return Device.Idiom != TargetIdiom.Phone; }
-        //}
+        protected override bool OnBackButtonPressed()
+        {
+            if (Device.OS == TargetPlatform.Android)
+                DependencyService.Get<IAndroidMethods>().CloseApp();
+
+            return base.OnBackButtonPressed();
+        }
     }
 }

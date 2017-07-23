@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AppFidelidade.Dominio.Compartilhado\AppFidelidade.Dominio.Compartilhado.csproj">
+      <Project>{F857F69C-C633-4D5F-AFB8-622B7B157322}</Project>
+      <Name>AppFidelidade.Dominio.Compartilhado</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AppFidelidade.Dominio\AppFidelidade.Dominio.csproj">
       <Project>{34916704-eceb-461b-a711-bfdde881f287}</Project>
       <Name>AppFidelidade.Dominio</Name>

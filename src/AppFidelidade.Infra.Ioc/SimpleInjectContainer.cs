@@ -1,11 +1,14 @@
-﻿using AppFidelidade.Aplicacao.Aplicacao.Administracao;
+﻿using AppFidelidade.Aplicacao.Aplicacao._Comum;
+using AppFidelidade.Aplicacao.Aplicacao.Administracao;
 using AppFidelidade.Aplicacao.Aplicacao.Cliente;
 using AppFidelidade.Aplicacao.Aplicacao.Funcionario;
+using AppFidelidade.Dominio._Comum.Interface.Applicacao;
 using AppFidelidade.Dominio._Comum.Interface.Repositorio;
 using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
 using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 using AppFidelidade.Dominio.Funcionario.Interface.Applicacao;
 using AppFidelidade.Dominio.Funcionario.Interface.Repositorio;
 using AppFidelidade.Infra.Data;
@@ -26,6 +29,16 @@ namespace AppFidelidade.Infra.Ioc
             registro.Register<ContextoManager>();
             registro.Register<IUnitOfWork, UnitOfWork>();
 
+            #region Compartilhado
+            registro.Register<IDomainHandler<DomainNotification>, DomainNotificationHandler>();
+            #endregion
+            #region Comum
+            #region Repositorio
+            #endregion
+            #region Aplicacao
+            registro.Register<IAuthAplicacao, AuthAplicacao>();
+            #endregion
+            #endregion
             #region Administracao
             #region Repositorio
             registro.Register<IEmpresaRepositorio, EmpresaRepositorio>();

@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using AppFidelidade_App_Adm.Services;
+using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -53,13 +54,26 @@ namespace AppFidelidade_App_Adm.ViewModels
                     Icone = "sobre_black.png",
                     Nome = "Sobre",
                     Parametro = "MenuNavigationPage/SobrePage"
+                },
+                new ItemMenu
+                {
+                    Icone = "sobre_black.png",
+                    Nome = "Sair",
+                    Parametro = "LoginPage"
                 }
             };
         }
 
         private void Navigate(ItemMenu parametro)
         {
-            _navigationService.NavigateAsync(parametro.Parametro);
+            if(parametro.Parametro != "LoginPage")
+                _navigationService.NavigateAsync(parametro.Parametro);
+            else
+            {
+                var storage = new StorageService();
+                storage.Limpar();
+                _navigationService.NavigateAsync(parametro.Parametro);
+            }
         }
     }
 

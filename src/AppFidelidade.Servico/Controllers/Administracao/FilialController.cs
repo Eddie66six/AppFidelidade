@@ -1,5 +1,6 @@
 ﻿using AppFidelidade.Aplicacao.Aplicacao.Administracao;
 using AppFidelidade.Dominio.Administracao.Entidade;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,11 +8,12 @@ using System.Web.Http;
 
 namespace AppFidelidade.Servico.Controllers.Administracao
 {
+    [Authorize]
     [RoutePrefix("api/v1/filial")]
     public class FilialController : BaseController
     {
         private readonly FilialAplicacao _filialAplicacao;
-        public FilialController(FilialAplicacao filialAplicacao)
+        public FilialController(FilialAplicacao filialAplicacao):base()
         {
             _filialAplicacao = filialAplicacao;
         }

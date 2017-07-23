@@ -1,5 +1,6 @@
 ﻿using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,11 +8,12 @@ using System.Web.Http;
 
 namespace AppFidelidade.Servico.Controllers.Administracao
 {
+    [Authorize]
     [RoutePrefix("api/v1/empresa")]
     public class EmpresaController : BaseController
     {
         private readonly IEmpresaAplicacao _empresaAplicacao;
-        public EmpresaController(IEmpresaAplicacao empresaAplicacao)
+        public EmpresaController(IEmpresaAplicacao empresaAplicacao):base()
         {
             _empresaAplicacao = empresaAplicacao;
         }

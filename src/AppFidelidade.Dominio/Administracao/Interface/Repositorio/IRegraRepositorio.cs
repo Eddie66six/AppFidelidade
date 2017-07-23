@@ -1,14 +1,14 @@
 ﻿using AppFidelidade.Dominio._Comum.Interface.Repositorio;
 using AppFidelidade.Dominio.Administracao.Entidade;
-using System.Collections.Generic;
+using AppFidelidade.Dominio.Administracao.ViewModel;
 
 namespace AppFidelidade.Dominio.Administracao.Interface.Repositorio
 {
     public interface IRegraRepositorio : IBaseRepositorio<Regra>
     {
         Regra ObterPorId(int id, string[] includes);
-        List<Regra> ObterPorTipoDesconto(int idFilial, Enum.ETipoDesconto tipo,string[] includes);
-        List<Regra> ObterTodos(int idFilial, string[] includes);
-        List<Regra> ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, string[] includes);
+        RegraListaViewModel ObterPorTipoDesconto(int idFilial, Enum.ETipoDesconto tipo, int take, int skip,string[] includes);
+        RegraListaViewModel ObterTodos(int idFilial, int take, int skip, string[] includes);
+        RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip, string[] includes);
     }
 }

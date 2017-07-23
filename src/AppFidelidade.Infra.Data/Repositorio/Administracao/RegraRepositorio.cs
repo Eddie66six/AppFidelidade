@@ -6,6 +6,7 @@ using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
 using System.Linq;
 using System.Data.Entity;
+using AppFidelidade.Dominio.Administracao.ViewModel;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Administracao
 {
@@ -15,14 +16,15 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
         {
         }
 
-        public List<Regra> ObterTodos(int idFilial, string[] includes)
+        public RegraListaViewModel ObterTodos(int idFilial, int take, int skip, string[] includes)
         {
             var query = Db.Regra.AsQueryable();
             foreach (var include in includes)
             {
                 query = query.Include(include);
             }
-            return query.Where(p => p.IdFilial == idFilial && p.DataExclusao == null).ToList();
+            query = query.Where(p => p.IdFilial == idFilial && p.DataExclusao == null);
+            return new RegraListaViewModel { Total = query.Count(), Regras = query.OrderBy(p=>p.Nome).Skip(take).Take(skip).ToList() };
         }
 
         public Regra ObterPorId(int id, string[] includes)
@@ -35,24 +37,26 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             return query.FirstOrDefault(p => p.DataExclusao == null && p.IdFilial == id);
         }
 
-        public List<Regra> ObterPorTipoDesconto(int idFilial, ETipoDesconto tipo, string[] includes)
+        public RegraListaViewModel ObterPorTipoDesconto(int idFilial, ETipoDesconto tipo, int take, int skip, string[] includes)
         {
             var query = Db.Regra.AsQueryable();
             foreach (var include in includes)
             {
                 query = query.Include(include);
             }
-            return query.Where(p => p.TipoDesconto == tipo && p.DataExclusao == null && p.IdFilial == idFilial).ToList();
+            query = query.Where(p => p.TipoDesconto == tipo && p.DataExclusao == null && p.IdFilial == idFilial);
+            return new RegraListaViewModel { Total = query.Count(), Regras = query.OrderBy(p => p.Nome).Skip(take).Take(skip).ToList() };
         }
 
-        public List<Regra> ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, string[] includes)
+        public RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip, string[] includes)
         {
             var query = Db.Regra.AsQueryable();
             foreach (var include in includes)
             {
                 query = query.Include(include);
             }
-            return query.Where(p => p.DataExclusao == null && p.ValorInicial <= valorInicial && p.ValorFinal >=valorFinal && p.IdFilial == idFilial).ToList();
+            query = query.Where(p => p.DataExclusao == null && p.ValorInicial <= valorInicial && p.ValorFinal >= valorFinal && p.IdFilial == idFilial);
+            return new RegraListaViewModel { Total = query.Count(), Regras = query.OrderBy(p => p.Nome).Skip(take).Take(skip).ToList() };
         }
     }
 }
