@@ -10,12 +10,11 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Compras = new List<Cliente.Entidade.Compra>();
         }
 
-        public Regra(Enum.ETipoDesconto tipoDesconto, decimal valorInicial, decimal valorFinal,decimal valorDaRegra, Filial filial, Funcionario.Entidade.Funcionario funcionarioCadastro)
+        public Regra(Enum.ETipoDesconto tipoDesconto, decimal valorAcimaDe, decimal valorDaRegra, Filial filial, Funcionario.Entidade.Funcionario funcionarioCadastro)
         {
             Compras = new List<Cliente.Entidade.Compra>();
             TipoDesconto = tipoDesconto;
-            ValorInicial = valorInicial;
-            ValorFinal = valorFinal;
+            ValorAcimaDe = valorAcimaDe;
             ValorDaRegra = valorDaRegra;
             Filial = filial;
             FuncionarioCadastro = funcionarioCadastro;
@@ -33,8 +32,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public string Nome { get; set; }
         public Enum.ETipoDesconto TipoDesconto { get; private set; }
         public decimal ValorDaRegra { get;private set; }
-        public decimal ValorInicial { get; private set; }
-        public decimal ValorFinal { get; private set; }
+        public decimal ValorAcimaDe { get; private set; }
         public bool Inativo { get; private set; }
         public DateTime? DataExclusao { get;private set; }
         public int IdFilial { get; private set; }

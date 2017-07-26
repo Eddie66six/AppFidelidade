@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="AppFidelidade_App_Adm.Views.SobrePage">
+             x:Class="AppFidelidade_App_Adm.Views.SobrePage"
+             xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
+             Title="Sobre">
     <StackLayout Padding="20" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10">
             <Label Text="nossa empresa"></Label>
@@ -15,4 +17,4 @@
             <Label Text="app"></Label>
         </StackLayout>
     </StackLayout>
-</ContentPage>
+</base:BasePage>

@@ -39,14 +39,18 @@
     <Compile Include="Administracao\Entidade\Filial.cs" />
     <Compile Include="Administracao\Entidade\Regra.cs" />
     <Compile Include="Administracao\Enum\ETipoDesconto.cs" />
+    <Compile Include="Administracao\Interface\Applicacao\IContratoAplicacao.cs" />
     <Compile Include="Administracao\Interface\Applicacao\IEmpresaAplicacao.cs" />
     <Compile Include="Administracao\Interface\Applicacao\IFilialAplicacao.cs" />
     <Compile Include="Administracao\Interface\Applicacao\IRegraAplicacao.cs" />
+    <Compile Include="Administracao\Interface\Repositorio\IContratoRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IEmpresaRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IFilialRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IRegraRepositorio.cs" />
     <Compile Include="Administracao\ViewModel\FilialResumoViewModel.cs" />
+    <Compile Include="Administracao\ViewModel\RegraBasicoViewModel.cs" />
     <Compile Include="Administracao\ViewModel\RegraListaViewModel.cs" />
+    <Compile Include="Administracao\ViewModel\ResumoRegraFuncionarioViewModel.cs" />
     <Compile Include="Cliente\Entidade\Cliente.cs" />
     <Compile Include="Cliente\Entidade\Compra.cs" />
     <Compile Include="Cliente\Entidade\FilialCliente.cs" />
@@ -60,6 +64,7 @@
     <Compile Include="Funcionario\Enum\ETipoFuncionario.cs" />
     <Compile Include="Funcionario\Interface\Applicacao\IFuncionarioAplicacao.cs" />
     <Compile Include="Funcionario\Interface\Repositorio\IFuncionarioRepositorio.cs" />
+    <Compile Include="Funcionario\ViewModel\FuncionarioBasicoViewModel.cs" />
     <Compile Include="Funcionario\ViewModel\FuncionarioListaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Comum\Entidade\Endereco.cs" />

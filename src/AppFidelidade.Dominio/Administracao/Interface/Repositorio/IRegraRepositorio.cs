@@ -10,5 +10,6 @@ namespace AppFidelidade.Dominio.Administracao.Interface.Repositorio
         RegraListaViewModel ObterPorTipoDesconto(int idFilial, Enum.ETipoDesconto tipo, int take, int skip,string[] includes);
         RegraListaViewModel ObterTodos(int idFilial, int take, int skip, string[] includes);
         RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip, string[] includes);
+        int ObterQuantidadeRegrasAtivasCadastradas(int idFilial);
     }
 }

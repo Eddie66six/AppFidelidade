@@ -24,7 +24,14 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
                 query = query.Include(include);
             }
             query = query.Where(p => p.IdFilial == idFilial && p.DataExclusao == null);
-            return new RegraListaViewModel { Total = query.Count(), Regras = query.OrderBy(p=>p.Nome).Skip(take).Take(skip).ToList() };
+            return new RegraListaViewModel { Total = query.Count(), Regras = query.Select(p=> new RegraBasicoViewModel
+            {
+                IdRegra = p.IdRegra,
+                Nome = p.Nome,
+                TipoDesconto = p.TipoDesconto,
+                ValorDaRegra = p.ValorDaRegra,
+                ValorAcimaDe = p.ValorAcimaDe
+            }).OrderBy(p=>p.Nome).Skip(skip).Take(take).ToList() };
         }
 
         public Regra ObterPorId(int id, string[] includes)
@@ -45,7 +52,18 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
                 query = query.Include(include);
             }
             query = query.Where(p => p.TipoDesconto == tipo && p.DataExclusao == null && p.IdFilial == idFilial);
-            return new RegraListaViewModel { Total = query.Count(), Regras = query.OrderBy(p => p.Nome).Skip(take).Take(skip).ToList() };
+            return new RegraListaViewModel
+            {
+                Total = query.Count(),
+                Regras = query.Select(p => new RegraBasicoViewModel
+                {
+                    IdRegra = p.IdRegra,
+                    Nome = p.Nome,
+                    TipoDesconto = p.TipoDesconto,
+                    ValorDaRegra = p.ValorDaRegra,
+                    ValorAcimaDe = p.ValorAcimaDe
+                }).OrderBy(p => p.Nome).Skip(skip).Take(take).ToList()
+            };
         }
 
         public RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip, string[] includes)
@@ -55,8 +73,24 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             {
                 query = query.Include(include);
             }
-            query = query.Where(p => p.DataExclusao == null && p.ValorInicial <= valorInicial && p.ValorFinal >= valorFinal && p.IdFilial == idFilial);
-            return new RegraListaViewModel { Total = query.Count(), Regras = query.OrderBy(p => p.Nome).Skip(take).Take(skip).ToList() };
+            query = query.Where(p => p.DataExclusao == null && p.ValorAcimaDe == 0 && p.IdFilial == idFilial);
+            return new RegraListaViewModel
+            {
+                Total = query.Count(),
+                Regras = query.Select(p => new RegraBasicoViewModel
+                {
+                    IdRegra = p.IdRegra,
+                    Nome = p.Nome,
+                    TipoDesconto = p.TipoDesconto,
+                    ValorDaRegra = p.ValorDaRegra,
+                    ValorAcimaDe = p.ValorAcimaDe
+                }).OrderBy(p => p.Nome).Skip(skip).Take(take).ToList()
+            };
+        }
+
+        public int ObterQuantidadeRegrasAtivasCadastradas(int idFilial)
+        {
+            return Db.Regra.Count(p => p.IdFilial == idFilial);
         }
     }
 }

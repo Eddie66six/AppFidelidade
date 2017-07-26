@@ -1,8 +1,8 @@
 ﻿using AppFidelidade.Dominio.Funcionario.Enum;
 
-namespace AppFidelidade.Dominio._Comum.ViewModel
+namespace AppFidelidade.Dominio.Funcionario.ViewModel
 {
-    public class FuncionarioLoginViewModel
+    public class FuncionarioBasicoViewModel
     {
         public int IdFuncionario { get; set; }
         public string Nome { get; set; }

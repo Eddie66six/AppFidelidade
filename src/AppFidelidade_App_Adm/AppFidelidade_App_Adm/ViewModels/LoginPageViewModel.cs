@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using Prism.Navigation;
 using Prism.Services;
-using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace AppFidelidade_App_Adm.ViewModels
 {
@@ -31,16 +31,22 @@ namespace AppFidelidade_App_Adm.ViewModels
 
         private async void Logar()
         {
-            var loginData = await AppFidelidadeService.FuncionarioLogin(Login.Usuario, Login.Senha);
-            if (loginData == null || loginData.Contains("errors"))
+            AtivarLoad(true);
+            var api = new AppFidelidadeService();
+            var result = await api.FuncionarioLogin(Login.Usuario, Login.Senha);
+            if (result == null || result.Item1 != null)
             {
-                var erros = JsonConvert.DeserializeObject<Models.Errors>(loginData);
-                await _dialogService.DisplayAlertAsync("Erro", erros.errors[0].Value, "OK");
+                await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro" , "OK");
+                AtivarLoad(false);
                 return;
+            }else
+            {
+                var storage = new StorageService();
+                storage.InserirLogin(new Models.SqLiteLogin { Login = JsonConvert.SerializeObject(Login), LoginData = JsonConvert.SerializeObject(result.Item2) });
+                Data.SalvarLogin(result.Item2);
+                AtivarLoad(false);
+                await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
             }
-            var storage = new StorageService();
-            storage.InserirLogin(new Models.SqLiteLogin { Login = JsonConvert.SerializeObject(Login), LoginData = loginData });
-            await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
         }
     }
 }

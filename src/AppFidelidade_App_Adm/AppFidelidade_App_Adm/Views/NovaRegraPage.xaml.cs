@@ -1,8 +1,6 @@
-﻿using Xamarin.Forms;
-
-namespace AppFidelidade_App_Adm.Views
+﻿namespace AppFidelidade_App_Adm.Views
 {
-    public partial class NovaRegraPage : ContentPage
+    public partial class NovaRegraPage : BasePage
     {
         public NovaRegraPage()
         {

@@ -44,11 +44,13 @@ namespace AppFidelidade.Infra.Ioc
             registro.Register<IEmpresaRepositorio, EmpresaRepositorio>();
             registro.Register<IFilialRepositorio, FilialRepositorio>();
             registro.Register<IRegraRepositorio, RegraRepositorio>();
+            registro.Register<IContratoRepositorio, ContratoRepositorio>();
             #endregion
             #region Aplicacao
             registro.Register<IEmpresaAplicacao, EmpresaAplicacao>();
             registro.Register<IFilialAplicacao, FilialAplicacao>();
             registro.Register<IRegraAplicacao, RegraAplicacao>();
+            registro.Register<IContratoAplicacao, ContratoAplicacao>();
             #endregion
             #endregion
             #region Cliente

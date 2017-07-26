@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="AppFidelidade_App_Adm.Views.InicialPage"
+             xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Inicio">
     <xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
@@ -14,12 +15,12 @@
     </xfg:ContentPageGloss.BackgroundGradient>
     <StackLayout Margin="10,0,10,0" Spacing="0" VerticalOptions="FillAndExpand">
         <StackLayout VerticalOptions="FillAndExpand">
-            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Spacing="0">
+            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Spacing="0" IsVisible="{Binding Adm}">
                 <StackLayout HorizontalOptions="CenterAndExpand"  Spacing="0">
                     <Label Text="Colaboradores" FontSize="Large" TextColor="White"></Label>
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand"  Spacing="0">
-                    <Label Text="10/10" FontSize="Large" TextColor="White"></Label>
+                    <Label Text="{Binding ResumoRegraFuncionario.DetalhesFuncionarios}" FontSize="Large" TextColor="White"></Label>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="0">
@@ -40,4 +41,4 @@
             <Button Image="resgatar_credito_black.png" Text="Resgatar Crédito" FontSize="Large" Command="{Binding ResgatarCreditoCommand}"></Button>
         </StackLayout>
     </StackLayout>
-</ContentPage>
+</base:BasePage>

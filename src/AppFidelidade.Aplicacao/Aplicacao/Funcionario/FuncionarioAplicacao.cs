@@ -25,7 +25,7 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Funcionario
             string[] includes = { };
             if (_funcionarioRepositorio.ObterPorId(idFuncionarioLogado, includes)?.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
                 return null;
-            return _funcionarioRepositorio.ObterTodosPorFilial(idFilial, take, skip, includes);
+            return _funcionarioRepositorio.ObterTodosPorFilial(idFuncionarioLogado, idFilial, take, skip, includes);
         }
         public FuncionarioListaViewModel ObterTodosPorEmpresa(int idFuncionarioLogado, int idEmpresa, int take, int skip)
         {

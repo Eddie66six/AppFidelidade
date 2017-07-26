@@ -2,6 +2,7 @@
 using Prism.Commands;
 using Prism.Navigation;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -16,52 +17,7 @@ namespace AppFidelidade_App_Adm.ViewModels
         {
             _navigationService = navigationService;
             NavigateCommand = new Command<ItemMenu>(Navigate);
-            ItensMenu = new List<ItemMenu>()
-            {
-                new ItemMenu
-                {
-                    Icone = "inicio_black.png",
-                    Nome = "Inicio",
-                    Parametro = "MenuNavigationPage/InicialPage"
-                },
-                new ItemMenu
-                {
-                    Icone = "gerar_credito_black.png",
-                    Nome = "Gerar credito",
-                    Parametro = "MenuNavigationPage/GerarCreditoPage"
-                },
-                new ItemMenu
-                {
-                    Icone = "resgatar_credito_black.png",
-                    Nome = "Resgatar creito",
-                    Parametro = "MenuNavigationPage/ResgatarCreditoPage"
-                },
-                new ItemMenu
-                {
-                    Icone = "regra_black.png",
-                    Nome = "Regras",
-                    Parametro = "MenuNavigationPage/RegrasPage"
-                },
-                new ItemMenu
-                {
-                    Icone = "funcionario_black.png",
-                    Nome = "Funcionarios",
-                    Parametro = "MenuNavigationPage/FuncionariosPage"
-                }
-                ,
-                new ItemMenu
-                {
-                    Icone = "sobre_black.png",
-                    Nome = "Sobre",
-                    Parametro = "MenuNavigationPage/SobrePage"
-                },
-                new ItemMenu
-                {
-                    Icone = "sobre_black.png",
-                    Nome = "Sair",
-                    Parametro = "LoginPage"
-                }
-            };
+            ItensMenu = ObterMenus().Where(p => p.Visivel == true).ToList();
         }
 
         private void Navigate(ItemMenu parametro)
@@ -75,6 +31,63 @@ namespace AppFidelidade_App_Adm.ViewModels
                 _navigationService.NavigateAsync(parametro.Parametro);
             }
         }
+
+        private List<ItemMenu> ObterMenus()
+        {
+            return new List<ItemMenu>()
+            {
+                new ItemMenu
+                {
+                    Icone = "inicio_black.png",
+                    Nome = "Inicio",
+                    Parametro = "MenuNavigationPage/InicialPage",
+                    Visivel = true
+                },
+                new ItemMenu
+                {
+                    Icone = "gerar_credito_black.png",
+                    Nome = "Gerar credito",
+                    Parametro = "MenuNavigationPage/GerarCreditoPage",
+                    Visivel = true
+                },
+                new ItemMenu
+                {
+                    Icone = "resgatar_credito_black.png",
+                    Nome = "Resgatar creito",
+                    Parametro = "MenuNavigationPage/ResgatarCreditoPage",
+                    Visivel = true
+                },
+                new ItemMenu
+                {
+                    Icone = "regra_black.png",
+                    Nome = "Regras",
+                    Parametro = "MenuNavigationPage/RegrasPage",
+                    Visivel = true
+                },
+                new ItemMenu
+                {
+                    Icone = "funcionario_black.png",
+                    Nome = "Funcionarios",
+                    Parametro = "MenuNavigationPage/FuncionariosPage",
+                    Visivel = Data.ObterTipoFuncionario() == 1
+                }
+                ,
+                new ItemMenu
+                {
+                    Icone = "sobre_black.png",
+                    Nome = "Sobre",
+                    Parametro = "MenuNavigationPage/SobrePage",
+                    Visivel = true
+                },
+                new ItemMenu
+                {
+                    Icone = "sobre_black.png",
+                    Nome = "Sair",
+                    Parametro = "LoginPage",
+                    Visivel = true
+                }
+            };
+        }
     }
 
     public class ItemMenu
@@ -82,5 +95,6 @@ namespace AppFidelidade_App_Adm.ViewModels
         public string Icone { get; set; }
         public string Nome { get; set; }
         public string Parametro { get; set; }
+        public bool Visivel { get; set; }
     }
 }

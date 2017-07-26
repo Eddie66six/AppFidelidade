@@ -46,18 +46,20 @@ namespace AppFidelidade_App_Adm
             if (loginData == null) return false;
 
             var data = JsonConvert.DeserializeObject<Models.FuncionarioLogin>(loginData.LoginData);
-            if (data.LoginData.ExpiresIn < DateTime.UtcNow.AddHours(5))
+            if (data.LoginData == null || data.LoginData.ExpiresIn < DateTime.UtcNow.AddHours(5))
             {
                 var login = JsonConvert.DeserializeObject<Models.Login>(loginData.LoginData);
-                if (login == null)
+                if (login == null || login.Usuario == null || login.Senha == null)
                 {
                     return false;
                 }
-                var novoLogin = await AppFidelidadeService.FuncionarioLogin(login.Usuario, login.Senha);
-                if (novoLogin == null || novoLogin.Contains("errors")) return false;
-                var sqlLogin = new Models.SqLiteLogin(login, JsonConvert.DeserializeObject<Models.FuncionarioLogin>(novoLogin));
+                var api = new AppFidelidadeService();
+                var result = await api.FuncionarioLogin(login.Usuario, login.Senha);
+                if (result == null || result.Item1 != null) return false;
+                var sqlLogin = new Models.SqLiteLogin(login, result.Item2);
                 storage.InserirLogin(sqlLogin);
             }
+            Data.SalvarLogin(data);
             return true;
         }
     }

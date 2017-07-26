@@ -1,5 +1,6 @@
 ﻿using AppFidelidade_App_Adm.Interfaces;
 using AppFidelidade_App_Adm.Models;
+using Newtonsoft.Json;
 using SQLite;
 using System.Linq;
 using Xamarin.Forms;
@@ -36,6 +37,21 @@ namespace AppFidelidade_App_Adm.Services
         public void Limpar()
         {
             _Db.DeleteAll<SqLiteLogin>();
+        }
+
+        public int? ObterFilial()
+        {
+            var login = ObterLogin();
+            if (login == null) return null;
+            var loginData = JsonConvert.DeserializeObject<Models.FuncionarioLogin>(login.LoginData);
+            return loginData?.Funcionario?.IdFilial;
+        }
+        public string ObterToken()
+        {
+            var login = ObterLogin();
+            if (login == null) return null;
+            var loginData = JsonConvert.DeserializeObject<Models.FuncionarioLogin>(login.LoginData);
+            return loginData?.LoginData?.Token;
         }
     }
 }

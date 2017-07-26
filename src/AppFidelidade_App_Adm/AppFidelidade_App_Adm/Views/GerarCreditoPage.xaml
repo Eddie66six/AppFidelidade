@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:util="clr-namespace:AppFidelidade_App_Adm.Util;assembly=AppFidelidade_App_Adm"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="AppFidelidade_App_Adm.Views.GerarCreditoPage"
+             xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Gerar Credito">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -30,4 +31,4 @@
             </StackLayout>
         </StackLayout>
     </StackLayout>
-</ContentPage>
+</base:BasePage>

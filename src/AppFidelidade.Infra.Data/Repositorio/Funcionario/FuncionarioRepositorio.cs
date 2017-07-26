@@ -18,20 +18,45 @@ namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
             return Db.Funcionario.FirstOrDefault(p => p.IdFuncionario == idFuncionario);
         }
 
-        public FuncionarioListaViewModel ObterTodosPorFilial(int idFilial, int take, int skip, string[] includes)
+        public FuncionarioListaViewModel ObterTodosPorFilial(int idFuncionarioLogado, int idFilial, int take, int skip, string[] includes)
         {
-            var funcionaros = Db.Funcionario.Where(p => p.IdFilial == idFilial);
-            return new FuncionarioListaViewModel { Total = funcionaros.Count(), Funcionarios = funcionaros.OrderBy(p => p.Nome).Skip(skip).Take(take).ToList() };
+            var funcionaros = Db.Funcionario.Where(p => p.IdFilial == idFilial && p.IdFuncionario != idFuncionarioLogado);
+            return new FuncionarioListaViewModel
+            {
+                Total = funcionaros.Count(),
+                Funcionarios = funcionaros.Select(p=> new FuncionarioBasicoViewModel
+                {
+                    IdFuncionario = p.IdFuncionario,
+                    Nome = p.Nome,
+                    Tipo = p.Tipo,
+                    IdFilial = p.IdFilial
+                }).OrderBy(p => p.Nome).Skip(skip).Take(take).ToList()
+            };
         }
         public FuncionarioListaViewModel ObterTodosPorEmpresa(int idEmpresa, int take, int skip, string[] includes)
         {
             var funcionaros = Db.Funcionario.Where(p => p.Filial.IdEmpresa == idEmpresa);
-            return new FuncionarioListaViewModel { Total = funcionaros.Count(), Funcionarios = funcionaros.OrderBy(p => p.Nome).Skip(skip).Take(take).ToList() };
+            return new FuncionarioListaViewModel
+            {
+                Total = funcionaros.Count(),
+                Funcionarios = funcionaros.Select(p => new FuncionarioBasicoViewModel
+                {
+                    IdFuncionario = p.IdFuncionario,
+                    Nome = p.Nome,
+                    Tipo = p.Tipo,
+                    IdFilial = p.IdFilial
+                }).OrderBy(p => p.Nome).Skip(skip).Take(take).ToList()
+            };
         }
 
         public Dominio.Funcionario.Entidade.Funcionario ObterPorLogin(string usuario, string senha, string[] includes)
         {
             return Db.Funcionario.FirstOrDefault(p => p.Usuario == usuario && p.Senha == senha);
+        }
+
+        public int ObterQuantidadeFuncionarioAtivosCadastrados(int idFilial)
+        {
+            return Db.Funcionario.Count(p => p.IdFilial == idFilial);
         }
     }
 }

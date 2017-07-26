@@ -23,6 +23,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public decimal Valor { get; private set; }
         public DateTime Data { get; private set; }
         public int MaxFuncionariosCadastrados { get; private set; }
+        public int MaxRegrasCadastradas { get; private set; }
         public string Observacao { get; private set; }
         public DateTime? DataCancelamento { get; private set; }
         public int? IdFuncionarioCancelamento { get; private set; }

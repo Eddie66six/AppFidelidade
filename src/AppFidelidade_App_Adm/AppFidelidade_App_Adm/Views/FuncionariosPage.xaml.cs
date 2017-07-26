@@ -1,8 +1,6 @@
-﻿using Xamarin.Forms;
-
-namespace AppFidelidade_App_Adm.Views
+﻿namespace AppFidelidade_App_Adm.Views
 {
-    public partial class FuncionariosPage : ContentPage
+    public partial class FuncionariosPage : BasePage
     {
         public FuncionariosPage()
         {

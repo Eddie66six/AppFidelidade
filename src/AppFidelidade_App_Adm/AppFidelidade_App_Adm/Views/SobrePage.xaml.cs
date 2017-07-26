@@ -1,8 +1,6 @@
-﻿using Xamarin.Forms;
-
-namespace AppFidelidade_App_Adm.Views
+﻿namespace AppFidelidade_App_Adm.Views
 {
-    public partial class SobrePage : ContentPage
+    public partial class SobrePage : BasePage
     {
         public SobrePage()
         {

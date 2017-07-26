@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Administracao\ContratoController.cs" />
     <Compile Include="Controllers\Administracao\EmpresaController.cs" />
     <Compile Include="Controllers\Administracao\FilialController.cs" />
     <Compile Include="Controllers\Administracao\RegraController.cs" />

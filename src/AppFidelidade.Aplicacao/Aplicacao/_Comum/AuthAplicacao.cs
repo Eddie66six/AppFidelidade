@@ -25,7 +25,8 @@ namespace AppFidelidade.Aplicacao.Aplicacao._Comum
             {
                 IdFuncionario = funcionario.IdFuncionario,
                 Nome = funcionario.Nome,
-                Tipo = funcionario.Tipo
+                Tipo = funcionario.Tipo,
+                IdFilial = funcionario.IdFilial
             };
         }
     }

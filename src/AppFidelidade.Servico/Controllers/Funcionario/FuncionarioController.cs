@@ -8,7 +8,7 @@ using System.Web.Http;
 namespace AppFidelidade.Servico.Controllers.Funcionario
 {
     [Authorize]
-    [RoutePrefix("api/v1/Funcionario")]
+    [RoutePrefix("api/v1/funcionario")]
     public class FuncionarioController : BaseController
     {
         private readonly IFuncionarioAplicacao _funcionarioAplicacao;

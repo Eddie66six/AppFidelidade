@@ -42,7 +42,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
 
         public Regra ObterRegra(decimal valorDaCompra)
         {
-            return Regras.FirstOrDefault(p => p.ValorInicial <= valorDaCompra && p.ValorFinal >= valorDaCompra);
+            return Regras.FirstOrDefault(p => p.ValorAcimaDe <= valorDaCompra);
         }
 
         public Compra InserirCompra(Compra compra)
