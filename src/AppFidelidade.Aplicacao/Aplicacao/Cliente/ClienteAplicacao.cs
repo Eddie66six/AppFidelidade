@@ -4,6 +4,7 @@ using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Dominio._Comum.Interface.Repositorio;
 using AppFidelidade.Dominio.Compartilhado.DomainEvent;
+using AppFidelidade.Dominio.Cliente.ViewModel;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
 {
@@ -15,10 +16,19 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
             _clienteRepositorio = clienteRepositorio;
         }
 
+        public ClienteBasicoViewModel Adicionar(ClienteBasicoViewModel obj)
+        {
+            var cliente = new Dominio.Cliente.Entidade.Cliente(obj.Nome, obj.Sobrenome, obj.DataNascimento, obj.Endereco);
+            while (_clienteRepositorio.VerificaSeTokenIdJaExiste(cliente.TokenId))
+                cliente.GerarTokenId();
+            var dbCliente = _clienteRepositorio.Adicionar(cliente);
+            return Commit() ? new ClienteBasicoViewModel(cliente) : null;
+        }
+
         public Dominio.Cliente.Entidade.Cliente Adicionar(Dominio.Cliente.Entidade.Cliente obj)
         {
-            _clienteRepositorio.Adicionar(obj);
-            return Commit() ? obj : null;
+            var cliente = _clienteRepositorio.Adicionar(obj);
+            return Commit() ? cliente : null;
         }
 
         public void Atualizar(Dominio.Cliente.Entidade.Cliente obj)

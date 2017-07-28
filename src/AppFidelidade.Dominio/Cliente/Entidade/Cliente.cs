@@ -21,8 +21,17 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             Sobrenome = sobrenome;
             DataNascimento = dataNascimento;
             Endereco = endereco;
+            DataCadastro = DateTime.UtcNow;
+            GerarTokenId();
         }
 
+        public void GerarTokenId()
+        {
+            var guid = Guid.NewGuid();
+            // Uses base64 encoding the guid.(Or  ASCII85 encoded)
+            // But not recommend using Hex, as it is less efficient.
+            TokenId = Convert.ToBase64String(guid.ToByteArray());
+        }
         #region Metodos
         public decimal ObterCreditoNaFilial(Filial filial)
         {
@@ -57,7 +66,9 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         public string Nome { get; private set; }
         public string Sobrenome { get; private set; }
         public DateTime DataNascimento { get; private set; }
+        public string TokenId { get; private set; }
         public virtual Endereco Endereco { get; private set; }
+        public DateTime DataCadastro { get; private set; }
         public List<Compra> Compras { get; private set; }
         public List<FilialCliente> Filiais { get; private set; }
         #endregion

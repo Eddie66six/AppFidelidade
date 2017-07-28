@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AppFidelidade.Dominio.Administracao.Entidade;
+﻿using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Enum;
 using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
@@ -30,7 +28,8 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
                 Nome = p.Nome,
                 TipoDesconto = p.TipoDesconto,
                 ValorDaRegra = p.ValorDaRegra,
-                ValorAcimaDe = p.ValorAcimaDe
+                ValorAcimaDe = p.ValorAcimaDe,
+                Inativo = p.Inativo
             }).OrderBy(p=>p.Nome).Skip(skip).Take(take).ToList() };
         }
 
@@ -61,7 +60,8 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
                     Nome = p.Nome,
                     TipoDesconto = p.TipoDesconto,
                     ValorDaRegra = p.ValorDaRegra,
-                    ValorAcimaDe = p.ValorAcimaDe
+                    ValorAcimaDe = p.ValorAcimaDe,
+                    Inativo = p.Inativo
                 }).OrderBy(p => p.Nome).Skip(skip).Take(take).ToList()
             };
         }
@@ -83,7 +83,8 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
                     Nome = p.Nome,
                     TipoDesconto = p.TipoDesconto,
                     ValorDaRegra = p.ValorDaRegra,
-                    ValorAcimaDe = p.ValorAcimaDe
+                    ValorAcimaDe = p.ValorAcimaDe,
+                    Inativo = p.Inativo
                 }).OrderBy(p => p.Nome).Skip(skip).Take(take).ToList()
             };
         }

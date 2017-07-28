@@ -3,13 +3,19 @@ using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using AppFidelidade.Dominio.Administracao.ViewModel;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
 using System.Linq;
+using AppFidelidade.Dominio.Administracao.Entidade;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Administracao
 {
-    public class ContratoRepositorio : BaseRepositorio<ContratoRepositorio>, IContratoRepositorio
+    public class ContratoRepositorio : BaseRepositorio<Contrato>, IContratoRepositorio
     {
         public ContratoRepositorio(ContextoManager contextManager) : base(contextManager)
         {
+        }
+
+        public Contrato ObterPorIdFilial(int idFilial)
+        {
+            return Db.Contrato.FirstOrDefault(p=> p.IdFilial == idFilial);
         }
 
         public ResumoRegraFuncionarioViewModel ObterResumoRegraFuncionario(int idFilial)

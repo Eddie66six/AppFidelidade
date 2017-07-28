@@ -9,5 +9,6 @@ namespace AppFidelidade.Dominio.Administracao.Interface.Applicacao
         RegraListaViewModel ObterPorTipoDesconto(int idFilial, Enum.ETipoDesconto tipo, int take, int skip);
         RegraListaViewModel ObterTodos(int idFilial, int take, int skip);
         RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip);
+        RegraBasicoViewModel Adicionar(RegraBasicoViewModel obj);
     }
 }

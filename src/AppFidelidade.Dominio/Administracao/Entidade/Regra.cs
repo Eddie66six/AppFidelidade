@@ -10,14 +10,15 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Compras = new List<Cliente.Entidade.Compra>();
         }
 
-        public Regra(Enum.ETipoDesconto tipoDesconto, decimal valorAcimaDe, decimal valorDaRegra, Filial filial, Funcionario.Entidade.Funcionario funcionarioCadastro)
+        public Regra(string nome, Enum.ETipoDesconto tipoDesconto, decimal valorAcimaDe, decimal valorDaRegra, int idFilial, int idFuncionarioCadastro)
         {
             Compras = new List<Cliente.Entidade.Compra>();
+            Nome = nome;
             TipoDesconto = tipoDesconto;
             ValorAcimaDe = valorAcimaDe;
             ValorDaRegra = valorDaRegra;
-            Filial = filial;
-            FuncionarioCadastro = funcionarioCadastro;
+            IdFilial = idFilial;
+            IdFuncionario = idFuncionarioCadastro;
         }
 
         #region Metodo

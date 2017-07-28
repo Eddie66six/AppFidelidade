@@ -22,24 +22,24 @@
     </ContentPage.Resources>
     <StackLayout Padding="10">
         <StackLayout Orientation="Horizontal">
-            <Label Text="Ativo" HorizontalOptions="EndAndExpand"></Label>
-            <Switch IsToggled="True"></Switch>
+            <Label Text="Inativo" HorizontalOptions="EndAndExpand"></Label>
+            <Switch IsToggled="{Binding Regra.Inativo}"></Switch>
         </StackLayout>
         <StackLayout>
             <Label Text="Nome da regra"></Label>
-            <control:CustomEntry Text="" MaxLength="40"></control:CustomEntry>
+            <control:CustomEntry Text="{Binding Regra.Nome}" MaxLength="40"></control:CustomEntry>
         </StackLayout>
         <StackLayout>
             <Label Text="Valor acima de"></Label>
             <StackLayout Margin="0" Padding="0" Spacing="0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" Text="R$"></Label>
-                <Entry HorizontalOptions="FillAndExpand" Text="{Binding Valor}}" Keyboard="Numeric" />
+                <Entry HorizontalOptions="FillAndExpand" Text="{Binding Regra.ValorAcimaDe}}" Keyboard="Numeric" />
             </StackLayout>
         </StackLayout>
         <StackLayout>
             <Label Text="Porcentagem do credito"></Label>
-            <control:CustomEntry Text="{Binding Porcentagem}" MaxLength="100" Keyboard="Numeric"></control:CustomEntry>
+            <control:CustomEntry Text="{Binding Regra.ValorDaRegra}" MaxLength="100" Keyboard="Numeric"></control:CustomEntry>
         </StackLayout>
-        <Button Text="Salvar"></Button>
+        <Button Text="Salvar" Command="{Binding SalvarRegraCommand}"></Button>
     </StackLayout>
 </base:BasePage>

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AppFidelidade_App_Adm.Services
@@ -50,6 +51,23 @@ namespace AppFidelidade_App_Adm.Services
                     return new Tuple<Errors, RegrasLista>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
                     return new Tuple<Errors, RegrasLista>(null, JsonConvert.DeserializeObject<RegrasLista>(result));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, Regra>> AdicionarRegra(Regra obj)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/regra/adicionar", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+                var result = await response.Content.ReadAsStringAsync();
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, Regra>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, Regra>(null, JsonConvert.DeserializeObject<Regra>(result));
             }
             catch (Exception e)
             {

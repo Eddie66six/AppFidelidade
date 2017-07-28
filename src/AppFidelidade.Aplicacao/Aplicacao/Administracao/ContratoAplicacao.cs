@@ -20,9 +20,9 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
         public ResumoRegraFuncionarioViewModel ObterResumoRegraFuncionario(int idFuncionarioLogado, int idFilial)
         {
             var funcionario = _funcionarioRepositorio.ObterPorId(idFuncionarioLogado, new string[] { });
-            if (funcionario == null || funcionario.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
+            if (funcionario == null)
             {
-                DomainEvent.Raise(new DomainNotification("Resumo", "Usuario não autorizado"));
+                DomainEvent.Raise(new DomainNotification("Resumo", "Funcionario nao encontrato"));
                 return null;
             }
             return _contratoRepositorio.ObterResumoRegraFuncionario(funcionario.IdFilial);

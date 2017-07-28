@@ -1,5 +1,6 @@
 ﻿using System;
 using AppFidelidade.Dominio._Comum.Interface.Repositorio;
+using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 
 namespace AppFidelidade.Infra.Data.Repositorio._Comum
 {
@@ -18,8 +19,9 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
                 contexto.SaveChanges();
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                DomainEvent.Raise(new DomainNotification("SaveChanges", e.Message));
                 return false;
             }
         }

@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controls\CustomEntry.cs" />
+    <Compile Include="Controls\CustomToolbarItem.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Interfaces\IAndroidMethods.cs" />
     <Compile Include="Interfaces\IDatabaseConnection.cs" />

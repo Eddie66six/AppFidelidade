@@ -1,7 +1,6 @@
-﻿using AppFidelidade.Aplicacao.Aplicacao.Administracao;
-using AppFidelidade.Dominio.Administracao.Entidade;
-using AppFidelidade.Dominio.Administracao.Enum;
-using AppFidelidade.Dominio.Compartilhado.DomainEvent;
+﻿using AppFidelidade.Dominio.Administracao.Enum;
+using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
+using AppFidelidade.Dominio.Administracao.ViewModel;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -13,8 +12,8 @@ namespace AppFidelidade.Servico.Controllers.Administracao
     [RoutePrefix("api/v1/regra")]
     public class RegraController : BaseController
     {
-        private readonly RegraAplicacao _regraAplicacao;
-        public RegraController(RegraAplicacao regraAplicacao):base()
+        private readonly IRegraAplicacao _regraAplicacao;
+        public RegraController(IRegraAplicacao regraAplicacao):base()
         {
             _regraAplicacao = regraAplicacao;
         }
@@ -32,7 +31,7 @@ namespace AppFidelidade.Servico.Controllers.Administracao
         }
         [Route("adicionar")]
         [HttpPost]
-        public Task<HttpResponseMessage> Adicionar(Regra obj)
+        public Task<HttpResponseMessage> Adicionar(RegraBasicoViewModel obj)
         {
             return CreateResponse(HttpStatusCode.OK, _regraAplicacao.Adicionar(obj));
         }

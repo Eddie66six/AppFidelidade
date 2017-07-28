@@ -1,4 +1,5 @@
 ﻿using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
+using AppFidelidade.Dominio.Cliente.ViewModel;
 using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 using System.Net;
 using System.Net.Http;
@@ -22,6 +23,13 @@ namespace AppFidelidade.Servico.Controllers.Cliente
         public Task<HttpResponseMessage> ObterPorId(int id)
         {
             return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.ObterPorId(id));
+        }
+        [AllowAnonymous]
+        [Route("adicionar")]
+        [HttpPost]
+        public Task<HttpResponseMessage> Adicionar(ClienteBasicoViewModel cliente)
+        {
+            return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.Adicionar(cliente));
         }
     }
 }

@@ -32,5 +32,10 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
             }
             return query.FirstOrDefault(p => p.IdCliente == id);
         }
+
+        public bool VerificaSeTokenIdJaExiste(string tokenId)
+        {
+            return Db.Cliente.Any(p => p.TokenId == tokenId);
+        }
     }
 }
