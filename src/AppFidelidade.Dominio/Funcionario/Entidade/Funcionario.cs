@@ -14,13 +14,16 @@ namespace AppFidelidade.Dominio.Funcionario.Entidade
             Tipo = ETipoFuncionario.Normal;
         }
 
-        public Funcionario(string nome, ETipoFuncionario tipo = ETipoFuncionario.Normal)
+        public Funcionario(string nome, ETipoFuncionario tipo, int idFilial, string usuario, string senha)
         {
             RegrasCadastradas = new List<Regra>();
             Vendas = new List<Cliente.Entidade.Compra>();
             ContratosCancelados = new List<Contrato>();
             Nome = nome;
             Tipo = tipo;
+            IdFilial = idFilial;
+            Usuario = usuario;
+            Senha = senha;
         }
 
         #region attr

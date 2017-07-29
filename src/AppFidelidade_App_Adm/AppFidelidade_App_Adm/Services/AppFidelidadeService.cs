@@ -13,7 +13,7 @@ namespace AppFidelidade_App_Adm.Services
 {
     public class AppFidelidadeService
     {
-        private readonly string _baseUrl = "http://192.168.0.104:3000/";
+        private readonly string _baseUrl = "http://192.168.15.6:3000/";
         private HttpClient client = new HttpClient();
         public AppFidelidadeService(string token = null)
         {
@@ -101,6 +101,23 @@ namespace AppFidelidade_App_Adm.Services
                     return new Tuple<Errors, ResumoRegraFuncionario>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
                     return new Tuple<Errors, ResumoRegraFuncionario>(null, JsonConvert.DeserializeObject<ResumoRegraFuncionario>(result));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, Models.Funcionarios.Funcionario>> AdicionarFuncionario(Models.Funcionarios.Funcionario obj)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/funcionario/adicionar", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+                var result = await response.Content.ReadAsStringAsync();
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, Models.Funcionarios.Funcionario>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, Models.Funcionarios.Funcionario>(null, JsonConvert.DeserializeObject<Models.Funcionarios.Funcionario>(result));
             }
             catch (Exception e)
             {

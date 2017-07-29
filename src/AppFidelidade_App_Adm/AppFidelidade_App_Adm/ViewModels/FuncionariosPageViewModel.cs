@@ -32,7 +32,7 @@ namespace AppFidelidade_App_Adm.ViewModels
 
         private void NovoFuncionario()
         {
-            _navigationService.NavigateAsync("NovaRegraPage");
+            _navigationService.NavigateAsync("NovoFuncionarioPage");
         }
 
         public override async Task LoadAsync()

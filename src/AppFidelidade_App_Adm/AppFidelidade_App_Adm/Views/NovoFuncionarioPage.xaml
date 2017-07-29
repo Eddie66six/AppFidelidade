@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFidelidade_App_Adm.Views.NovoFuncionarioPage"
+             xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+             xmlns:control="clr-namespace:AppFidelidade_App_Adm.Controls;assembly=AppFidelidade_App_Adm"
+             xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
+             Title="Novo funcionario">
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
+            <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+    <StackLayout Padding="10">
+        <StackLayout>
+            <Label Text="Nome do funcionario"></Label>
+            <control:CustomEntry Text="{Binding Funcionario.Nome}" MaxLength="40"></control:CustomEntry>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Usuario"></Label>
+            <control:CustomEntry Text="{Binding Funcionario.Usuario}" MaxLength="12"></control:CustomEntry>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Senha"></Label>
+            <control:CustomEntry Text="{Binding Funcionario.Senha}" MaxLength="12"></control:CustomEntry>
+        </StackLayout>
+        <Button Text="Salvar" Command="{Binding SalvarFuncionarioCommand}"></Button>
+    </StackLayout>
+</base:BasePage>

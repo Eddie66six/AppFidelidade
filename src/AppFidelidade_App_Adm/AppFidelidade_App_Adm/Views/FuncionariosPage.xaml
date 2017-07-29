@@ -4,7 +4,24 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFidelidade_App_Adm.Views.FuncionariosPage"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Funcionarios">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="+" Icon="plus_black.png" Text="+" Priority="0" Command="{Binding NovoFuncionarioCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <StackLayout Spacing="0">
+            <ListView ItemsSource="{Binding Funcionarios}">
+                <ListView.Behaviors>
+                    <b:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" EventArgsParameterPath="Item"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nome}" TextColor="Black" Detail="{Binding Nome}" DetailColor="Gray"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
 </base:BasePage>

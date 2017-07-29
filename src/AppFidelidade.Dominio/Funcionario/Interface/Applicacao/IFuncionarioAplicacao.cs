@@ -7,5 +7,6 @@ namespace AppFidelidade.Dominio.Funcionario.Interface.Applicacao
         FuncionarioListaViewModel ObterTodosPorFilial(int idFuncionarioLogado, int idFilial, int take, int skip);
         FuncionarioListaViewModel ObterTodosPorEmpresa(int idFuncionarioLogado, int idEmpresa, int take, int skip);
         Entidade.Funcionario ObterPorId(int idFuncionarioLogado,int idFuncionario);
+        FuncionarioBasicoViewModel Adicionar(FuncionarioBasicoViewModel obj);
     }
 }

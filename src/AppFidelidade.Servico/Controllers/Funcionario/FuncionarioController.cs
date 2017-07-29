@@ -1,5 +1,6 @@
 ﻿using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 using AppFidelidade.Dominio.Funcionario.Interface.Applicacao;
+using AppFidelidade.Dominio.Funcionario.ViewModel;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -33,6 +34,12 @@ namespace AppFidelidade.Servico.Controllers.Funcionario
         public Task<HttpResponseMessage> ObterFuncionario(int idFuncionarioLogado, int idFuncionario)
         {
             return CreateResponse(HttpStatusCode.OK, _funcionarioAplicacao.ObterPorId(idFuncionarioLogado, idFuncionarioLogado));
+        }
+        [HttpPost]
+        [Route("adicionar")]
+        public Task<HttpResponseMessage> AdicionarFuncionario(FuncionarioBasicoViewModel obj)
+        {
+            return CreateResponse(HttpStatusCode.OK, _funcionarioAplicacao.Adicionar(obj));
         }
     }
 }

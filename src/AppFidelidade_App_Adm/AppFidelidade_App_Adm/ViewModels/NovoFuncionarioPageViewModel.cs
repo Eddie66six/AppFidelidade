@@ -1,38 +1,36 @@
-﻿using AppFidelidade_App_Adm.Models.Regras;
-using Prism.Mvvm;
+﻿using Prism.Navigation;
+using Prism.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Prism.Navigation;
-using Prism.Services;
 
 namespace AppFidelidade_App_Adm.ViewModels
 {
-    public class NovaRegraPageViewModel : BaseViewModel
+    public class NovoFuncionarioPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
         private readonly IPageDialogService _dialogService;
-        public ICommand SalvarRegraCommand { get; }
-        private Regra _regra;
+        public ICommand SalvarFuncionarioCommand { get; }
+        private Models.Funcionarios.Funcionario _funcionario;
 
-        public Regra Regra
+        public Models.Funcionarios.Funcionario Funcionario
         {
-            get { return _regra; }
-            set { SetProperty(ref _regra, value); }
+            get { return _funcionario; }
+            set { SetProperty(ref _funcionario, value); }
         }
 
-        public NovaRegraPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
+        public NovoFuncionarioPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
-            SalvarRegraCommand = new Command(SalvarRegra);
-            Regra = new Regra(Data.ObterIdFuncionario());
+            SalvarFuncionarioCommand = new Command(SalvarFuncionario);
+            Funcionario = new Models.Funcionarios.Funcionario(Data.ObterIdFuncionario());
         }
 
-        private async void SalvarRegra()
+        private async void SalvarFuncionario()
         {
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService(Data.ObterToken());
-            var result = await api.AdicionarRegra(Regra);
+            var result = await api.AdicionarFuncionario(Funcionario);
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");

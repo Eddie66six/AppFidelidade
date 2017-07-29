@@ -37,6 +37,7 @@ namespace AppFidelidade_App_Adm
             Container.RegisterTypeForNavigation<FuncionariosPage>();
             Container.RegisterTypeForNavigation<SobrePage>();
             Container.RegisterTypeForNavigation<NovaRegraPage>();
+            Container.RegisterTypeForNavigation<NovoFuncionarioPage>();
         }
 
         protected async Task<bool> CheckLogin()
