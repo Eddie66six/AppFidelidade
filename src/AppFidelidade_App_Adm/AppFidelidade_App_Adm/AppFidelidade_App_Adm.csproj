@@ -40,8 +40,14 @@
     <Compile Include="Data.cs" />
     <Compile Include="Interfaces\IAndroidMethods.cs" />
     <Compile Include="Interfaces\IDatabaseConnection.cs" />
+    <Compile Include="Models\Clientes\Cliente.cs" />
+    <Compile Include="Models\Clientes\Endereco.cs" />
+    <Compile Include="Models\Compras\Compra.cs" />
+    <Compile Include="Models\Compras\LancarCompra.cs" />
+    <Compile Include="Models\Compras\ResgatarCredito.cs" />
     <Compile Include="Models\Contratos\ResumoRegraFuncionario.cs" />
     <Compile Include="Models\Errors.cs" />
+    <Compile Include="Models\Filiais\InformcoesBasicaFilial.cs" />
     <Compile Include="Models\FuncionarioLogin.cs" />
     <Compile Include="Models\Funcionarios\Funcionario.cs" />
     <Compile Include="Models\Funcionarios\FuncionariosLista.cs" />
@@ -258,6 +264,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\..\packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

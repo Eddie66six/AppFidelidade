@@ -1,4 +1,5 @@
 ﻿using AppFidelidade.Dominio._Comum.Entidade;
+using AppFidelidade.Dominio.Administracao.Entidade;
 using System;
 
 namespace AppFidelidade.Dominio.Cliente.ViewModel
@@ -10,7 +11,7 @@ namespace AppFidelidade.Dominio.Cliente.ViewModel
 
         }
 
-        public ClienteBasicoViewModel(Entidade.Cliente obj)
+        public ClienteBasicoViewModel(Entidade.Cliente obj, Filial filial)
         {
             IdCliente = obj.IdCliente;
             Nome = obj.Nome;
@@ -18,6 +19,7 @@ namespace AppFidelidade.Dominio.Cliente.ViewModel
             DataNascimento = obj.DataNascimento;
             TokenId = obj.TokenId;
             Endereco = obj.Endereco;
+            ValorCreditoNaFilial = filial != null ? obj.ObterCreditoNaFilial(filial) : 0;
         }
         public int IdCliente { get; set; }
         public string Nome { get; set; }
@@ -25,5 +27,6 @@ namespace AppFidelidade.Dominio.Cliente.ViewModel
         public DateTime DataNascimento { get; set; }
         public string TokenId { get; set; }
         public Endereco Endereco { get; set; }
+        public decimal ValorCreditoNaFilial { get; set; }
     }
 }

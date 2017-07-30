@@ -13,7 +13,7 @@ namespace AppFidelidade.Servico.Controllers.Cliente
     public class ClienteController : BaseController
     {
         private readonly IClienteAplicacao _clienteAplicacao;
-        public ClienteController(IClienteAplicacao clienteAplicacao):base()
+        public ClienteController(IClienteAplicacao clienteAplicacao) : base()
         {
             _clienteAplicacao = clienteAplicacao;
         }
@@ -23,6 +23,12 @@ namespace AppFidelidade.Servico.Controllers.Cliente
         public Task<HttpResponseMessage> ObterPorId(int id)
         {
             return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.ObterPorId(id));
+        }
+        [Route("obter")]
+        [HttpGet]
+        public Task<HttpResponseMessage> ObterPorTokenId(string tokenId, int idFilial)
+        {
+            return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.ObeterPorTokenId(tokenId, idFilial));
         }
         [AllowAnonymous]
         [Route("adicionar")]

@@ -1,6 +1,7 @@
 ﻿using AppFidelidade.Aplicacao.Aplicacao.Administracao;
 using AppFidelidade.Dominio.Administracao.Entidade;
-using AppFidelidade.Dominio.Compartilhado.DomainEvent;
+using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
+using AppFidelidade.Dominio.Administracao.ViewModel;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -12,8 +13,8 @@ namespace AppFidelidade.Servico.Controllers.Administracao
     [RoutePrefix("api/v1/filial")]
     public class FilialController : BaseController
     {
-        private readonly FilialAplicacao _filialAplicacao;
-        public FilialController(FilialAplicacao filialAplicacao):base()
+        private readonly IFilialAplicacao _filialAplicacao;
+        public FilialController(IFilialAplicacao filialAplicacao) : base()
         {
             _filialAplicacao = filialAplicacao;
         }
@@ -56,6 +57,32 @@ namespace AppFidelidade.Servico.Controllers.Administracao
         public Task<HttpResponseMessage> ObterResumo(int idFilial)
         {
             return CreateResponse(HttpStatusCode.OK, _filialAplicacao.ObterResumoPorId(idFilial));
+        }
+        [Route("lancarCompra")]
+        [HttpPost]
+        public Task<HttpResponseMessage> LancarCompra(LancarCompraViewModel obj)
+        {
+            return CreateResponse(HttpStatusCode.OK, _filialAplicacao.LancarCompra(obj));
+        }
+        [Route("resgatarCredito")]
+        [HttpPost]
+        public Task<HttpResponseMessage> ResgatarCredito(ResgatarCreditoViewModel obj)
+        {
+            _filialAplicacao.ResgatarCredito(obj);
+            return CreateResponse(HttpStatusCode.OK, "");
+        }
+        [Route("obterMaximoCreditoPermitidoParaUso")]
+        [HttpGet]
+        public Task<HttpResponseMessage> ObterMaximoCreditoPermitidoParaUso(int idFilial)
+        {
+            return CreateResponse(HttpStatusCode.OK, _filialAplicacao.ObterMaximoCreditoPermitidoParaUso(idFilial));
+        }
+
+        [Route("obterInformacoesBasicasFilial")]
+        [HttpGet]
+        public Task<HttpResponseMessage> ObterInformacoesBasicasFilial(int idFilial, int idFuncionarioLogado)
+        {
+            return CreateResponse(HttpStatusCode.OK, _filialAplicacao.ObterInformacoesBasicasFilial(idFilial, idFuncionarioLogado));
         }
     }
 }

@@ -7,6 +7,7 @@ namespace AppFidelidade.Dominio.Cliente.Interface.Repositorio
     {
         Entidade.Cliente ObterPorId(int id, string[] includes);
         List<Entidade.Cliente> ObterPorFilial(int idFilial, string[] includes);
+        Entidade.Cliente ObeterPorTokenId(string tokenId, string[] includes);
         bool VerificaSeTokenIdJaExiste(string tokenId);
     }
 }

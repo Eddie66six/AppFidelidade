@@ -22,16 +22,16 @@
     <StackLayout Padding="10" VerticalOptions="FillAndExpand" Spacing="0">
         <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
             <Image Source="rewardApp.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="180" WidthRequest="180"></Image>
-            <Label FontSize="Large" Text="Nome do cliente" HorizontalOptions="CenterAndExpand"></Label>
+            <Label FontSize="Large" Text="{Binding Cliente.Detalhes}" HorizontalOptions="CenterAndExpand"></Label>
             <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
                 <StackLayout Spacing="0" Orientation="Horizontal">
                     <Entry VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Default" Placeholder="Valor resgate" Text="{Binding Valor, Converter={StaticResource currencyConverter}}" Keyboard="Numeric" />
                     <Label VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Default"
-                           Text="Valor Maximo a ser utilizado: 10" Margin="0,0,0,5"></Label>
+                           Text="{Binding ValorMaximoUsoDeCredito, StringFormat='Credito maximo: {0}'}" Margin="0,0,0,5"></Label>
                 </StackLayout>
                 <Entry FontSize="Large" Placeholder="Identificado do cliente" Text="{Binding QrCode}"></Entry>
                 <Button Text="Ler Qr" Command="{Binding LerQrCodeCommand}"></Button>
-                <Button Text="Resgatar"></Button>
+                <Button Text="Resgatar" Command="{Binding ResgatarCreditoCommand}"></Button>
             </StackLayout>
         </StackLayout>
     </StackLayout>

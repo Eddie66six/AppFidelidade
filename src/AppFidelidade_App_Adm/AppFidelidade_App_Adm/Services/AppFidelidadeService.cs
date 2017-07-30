@@ -1,5 +1,8 @@
 ﻿using AppFidelidade_App_Adm.Models;
+using AppFidelidade_App_Adm.Models.Clientes;
+using AppFidelidade_App_Adm.Models.Compras;
 using AppFidelidade_App_Adm.Models.Contratos;
+using AppFidelidade_App_Adm.Models.Filiais;
 using AppFidelidade_App_Adm.Models.Funcionarios;
 using AppFidelidade_App_Adm.Models.Regras;
 using Newtonsoft.Json;
@@ -13,7 +16,7 @@ namespace AppFidelidade_App_Adm.Services
 {
     public class AppFidelidadeService
     {
-        private readonly string _baseUrl = "http://192.168.15.6:3000/";
+        private readonly string _baseUrl = "http://192.168.15.8:3000/";
         private HttpClient client = new HttpClient();
         public AppFidelidadeService(string token = null)
         {
@@ -30,6 +33,8 @@ namespace AppFidelidade_App_Adm.Services
             {
                 HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/auth/funcionario?usuario={usuario}&senha={senha}");
                 var result = await response.Content.ReadAsStringAsync();
+                if(result == null)
+                    return new Tuple<Errors, FuncionarioLogin>(null, null);
                 if (result.Contains("errors"))
                     return new Tuple<Errors, FuncionarioLogin>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
@@ -47,6 +52,8 @@ namespace AppFidelidade_App_Adm.Services
             {
                 HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/regra/obter?idFilial={idFilial}&take={take}&skip={skip}");
                 var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, RegrasLista>(null, null);
                 if (result.Contains("errors"))
                     return new Tuple<Errors, RegrasLista>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
@@ -64,6 +71,8 @@ namespace AppFidelidade_App_Adm.Services
             {
                 HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/regra/adicionar", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
                 var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, Regra>(null, null);
                 if (result.Contains("errors"))
                     return new Tuple<Errors, Regra>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
@@ -81,6 +90,8 @@ namespace AppFidelidade_App_Adm.Services
             {
                 HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/funcionario/obter/filial?idFuncionarioLogado={idFuncionarioLogado}&idFilial={idFilial}&take={take}&skip={skip}");
                 var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, FuncionariosLista>(null, null);
                 if (result.Contains("errors"))
                     return new Tuple<Errors, FuncionariosLista>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
@@ -97,6 +108,8 @@ namespace AppFidelidade_App_Adm.Services
             {
                 HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/contrato/obter?idFuncionarioLogado={idFuncionarioLogado}&idFilial={idFilial}");
                 var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, ResumoRegraFuncionario>(null, null);
                 if (result.Contains("errors"))
                     return new Tuple<Errors, ResumoRegraFuncionario>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
@@ -114,10 +127,106 @@ namespace AppFidelidade_App_Adm.Services
             {
                 HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/funcionario/adicionar", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
                 var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, Models.Funcionarios.Funcionario>(null, null);
                 if (result.Contains("errors"))
                     return new Tuple<Errors, Models.Funcionarios.Funcionario>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
                     return new Tuple<Errors, Models.Funcionarios.Funcionario>(null, JsonConvert.DeserializeObject<Models.Funcionarios.Funcionario>(result));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, Cliente>> ObterCliente(string tokenId, int idFilial)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/cliente/obter?tokenId={tokenId}&idFilial={idFilial}");
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, Cliente>(null, null);
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, Cliente>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, Cliente>(null, JsonConvert.DeserializeObject<Cliente>(result));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, Models.Compras.Compra>> LancarCompra(Models.Compras.LancarCompra obj)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/filial/lancarCompra", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, Models.Compras.Compra>(null, null);
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, Models.Compras.Compra>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, Models.Compras.Compra>(null, JsonConvert.DeserializeObject<Models.Compras.Compra>(result));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public async Task<Tuple<Errors, string>> ResgatarCredito(ResgatarCredito obj)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/filial/resgatarCredito", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, string>(null, null);
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, string>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, string>(null, result);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, decimal?>> ObterMaximoCreditoPermitidoParaUso(int idFilial)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/filial/obterMaximoCreditoPermitidoParaUso?idFilial={idFilial}");
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, decimal?>(null, null);
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, decimal?>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, decimal?>(null, Convert.ToDecimal(result));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, InformcoesBasicaFilial>> ObterInformacoesBasicasFilial(int idFilial, int idFuncionarioLogado)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/filial/obterInformacoesBasicasFilial?idFilial={idFilial}&idFuncionarioLogado={idFuncionarioLogado}");
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, InformcoesBasicaFilial>(null, null);
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, InformcoesBasicaFilial>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, InformcoesBasicaFilial>(null, JsonConvert.DeserializeObject<InformcoesBasicaFilial>(result));
             }
             catch (Exception e)
             {

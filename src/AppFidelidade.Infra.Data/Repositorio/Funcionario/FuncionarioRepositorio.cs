@@ -4,6 +4,7 @@ using System.Linq;
 using AppFidelidade.Dominio.Funcionario.ViewModel;
 using AppFidelidade.Dominio.Funcionario.Entidade;
 using System;
+using System.Data.Entity;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
 {
@@ -15,7 +16,12 @@ namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
 
         public Dominio.Funcionario.Entidade.Funcionario ObterPorId(int idFuncionario, string[] includes)
         {
-            return Db.Funcionario.FirstOrDefault(p => p.IdFuncionario == idFuncionario);
+            var query = Db.Funcionario.AsQueryable();
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            return query.FirstOrDefault(p => p.IdFuncionario == idFuncionario);
         }
 
         public FuncionarioListaViewModel ObterTodosPorFilial(int idFuncionarioLogado, int idFilial, int take, int skip, string[] includes)

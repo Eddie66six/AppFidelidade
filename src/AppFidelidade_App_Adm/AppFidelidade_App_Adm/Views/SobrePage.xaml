@@ -10,8 +10,8 @@
         <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10">
             <Label Text="nossa empresa"></Label>
         </StackLayout>
-        <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10">
-            <Label Text="empresa"></Label>
+        <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10" IsVisible="{Binding Adm}">
+            <Label Text="{Binding InformcoesBasicaFilial.NomeFilial}" TextColor="Black"></Label>
         </StackLayout>
         <StackLayout BackgroundColor="Gray" VerticalOptions="FillAndExpand" Padding="10">
             <Label Text="app"></Label>

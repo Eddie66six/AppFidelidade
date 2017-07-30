@@ -35,7 +35,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         #region Metodos
         public decimal ObterCreditoNaFilial(Filial filial)
         {
-            var creditoCompras = Compras.Where(p => p.Filial == filial && p.ValorRestanteCredito > 0);
+            var creditoCompras = Compras.Where(p => p.Filial == filial && p.DataRetiradaCredito .HasValue && p.ValorRestanteCredito > 0);
             if (creditoCompras == null)
                 return 0;
             return creditoCompras.Sum(p => p.ValorRestanteCredito);
@@ -44,7 +44,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         {
             if (ObterCreditoNaFilial(filial) < valor)
                 return false;
-            foreach (var item in Compras.Where(p => p.Filial == filial && p.ValorRestanteCredito > 0))
+            foreach (var item in Compras.Where(p => p.Filial == filial && p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0))
             {
                 var credito = valor - item.ValorRestanteCredito;
                 if (credito <= 0)

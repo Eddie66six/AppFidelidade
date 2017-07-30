@@ -47,9 +47,13 @@
     <Compile Include="Administracao\Interface\Repositorio\IEmpresaRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IFilialRepositorio.cs" />
     <Compile Include="Administracao\Interface\Repositorio\IRegraRepositorio.cs" />
+    <Compile Include="Administracao\ViewModel\CompraBasicoViewModel.cs" />
     <Compile Include="Administracao\ViewModel\FilialResumoViewModel.cs" />
+    <Compile Include="Administracao\ViewModel\InformcoesBasicaFilialViewModel.cs" />
+    <Compile Include="Administracao\ViewModel\LancarCompraViewModel.cs" />
     <Compile Include="Administracao\ViewModel\RegraBasicoViewModel.cs" />
     <Compile Include="Administracao\ViewModel\RegraListaViewModel.cs" />
+    <Compile Include="Administracao\ViewModel\ResgatarCreditoViewModel.cs" />
     <Compile Include="Administracao\ViewModel\ResumoRegraFuncionarioViewModel.cs" />
     <Compile Include="Cliente\Entidade\Cliente.cs" />
     <Compile Include="Cliente\Entidade\Compra.cs" />

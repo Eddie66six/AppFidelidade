@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
@@ -21,7 +20,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             {
                 query = query.Include(include);
             }
-            return query.FirstOrDefault(p => p.IdEmpresa == id && p.DataExclusao == null);
+            return query.FirstOrDefault(p => p.IdEmpresa == id && p.DataExclusao == null && p.Contratos.Any(i=> i.DataCancelamento == null));
         }
 
         public Contrato ObterContratoPorIdFilial(int id, string[] includes)

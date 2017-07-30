@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
 using System.Linq;
@@ -11,6 +10,16 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
     {
         public ClienteRepositorio(ContextoManager contextManager) : base(contextManager)
         {
+        }
+
+        public Dominio.Cliente.Entidade.Cliente ObeterPorTokenId(string tokenId, string[] includes)
+        {
+            var query = Db.Cliente.AsQueryable();
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+            return query.FirstOrDefault(p=>p.TokenId == tokenId && p.Compras.Any(i=>i.ValorRestanteCredito > 0));
         }
 
         public List<Dominio.Cliente.Entidade.Cliente> ObterPorFilial(int idFilial, string[] includes)

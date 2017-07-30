@@ -52,7 +52,7 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Funcionario
                 DomainEvent.Raise(new DomainNotification("adicionarRegra", "Funcionario sem autorização"));
                 return null;
             }
-            var objSalvo = _funcionarioRepositorio.Adicionar(new Dominio.Funcionario.Entidade.Funcionario(obj.Nome, obj.Tipo, funcionario.IdFilial));
+            var objSalvo = _funcionarioRepositorio.Adicionar(new Dominio.Funcionario.Entidade.Funcionario(obj.Nome, obj.Tipo, funcionario.IdFilial, obj.Usuario, obj.Senha));
             return Commit() ? new FuncionarioBasicoViewModel(objSalvo) : null;
         }
     }

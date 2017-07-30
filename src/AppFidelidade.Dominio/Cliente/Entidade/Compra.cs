@@ -30,7 +30,11 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
                 Cliente.Filiais.Add(new FilialCliente(Cliente, Filial));
 
             if (desconto == null)
+            {
                 Regra = Filial.ObterRegra(ValorCompra);
+                if (Regra != null)
+                    ValorRestanteCredito = Regra.ValorDaRegra;
+            }
             else
             {
                 if (Cliente.ObterCreditoNaFilial(Filial) >= desconto)
@@ -40,7 +44,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
                 }
             }
         }
-        public void Creditar(Cliente cliente)
+        private void Creditar()
         {
             InserirCredito(Regra.ValorDaRegra);
             DataRetiradaCredito = DateTime.UtcNow;

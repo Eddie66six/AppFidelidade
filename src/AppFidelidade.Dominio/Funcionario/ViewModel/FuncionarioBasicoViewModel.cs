@@ -20,5 +20,7 @@ namespace AppFidelidade.Dominio.Funcionario.ViewModel
         public ETipoFuncionario Tipo { get; set; }
         public int IdFilial { get; set; }
         public int IdFuncionarioLogado { get; set; }
+        public string Usuario { get; set; }
+        public string Senha { get; set; }
     }
 }
