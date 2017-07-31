@@ -7,18 +7,19 @@
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="AppFidelidade_App_Adm.Views.GerarCreditoPage"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
-             Title="Gerar Credito">
+             Title="Gerar Credito"
+             BackgroundColor="#021093">
     <ContentPage.Resources>
         <ResourceDictionary>
             <util:CurrencyConverter x:Key="currencyConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <xfg:ContentPageGloss.BackgroundGradient>
+    <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
             <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
         </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+    </xfg:ContentPageGloss.BackgroundGradient>-->
     <StackLayout Padding="10" VerticalOptions="FillAndExpand" Spacing="0">
         <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
             <Image Source="rewardApp.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="180" WidthRequest="180"></Image>

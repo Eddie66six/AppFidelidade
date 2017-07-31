@@ -6,7 +6,8 @@
              x:Class="AppFidelidade_App_Adm.Views.FuncionariosPage"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
-             Title="Funcionarios">
+             Title="Funcionarios"
+             BackgroundColor="#021093">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="+" Icon="plus_black.png" Text="+" Priority="0" Command="{Binding NovoFuncionarioCommand}" />
     </ContentPage.ToolbarItems>

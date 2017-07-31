@@ -6,21 +6,22 @@
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              x:Class="AppFidelidade_App_Adm.Views.InicialPage"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
-             Title="Inicio">
-    <xfg:ContentPageGloss.BackgroundGradient>
+             Title="Inicio"
+             BackgroundColor="#021093">
+    <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
             <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
         </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+    </xfg:ContentPageGloss.BackgroundGradient>-->
     <StackLayout Margin="10,0,10,0" Spacing="0" VerticalOptions="FillAndExpand">
         <StackLayout VerticalOptions="FillAndExpand">
             <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" Spacing="0" IsVisible="{Binding Adm}">
                 <StackLayout HorizontalOptions="CenterAndExpand"  Spacing="0">
-                    <Label Text="Colaboradores" FontSize="Large" TextColor="White"></Label>
+                    <Label Text="Colaboradores" Style="{StaticResource labelLarge}"></Label>
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand"  Spacing="0">
-                    <Label Text="{Binding ResumoRegraFuncionario.DetalhesFuncionarios}" FontSize="Large" TextColor="White"></Label>
+                    <Label Text="{Binding ResumoRegraFuncionario.DetalhesFuncionarios}" Style="{StaticResource labelLarge}"></Label>
                 </StackLayout>
             </StackLayout>
             <StackLayout Spacing="0">
@@ -28,17 +29,17 @@
             </StackLayout>
             <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                 <StackLayout HorizontalOptions="StartAndExpand"  Spacing="0">
-                    <Label Text="Bem Vindo!" FontSize="40" TextColor="White"></Label>
+                    <Label Text="Bem Vindo!" Style="{StaticResource label40}"></Label>
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Spacing="0">
-                    <Label Text="Aqui o retorno é garantido" FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label Text="de todos os jeitos... A todo tempo..." FontSize="Medium" TextColor="White" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Text="Aqui o retorno é garantido" HorizontalOptions="CenterAndExpand" Style="{StaticResource labelMedium}"></Label>
+                    <Label Text="de todos os jeitos... A todo tempo..." HorizontalOptions="CenterAndExpand" Style="{StaticResource labelMedium}"></Label>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand" Spacing="0">
-            <Button Image="gerar_credito_black.png" Text="Gerar Crédito" FontSize="Large" Command="{Binding GerarCreditoCommand}"></Button>
-            <Button Image="resgatar_credito_black.png" Text="Resgatar Crédito" FontSize="Large" Command="{Binding ResgatarCreditoCommand}"></Button>
+            <Button Command="{Binding GerarCreditoCommand}" Style="{StaticResource gerarCredito}"></Button>
+            <Button Command="{Binding ResgatarCreditoCommand}" Style="{StaticResource resgatarCredito}"></Button>
         </StackLayout>
     </StackLayout>
 </base:BasePage>

@@ -5,13 +5,14 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
-             x:Class="AppFidelidade_App_Adm.Views.LoginPage">
-    <xfg:ContentPageGloss.BackgroundGradient>
+             x:Class="AppFidelidade_App_Adm.Views.LoginPage"
+             BackgroundImage="fidelidadeBackground.png}">
+    <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="White" StepPercentage="0" />
             <xfg:GradientStep StepColor="#3847d4" StepPercentage="1" />
         </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+    </xfg:ContentPageGloss.BackgroundGradient>-->
     <StackLayout VerticalOptions="FillAndExpand">
         <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0">
             <StackLayout Margin="0,5,0,0" Spacing="0" VerticalOptions="StartAndExpand">

@@ -20,7 +20,7 @@ namespace AppFidelidade_App_Adm.ViewModels
             get { return _login; }
             set { SetProperty(ref _login, value); }
         }
-
+        
         public LoginPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
         {
             _navigationService = navigationService;

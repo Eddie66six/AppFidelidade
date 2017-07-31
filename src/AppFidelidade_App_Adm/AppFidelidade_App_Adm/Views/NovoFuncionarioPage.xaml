@@ -7,13 +7,14 @@
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              xmlns:control="clr-namespace:AppFidelidade_App_Adm.Controls;assembly=AppFidelidade_App_Adm"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
-             Title="Novo funcionario">
-    <xfg:ContentPageGloss.BackgroundGradient>
+             Title="Novo funcionario"
+             BackgroundColor="#021093">
+    <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
             <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
         </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+    </xfg:ContentPageGloss.BackgroundGradient>-->
     <StackLayout Padding="10">
         <StackLayout>
             <Label Text="Nome do funcionario"></Label>
