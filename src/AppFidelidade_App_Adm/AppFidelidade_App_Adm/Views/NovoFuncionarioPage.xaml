@@ -8,7 +8,7 @@
              xmlns:control="clr-namespace:AppFidelidade_App_Adm.Controls;assembly=AppFidelidade_App_Adm"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Novo funcionario"
-             BackgroundColor="#021093">
+             Style="{StaticResource background}">
     <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
@@ -28,6 +28,6 @@
             <Label Text="Senha"></Label>
             <control:CustomEntry Text="{Binding Funcionario.Senha}" MaxLength="12"></control:CustomEntry>
         </StackLayout>
-        <Button Text="Salvar" Command="{Binding SalvarFuncionarioCommand}"></Button>
+        <Button Style="{StaticResource salvar}" Command="{Binding SalvarFuncionarioCommand}"></Button>
     </StackLayout>
 </base:BasePage>

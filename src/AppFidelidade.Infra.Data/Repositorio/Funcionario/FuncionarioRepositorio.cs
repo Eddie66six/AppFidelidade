@@ -35,7 +35,9 @@ namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
                     IdFuncionario = p.IdFuncionario,
                     Nome = p.Nome,
                     Tipo = p.Tipo,
-                    IdFilial = p.IdFilial
+                    IdFilial = p.IdFilial,
+                    Usuario = p.Usuario,
+                    Senha = p.Senha
                 }).OrderBy(p => p.Nome).Skip(skip).Take(take).ToList()
             };
         }

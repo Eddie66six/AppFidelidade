@@ -7,7 +7,7 @@
              x:Class="AppFidelidade_App_Adm.Views.InicialPage"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Inicio"
-             BackgroundColor="#021093">
+             Style="{StaticResource background}">
     <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
@@ -29,7 +29,7 @@
             </StackLayout>
             <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
                 <StackLayout HorizontalOptions="StartAndExpand"  Spacing="0">
-                    <Label Text="Bem Vindo!" Style="{StaticResource label40}"></Label>
+                    <Label Text="Bem Vindo!" Style="{StaticResource labelTitulo}"></Label>
                 </StackLayout>
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Spacing="0">
                     <Label Text="Aqui o retorno é garantido" HorizontalOptions="CenterAndExpand" Style="{StaticResource labelMedium}"></Label>

@@ -50,7 +50,7 @@ namespace AppFidelidade_App_Adm.ViewModels
         private async void GerarCredito()
         {
             AtivarLoad(true);
-            if(Valor <= 0)
+            if (Valor <= 0)
             {
                 await _dialogService.DisplayAlertAsync("Erro", "A compra deve ter valor", "OK");
                 AtivarLoad(false);
@@ -92,7 +92,7 @@ namespace AppFidelidade_App_Adm.ViewModels
         {
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService(Data.ObterToken());
-            var result = await api.ObterCliente(QrCode,Data.ObterIdFilial());
+            var result = await api.ObterCliente(QrCode, Data.ObterIdFilial());
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");

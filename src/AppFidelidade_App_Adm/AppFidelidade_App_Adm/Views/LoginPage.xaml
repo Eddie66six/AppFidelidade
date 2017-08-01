@@ -13,24 +13,24 @@
             <xfg:GradientStep StepColor="#3847d4" StepPercentage="1" />
         </xfg:Gradient>
     </xfg:ContentPageGloss.BackgroundGradient>-->
-    <StackLayout VerticalOptions="FillAndExpand">
+    <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
         <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0">
-            <StackLayout Margin="0,5,0,0" Spacing="0" VerticalOptions="StartAndExpand">
+            <StackLayout Margin="0,5,0,0" VerticalOptions="StartAndExpand" Spacing="0">
                 <Image Source="logo.png" HeightRequest="180"></Image>
             </StackLayout>
             <StackLayout Spacing="0">
-                <StackLayout Spacing="0" Margin="10,0,0,0">
-                    <Label FontSize="35" TextColor="White" Text="Pronto para"></Label>
-                    <Label FontSize="35" TextColor="White" Text="Começar?"></Label>
+                <StackLayout Margin="10,0,0,0" Spacing="0">
+                    <Label Text="Pronto para" Style="{StaticResource labelTitulo}"></Label>
+                    <Label Text="Começar?" Style="{StaticResource labelTitulo}"></Label>
                 </StackLayout>
-                <StackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="Em instantes terá o melhor" TextColor="White"></Label>
+                <StackLayout HorizontalOptions="CenterAndExpand" Spacing="0">
+                    <Label Text="Em instantes terá o melhor" Style="{StaticResource labelDefault}"></Label>
                 </StackLayout>
-                <StackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="serviço de fidelização de clientes" TextColor="White"></Label>
+                <StackLayout HorizontalOptions="CenterAndExpand" Spacing="0">
+                    <Label Text="serviço de fidelização de clientes" Style="{StaticResource labelDefault}"></Label>
                 </StackLayout>
-                <StackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="na palma da sua mão" TextColor="White"></Label>
+                <StackLayout HorizontalOptions="CenterAndExpand" Spacing="0">
+                    <Label Text="na palma da sua mão" Style="{StaticResource labelDefault}"></Label>
                 </StackLayout>
             </StackLayout>
             <StackLayout Margin="0,5,0,0" VerticalOptions="EndAndExpand" Spacing="0">

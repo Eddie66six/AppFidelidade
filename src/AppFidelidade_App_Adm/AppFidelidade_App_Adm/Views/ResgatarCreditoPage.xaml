@@ -8,7 +8,7 @@
              x:Class="AppFidelidade_App_Adm.Views.ResgatarCreditoPage"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Resgatar Credito"
-             BackgroundColor="#021093">
+             Style="{StaticResource background}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <util:CurrencyConverter x:Key="currencyConverter" />

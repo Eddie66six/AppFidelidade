@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:util="clr-namespace:AppFidelidade_App_Client.Util;assembly=AppFidelidade_App_Client"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
+             x:Class="AppFidelidade_App_Client.Views.InicialPage">
+    <StackLayout>
+        <base:QRResult x:Name="qrResult"></base:QRResult>
+    </StackLayout>
+</base:BasePage>

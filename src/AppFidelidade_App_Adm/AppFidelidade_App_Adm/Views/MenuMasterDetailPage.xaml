@@ -23,7 +23,7 @@
                                 <ViewCell>
                                     <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                         <Image Source="{Binding Icone}"></Image>
-                                        <Label Text="{Binding Nome}" TextColor="Gray" FontSize="Medium" VerticalOptions="CenterAndExpand"/>
+                                        <Label Text="{Binding Nome}" Style="{StaticResource menuItem}" VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

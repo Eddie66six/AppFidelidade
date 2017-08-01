@@ -81,7 +81,7 @@ namespace AppFidelidade_App_Adm.ViewModels
                 },
                 new ItemMenu
                 {
-                    Icone = "sobre_black.png",
+                    Icone = "sair_black.png",
                     Nome = "Sair",
                     Parametro = "LoginPage",
                     Visivel = true

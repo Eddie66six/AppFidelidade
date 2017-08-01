@@ -11,6 +11,7 @@ namespace AppFidelidade_App_Adm.Views
         }
         protected override bool OnBackButtonPressed()
         {
+            return true;
             var page = (NavigationPage)Detail;
             var current = page.CurrentPage.GetType();
             if (current.Name == "InicialPage")

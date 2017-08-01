@@ -7,19 +7,24 @@
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Funcionarios"
-             BackgroundColor="#021093">
+             BackgroundColor="#dddddd">
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="+" Icon="plus_black.png" Text="+" Priority="0" Command="{Binding NovoFuncionarioCommand}" />
     </ContentPage.ToolbarItems>
     <StackLayout>
         <StackLayout Spacing="0">
-            <ListView ItemsSource="{Binding Funcionarios}">
+            <ListView ItemsSource="{Binding Funcionarios}" HasUnevenRows="True" SeparatorVisibility="None">
                 <ListView.Behaviors>
                     <b:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" EventArgsParameterPath="Item"/>
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Nome}" TextColor="Black" Detail="{Binding Nome}" DetailColor="Gray"></TextCell>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="White" Margin="5" Padding="10">
+                                <Label Text="{Binding Nome}" TextColor="Black" FontSize="Large"></Label>
+                                <Label Text="{Binding Detalhes}"></Label>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

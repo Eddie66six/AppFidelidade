@@ -9,7 +9,7 @@
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Regras"
-             BackgroundColor="#021093">
+             BackgroundColor="#dddddd">
     <!--<xfg:ContentPageGloss.BackgroundGradient>
         <xfg:Gradient Rotation="150">
             <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
@@ -19,15 +19,21 @@
     <ContentPage.ToolbarItems>
         <control:CustomToolbarItem IsVisible="{Binding PermiteCadastrar}" Name="+" Icon="plus_black.png" Text="+" Priority="0" Command="{Binding NovaRegraCommand}" />
     </ContentPage.ToolbarItems>
-    <StackLayout>
-        <StackLayout Spacing="0">
-            <ListView ItemsSource="{Binding Regras}">
+    <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout Spacing="0" VerticalOptions="FillAndExpand">
+            <ListView ItemsSource="{Binding Regras}" HasUnevenRows="True" SeparatorVisibility="None">
                 <ListView.Behaviors>
                     <b:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" EventArgsParameterPath="Item"/>
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Nome}" TextColor="Black" Detail="{Binding Detalhes}" DetailColor="Gray"></TextCell>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="White" Margin="5" Padding="10">
+                                <Label Text="{Binding Nome}" TextColor="Black" FontSize="Large"></Label>
+                                <Label Text="{Binding Detalhes}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                        <!--<TextCell Text="{Binding Nome}" TextColor="Black" Detail="{Binding Detalhes}" DetailColor="Gray"></TextCell>-->
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

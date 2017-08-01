@@ -1,4 +1,7 @@
-﻿namespace AppFidelidade_App_Adm.Models.Funcionarios
+﻿using System;
+using System.Text.RegularExpressions;
+
+namespace AppFidelidade_App_Adm.Models.Funcionarios
 {
     public class Funcionario
     {
@@ -14,5 +17,6 @@
         public string Usuario { get; set; }
         public string Senha { get; set; }
         public int IdFuncionarioLogado { get; set; }
+        public string Detalhes => $"Usuario: {Usuario} - Senha: { "******" }";
     }
 }

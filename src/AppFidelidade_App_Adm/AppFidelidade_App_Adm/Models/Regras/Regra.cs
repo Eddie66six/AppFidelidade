@@ -18,6 +18,6 @@
         public decimal ValorAcimaDe { get; set; }
         public bool Inativo { get; set; }
         public int IdFuncionarioLogado { get; set; }
-        public string Detalhes => string.Format("Valor da regra: {0:C} - Gera Credito de: {1}%", ValorAcimaDe, ValorDaRegra);
+        public string Detalhes => string.Format("Valor acima de: {0:C} - Gera Credito de: {1}%", ValorAcimaDe, ValorDaRegra);
     }
 }
