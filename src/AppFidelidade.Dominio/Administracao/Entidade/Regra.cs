@@ -22,10 +22,6 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         }
 
         #region Metodo
-        public void Excluir()
-        {
-            DataExclusao = DateTime.UtcNow;
-        }
         #endregion
 
         #region attr
@@ -35,7 +31,6 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public decimal ValorDaRegra { get;private set; }
         public decimal ValorAcimaDe { get; private set; }
         public bool Inativo { get; private set; }
-        public DateTime? DataExclusao { get;private set; }
         public int IdFilial { get; private set; }
         public virtual Filial Filial { get; private set; }
         public int IdFuncionario { get; private set; }

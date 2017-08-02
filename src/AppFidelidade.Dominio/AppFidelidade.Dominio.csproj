@@ -65,6 +65,8 @@
     <Compile Include="Cliente\Interface\Repositorio\ICompraRepositorio.cs" />
     <Compile Include="Cliente\Interface\Repositorio\IFilialClienteRepositorio.cs" />
     <Compile Include="Cliente\ViewModel\ClienteBasicoViewModel.cs" />
+    <Compile Include="Cliente\ViewModel\ClienteCreditoBasicoViewModel.cs" />
+    <Compile Include="Cliente\ViewModel\ClienteCreditoViewModel.cs" />
     <Compile Include="Funcionario\Entidade\Funcionario.cs" />
     <Compile Include="Funcionario\Enum\ETipoFuncionario.cs" />
     <Compile Include="Funcionario\Interface\Applicacao\IFuncionarioAplicacao.cs" />

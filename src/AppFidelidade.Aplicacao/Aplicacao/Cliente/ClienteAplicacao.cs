@@ -44,7 +44,7 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
             var cliente = _clienteRepositorio.ObeterPorTokenId(tokenId, new string[] { "Compras" });
             if (cliente == null)
             {
-                DomainEvent.Raise(new DomainNotification("obterCliente", "Cliente nao encontrado"));
+                DomainEvent.Raise(new DomainNotification("ObeterPorTokenId", "Cliente nao encontrado"));
                 return null;
             }
             var filial = _filialRepositorio.ObterPorId(idFilial, new string[] { });
@@ -57,10 +57,15 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
             return _clienteRepositorio.ObterPorFilial(idFilial, includes);
         }
 
-        public Dominio.Cliente.Entidade.Cliente ObterPorId(int id)
+        public ClienteBasicoViewModel ObterPorId(int id)
         {
-            string[] includes = { };
-            return _clienteRepositorio.ObterPorId(id, includes);
+            var cliente = _clienteRepositorio.ObterPorId(id, new string[] { });
+            if (cliente == null)
+            {
+                DomainEvent.Raise(new DomainNotification("ObterPorId", "Cliente nao encontrado"));
+                return null;
+            }
+            return new ClienteBasicoViewModel(cliente, null);
         }
     }
 }

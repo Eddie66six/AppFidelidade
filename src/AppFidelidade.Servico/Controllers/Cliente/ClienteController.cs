@@ -1,6 +1,5 @@
 ﻿using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.ViewModel;
-using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;

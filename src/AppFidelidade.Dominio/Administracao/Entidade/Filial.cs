@@ -14,7 +14,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             Compras = new List<Compra>();
             Contratos = new List<Contrato>();
         }
-        public Filial(string cnpj, string razaoSocial,string nomeFantasia, decimal valorCreditoMaximoPermitidoPorUso, Contrato contrato)
+        public Filial(string cnpj, string razaoSocial,string nomeFantasia, decimal valorCreditoMaximoPermitidoPorUso,int qtdeMesesVencimentoCredito, Contrato contrato)
         {
             Funcionarios = new List<Funcionario.Entidade.Funcionario>();
             Regras = new List<Regra>();
@@ -25,6 +25,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
             RazaoSocial = razaoSocial;
             NomeFantasia = nomeFantasia;
             ValorCreditoMaximoPermitidoPorUso = valorCreditoMaximoPermitidoPorUso;
+            QtdeMesesVencimentoCredito = qtdeMesesVencimentoCredito;
             Contratos.Add(contrato);
         }
 
@@ -62,6 +63,7 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public string RazaoSocial { get; private set; }
         public string NomeFantasia { get; private set; }
         public decimal ValorCreditoMaximoPermitidoPorUso { get; private set; }
+        public int QtdeMesesVencimentoCredito { get; private set; }
         public DateTime? DataExclusao { get; private set; }
         public int IdEmpresa { get; private set; }
         public virtual Empresa Empresa { get; private set; }

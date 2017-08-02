@@ -1,5 +1,7 @@
-﻿using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
+﻿using System.Collections.Generic;
+using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
+using AppFidelidade.Dominio.Cliente.ViewModel;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
 {
@@ -9,6 +11,11 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
         public CompraAplicacao(ICompraRepositorio compraRepositorio)
         {
             _compraRepositorio = compraRepositorio;
+        }
+
+        public ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente)
+        {
+            return _compraRepositorio.ObeterBasicoCreditosCliente(idCliente);
         }
     }
 }

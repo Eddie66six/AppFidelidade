@@ -21,7 +21,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             {
                 query = query.Include(include);
             }
-            query = query.Where(p => p.IdFilial == idFilial && p.DataExclusao == null);
+            query = query.Where(p => p.IdFilial == idFilial);
             return new RegraListaViewModel { Total = query.Count(), Regras = query.Select(p=> new RegraBasicoViewModel
             {
                 IdRegra = p.IdRegra,
@@ -40,7 +40,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             {
                 query = query.Include(include);
             }
-            return query.FirstOrDefault(p => p.DataExclusao == null && p.IdFilial == id);
+            return query.FirstOrDefault(p => p.IdFilial == id);
         }
 
         public RegraListaViewModel ObterPorTipoDesconto(int idFilial, ETipoDesconto tipo, int take, int skip, string[] includes)
@@ -50,7 +50,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             {
                 query = query.Include(include);
             }
-            query = query.Where(p => p.TipoDesconto == tipo && p.DataExclusao == null && p.IdFilial == idFilial);
+            query = query.Where(p => p.TipoDesconto == tipo && p.IdFilial == idFilial);
             return new RegraListaViewModel
             {
                 Total = query.Count(),
@@ -73,7 +73,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             {
                 query = query.Include(include);
             }
-            query = query.Where(p => p.DataExclusao == null && p.ValorAcimaDe == 0 && p.IdFilial == idFilial);
+            query = query.Where(p => p.ValorAcimaDe == 0 && p.IdFilial == idFilial);
             return new RegraListaViewModel
             {
                 Total = query.Count(),

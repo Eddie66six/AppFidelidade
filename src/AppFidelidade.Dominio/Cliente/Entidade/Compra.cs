@@ -48,6 +48,8 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         {
             InserirCredito(Regra.ValorDaRegra);
             DataRetiradaCredito = DateTime.UtcNow;
+            DataVencimentoCredito = DateTime.Today.AddMonths(Filial.QtdeMesesVencimentoCredito);
+            
         }
 
         public void InserirCredito(decimal valor)
@@ -64,6 +66,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         public decimal ValorCompra { get; private set; }
         public DateTime Data { get; private set; }
         public DateTime? DataRetiradaCredito { get; private set; }
+        public DateTime? DataVencimentoCredito { get; set; }
         public decimal? valorCredito { get; private set; }
         public int IdFilial { get; private set; }
         public virtual Filial Filial { get; private set; }

@@ -24,7 +24,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             DataCadastro = DateTime.UtcNow;
             GerarTokenId();
         }
-
+        #region Metodos
         public void GerarTokenId()
         {
             var guid = Guid.NewGuid();
@@ -32,7 +32,6 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             // But not recommend using Hex, as it is less efficient.
             TokenId = Convert.ToBase64String(guid.ToByteArray());
         }
-        #region Metodos
         public decimal ObterCreditoNaFilial(Filial filial)
         {
             var creditoCompras = Compras.Where(p => p.Filial == filial && p.DataRetiradaCredito .HasValue && p.ValorRestanteCredito > 0);
