@@ -1,10 +1,50 @@
-﻿namespace AppFidelidade_App_Client.ViewModels
+﻿using Prism.Navigation;
+using System.Collections.Generic;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace AppFidelidade_App_Client.ViewModels
 {
     public class MenuMasterDetailPageViewModel : BaseViewModel
     {
-        public MenuMasterDetailPageViewModel()
+        public List<ItemMenu> ItensMenu { get; }
+        INavigationService _navigationService;
+        public ICommand NavigateCommand { get; set; }
+        public MenuMasterDetailPageViewModel(INavigationService navigationService)
         {
-
+            _navigationService = navigationService;
+            NavigateCommand = new Command<ItemMenu>(Navigate);
+            ItensMenu = ObterMenus();
         }
+
+        private void Navigate(ItemMenu parametro)
+        {
+            _navigationService.NavigateAsync(parametro.Parametro);
+        }
+
+        private List<ItemMenu> ObterMenus()
+        {
+            return new List<ItemMenu>()
+            {
+                new ItemMenu
+                {
+                    Icone = "inicio_black.png",
+                    Nome = "Inicio",
+                    Parametro = "MenuNavigationPage/InicialPage"
+                },
+                new ItemMenu
+                {
+                    Icone = "sair_black.png",
+                    Nome = "Sair",
+                    Parametro = "LoginPage"
+                }
+            };
+        }
+    }
+    public class ItemMenu
+    {
+        public string Icone { get; set; }
+        public string Nome { get; set; }
+        public string Parametro { get; set; }
     }
 }

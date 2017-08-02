@@ -7,7 +7,12 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
              x:Class="AppFidelidade_App_Client.Views.InicialPage">
-    <StackLayout>
-        <base:QRResult x:Name="qrResult"></base:QRResult>
+    <StackLayout Spacing="0">
+        <StackLayout>
+            <BoxView HeightRequest="100" BackgroundColor="Aqua"></BoxView>
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Gerar Qr Code" Command="{Binding GerarQrCodeCommand}"></Button>
+        </StackLayout>
     </StackLayout>
 </base:BasePage>

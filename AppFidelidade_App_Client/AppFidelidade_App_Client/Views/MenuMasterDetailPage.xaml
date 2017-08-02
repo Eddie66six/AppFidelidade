@@ -3,6 +3,33 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
-                  x:Class="AppFidelidade_App_Client.Views.MenuMasterDetailPage">
-  
+                  x:Class="AppFidelidade_App_Client.Views.MenuMasterDetailPage"
+                  xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Default">
+            <StackLayout Spacing="0">
+                <StackLayout Margin="0,20,0,0">
+                    <BoxView HeightRequest="150" BackgroundColor="Aqua"></BoxView>
+                </StackLayout>
+                <StackLayout Spacing="0">
+                    <ListView ItemsSource="{Binding ItensMenu}">
+                        <ListView.Behaviors>
+                            <b:EventToCommandBehavior Command="{Binding NavigateCommand}" 
+                                  EventName="ItemTapped"
+                                  EventArgsParameterPath="Item"/>
+                        </ListView.Behaviors>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Label Text="{Binding Nome}" TextColor="Black" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
 </MasterDetailPage>

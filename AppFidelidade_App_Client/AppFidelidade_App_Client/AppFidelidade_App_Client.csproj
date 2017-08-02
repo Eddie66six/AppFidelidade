@@ -43,6 +43,7 @@
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MenuMasterDetailPageViewModel.cs" />
     <Compile Include="ViewModels\MenuNavigationPageViewModel.cs" />
+    <Compile Include="ViewModels\QrCodePageViewModel.cs" />
     <Compile Include="ViewModels\SobrePageViewModel.cs" />
     <Compile Include="Views\BasePage.cs" />
     <Compile Include="Views\InicialPage.xaml.cs">
@@ -54,8 +55,8 @@
     <Compile Include="Views\MenuNavigationPage.xaml.cs">
       <DependentUpon>MenuNavigationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\QRResult.xaml.cs">
-      <DependentUpon>QRResult.xaml</DependentUpon>
+    <Compile Include="Views\QrCodePage.xaml.cs">
+      <DependentUpon>QrCodePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SobrePage.xaml.cs">
       <DependentUpon>SobrePage.xaml</DependentUpon>
@@ -159,10 +160,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\QRResult.xaml">
+    <EmbeddedResource Include="Views\QrCodePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

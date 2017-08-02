@@ -8,11 +8,11 @@ namespace AppFidelidade_App_Client
     {
         public App(IPlatformInitializer initializer = null) : base(initializer) { }
 
-        protected override void OnInitialized()
+        protected override async void OnInitialized()
         {
             InitializeComponent();
             Data.SalvarQrCode();
-            NavigationService.NavigateAsync("InicialPage");
+            await NavigationService.NavigateAsync("LoginPage");
         }
 
         protected override void RegisterTypes()
@@ -23,6 +23,7 @@ namespace AppFidelidade_App_Client
             Container.RegisterTypeForNavigation<MenuNavigationPage>();
             Container.RegisterTypeForNavigation<SobrePage>();
             Container.RegisterTypeForNavigation<InicialPage>();
+            Container.RegisterTypeForNavigation<QrCodePage>();
         }
     }
 }
