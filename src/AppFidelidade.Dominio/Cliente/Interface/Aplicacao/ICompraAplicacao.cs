@@ -5,5 +5,6 @@ namespace AppFidelidade.Dominio.Cliente.Interface.Aplicacao
     public interface ICompraAplicacao
     {
         ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente);
+        ClienteCreditosRetirarViewModel ObterBasicoCreditoRetirarCliente(int idCliente);
     }
 }

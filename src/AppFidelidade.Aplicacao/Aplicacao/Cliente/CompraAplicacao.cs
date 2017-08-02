@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
+﻿using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Dominio.Cliente.ViewModel;
 
@@ -16,6 +15,11 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
         public ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente)
         {
             return _compraRepositorio.ObeterBasicoCreditosCliente(idCliente);
+        }
+
+        public ClienteCreditosRetirarViewModel ObterBasicoCreditoRetirarCliente(int idCliente)
+        {
+            return _compraRepositorio.ObterBasicoCreditoRetirarCliente(idCliente);
         }
     }
 }
