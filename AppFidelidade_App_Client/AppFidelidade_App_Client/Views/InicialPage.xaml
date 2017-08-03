@@ -6,7 +6,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
-             x:Class="AppFidelidade_App_Client.Views.InicialPage">
+             x:Class="AppFidelidade_App_Client.Views.InicialPage"
+             Title="Inicio">
     <StackLayout Spacing="0">
         <StackLayout>
             <BoxView HeightRequest="100" BackgroundColor="Aqua"></BoxView>

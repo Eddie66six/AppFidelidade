@@ -4,7 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
-             x:Class="AppFidelidade_App_Client.Views.QrCodePage"
-             Title="Qr Code">
+             x:Class="AppFidelidade_App_Client.Views.CreditosResgatePage"
+             Title="Resgate Credito">
   
 </base:BasePage>

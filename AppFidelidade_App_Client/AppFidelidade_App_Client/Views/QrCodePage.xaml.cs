@@ -3,7 +3,7 @@ using ZXing.Net.Mobile.Forms;
 
 namespace AppFidelidade_App_Client.Views
 {
-    public partial class QrCodePage : ContentPage
+    public partial class QrCodePage : BasePage
     {
         public ZXingBarcodeImageView barcode;
         public QrCodePage()

@@ -24,6 +24,8 @@ namespace AppFidelidade_App_Client
             Container.RegisterTypeForNavigation<SobrePage>();
             Container.RegisterTypeForNavigation<InicialPage>();
             Container.RegisterTypeForNavigation<QrCodePage>();
+            Container.RegisterTypeForNavigation<CreditosPage>();
+            Container.RegisterTypeForNavigation<CreditosResgatePage>();
         }
     }
 }

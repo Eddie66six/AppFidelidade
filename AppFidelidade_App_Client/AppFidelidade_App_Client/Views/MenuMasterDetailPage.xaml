@@ -9,7 +9,7 @@
         <ContentPage Title="Default">
             <StackLayout Spacing="0">
                 <StackLayout Margin="0,20,0,0">
-                    <BoxView HeightRequest="150" BackgroundColor="Aqua"></BoxView>
+                    <Image Source="logo.png" HeightRequest="150"></Image>
                 </StackLayout>
                 <StackLayout Spacing="0">
                     <ListView ItemsSource="{Binding ItensMenu}">
@@ -22,6 +22,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Padding="20,0,0,0" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Image Source="{Binding Icone}"></Image>
                                         <Label Text="{Binding Nome}" TextColor="Black" VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </ViewCell>

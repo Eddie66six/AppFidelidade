@@ -2,9 +2,9 @@
 
 namespace AppFidelidade_App_Client.Views
 {
-    public partial class SobrePage : BasePage
+    public partial class CreditosResgatePage : BasePage
     {
-        public SobrePage()
+        public CreditosResgatePage()
         {
             InitializeComponent();
         }

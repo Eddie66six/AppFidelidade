@@ -34,6 +34,24 @@ namespace AppFidelidade_App_Client.ViewModels
                 },
                 new ItemMenu
                 {
+                    Icone = "credito_black.png",
+                    Nome = "Creditos",
+                    Parametro = "MenuNavigationPage/CreditosPage"
+                },
+                new ItemMenu
+                {
+                    Icone = "resgatar_credito_black.png",
+                    Nome = "Resgate de credito",
+                    Parametro = "MenuNavigationPage/CreditosResgatePage"
+                },
+                new ItemMenu
+                {
+                    Icone = "sobre_black.png",
+                    Nome = "Sobre",
+                    Parametro = "MenuNavigationPage/SobrePage"
+                },
+                new ItemMenu
+                {
                     Icone = "sair_black.png",
                     Nome = "Sair",
                     Parametro = "LoginPage"

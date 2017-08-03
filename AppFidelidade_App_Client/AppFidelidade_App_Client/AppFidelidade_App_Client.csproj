@@ -36,9 +36,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
+    <Compile Include="Models\ClienteBasico.cs" />
+    <Compile Include="Models\ClienteCredito.cs" />
+    <Compile Include="Models\ClienteCreditoBasico.cs" />
+    <Compile Include="Models\ClienteCreditosRetirar.cs" />
+    <Compile Include="Models\ClienteCreditosRetirarBasico.cs" />
+    <Compile Include="Models\Errors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppFidelidadeService.cs" />
     <Compile Include="Util\ByteImageConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CreditosPageViewModel.cs" />
+    <Compile Include="ViewModels\CreditosResgatePageViewModel.cs" />
     <Compile Include="ViewModels\InicialPageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MenuMasterDetailPageViewModel.cs" />
@@ -46,6 +55,12 @@
     <Compile Include="ViewModels\QrCodePageViewModel.cs" />
     <Compile Include="ViewModels\SobrePageViewModel.cs" />
     <Compile Include="Views\BasePage.cs" />
+    <Compile Include="Views\CreditosPage.xaml.cs">
+      <DependentUpon>CreditosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreditosResgatePage.xaml.cs">
+      <DependentUpon>CreditosResgatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InicialPage.xaml.cs">
       <DependentUpon>InicialPage.xaml</DependentUpon>
     </Compile>
@@ -85,6 +100,10 @@
       <HintPath>..\..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
       <Private>True</Private>
@@ -96,6 +115,9 @@
     <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
@@ -160,11 +182,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
+    <EmbeddedResource Include="Views\CreditosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\QrCodePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CreditosResgatePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
