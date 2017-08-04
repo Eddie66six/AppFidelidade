@@ -3,7 +3,6 @@ using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
 using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using AppFidelidade.Dominio.Administracao.Enum;
-using System;
 using AppFidelidade.Dominio.Administracao.ViewModel;
 using AppFidelidade.Dominio.Funcionario.Interface.Repositorio;
 using AppFidelidade.Dominio.Compartilhado.DomainEvent;
@@ -25,25 +24,15 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
         public RegraBasicoViewModel Adicionar(RegraBasicoViewModel obj)
         {
             var funcionario = _funcionarioRepositorio.ObterPorId(obj.IdFuncionarioLogado, new string[] { });
-            if (funcionario == null)
+            if (funcionario == null || funcionario.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
             {
-                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Usuario nao encontrado"));
-                return null;
-            }
-            if (funcionario.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
-            {
-                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Funcionario sem autorização"));
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", funcionario == null ? "Usuario nao encontrado" : "Funcionario sem autorização"));
                 return null;
             }
             var contratoResumo = _contratoRepositorio.ObterResumoRegraFuncionario(funcionario.IdFilial);
-            if (contratoResumo == null)
+            if (contratoResumo == null || contratoResumo.RegrasCadastradas >= contratoResumo.MaxRegrasCadastradas)
             {
-                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Contrato nao encontrado"));
-                return null;
-            }
-            if (contratoResumo.RegrasCadastradas >= contratoResumo.MaxRegrasCadastradas)
-            {
-                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Quantidade maxima da regra atingido"));
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", contratoResumo == null ? "Contrato nao encontrado" : "Quantidade maxima da regra atingido"));
                 return null;
             }
 
@@ -73,6 +62,24 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
         {
             string[] includes = { };
             return _regraRepositorio.ObterTodos(idFilial, take, skip, includes);
+        }
+
+        public void AtivarDesativar(int idRegra, int idFuncionarioLogado)
+        {
+            var funcionario = _funcionarioRepositorio.ObterPorId(idFuncionarioLogado, new string[] { });
+            if (funcionario == null || funcionario.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
+            {
+                DomainEvent.Raise(new DomainNotification("AtivarDesativar", funcionario == null ? "Usuario nao encontrado" : "Funcionario sem autorização"));
+                return;
+            }
+            var regra = _regraRepositorio.ObterPorId(idRegra, new string[] { });
+            if(regra == null)
+            {
+                DomainEvent.Raise(new DomainNotification("AtivarDesativar", "Regra nao encontrada"));
+                return;
+            }
+            regra.AtivarDesativar();
+            Commit();
         }
     }
 }

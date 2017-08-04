@@ -22,6 +22,10 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         }
 
         #region Metodo
+        public void AtivarDesativar()
+        {
+            Inativo = !Inativo;
+        }
         #endregion
 
         #region attr

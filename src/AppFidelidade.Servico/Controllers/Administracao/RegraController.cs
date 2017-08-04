@@ -47,5 +47,12 @@ namespace AppFidelidade.Servico.Controllers.Administracao
         {
             return CreateResponse(HttpStatusCode.OK, _regraAplicacao.ObterPorValorInicialFinal(idFilial, valorInicial, valorFinal, take, skip));
         }
+        [Route("ativarDesativar")]
+        [HttpPut]
+        public Task<HttpResponseMessage> AtivarDesativar(int idRegra, int idFuncionarioLogado)
+        {
+            _regraAplicacao.AtivarDesativar(idRegra, idFuncionarioLogado);
+            return CreateResponse(HttpStatusCode.OK, "");
+        }
     }
 }

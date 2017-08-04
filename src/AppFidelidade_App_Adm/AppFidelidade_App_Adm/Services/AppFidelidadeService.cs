@@ -7,6 +7,7 @@ using AppFidelidade_App_Adm.Models.Funcionarios;
 using AppFidelidade_App_Adm.Models.Regras;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -33,7 +34,7 @@ namespace AppFidelidade_App_Adm.Services
             {
                 HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/auth/funcionario?usuario={usuario}&senha={senha}");
                 var result = await response.Content.ReadAsStringAsync();
-                if(result == null)
+                if (result == null)
                     return new Tuple<Errors, FuncionarioLogin>(null, null);
                 if (result.Contains("errors"))
                     return new Tuple<Errors, FuncionarioLogin>(JsonConvert.DeserializeObject<Errors>(result), null);
@@ -46,7 +47,7 @@ namespace AppFidelidade_App_Adm.Services
             }
         }
 
-        public async Task<Tuple<Errors,RegrasLista>> ObterRegras(int idFilial, int take, int skip)
+        public async Task<Tuple<Errors, RegrasLista>> ObterRegras(int idFilial, int take, int skip)
         {
             try
             {
@@ -77,6 +78,29 @@ namespace AppFidelidade_App_Adm.Services
                     return new Tuple<Errors, Regra>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
                     return new Tuple<Errors, Regra>(null, JsonConvert.DeserializeObject<Regra>(result));
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, string>> AtivarDesativarRegra(int idRegra, int idFuncionarioLogado)
+        {
+            try
+            {
+                var values = new Dictionary<string, string>{
+                    { "idRegra", idRegra.ToString() },
+                    { "idFuncionarioLogado", idFuncionarioLogado.ToString() }
+                };
+                HttpResponseMessage response = await client.PutAsync($"{_baseUrl}api/v1/regra/ativarDesativar", new FormUrlEncodedContent(values));
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null)
+                    return new Tuple<Errors, string>(null, null);
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, string>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, string>(null, result);
             }
             catch (Exception e)
             {
