@@ -5,10 +5,8 @@ using AppFidelidade.Dominio.Administracao.Interface.Repositorio;
 using System.Collections.Generic;
 using AppFidelidade.Dominio.Administracao.ViewModel;
 using AppFidelidade.Dominio.Compartilhado.DomainEvent;
-using AppFidelidade.Dominio.Cliente.Entidade;
 using AppFidelidade.Dominio.Funcionario.Interface.Repositorio;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
-using System;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
 {
@@ -80,28 +78,6 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
             };
         }
 
-        public CompraBasicoViewModel LancarCompra(LancarCompraViewModel obj)
-        {
-            if (obj.ValorCompra <= 0)
-            {
-                DomainEvent.Raise(new DomainNotification("lancarCompra", "A Compra deve ter valor"));
-                return null;
-            }
-            var funcionario = _funcionarioRepositorio.ObterPorId(obj.IdFuncionarioLogado, new string[] { "Filial.Regras" });
-            if (funcionario == null)
-            {
-                DomainEvent.Raise(new DomainNotification("lancarCompra", "Funcionario nao encontrado"));
-                return null;
-            }
-            var cliente = _clienteRepositorio.ObterPorId(obj.IdCliente, new string[] { "Filiais" });
-            if (cliente == null)
-            {
-                DomainEvent.Raise(new DomainNotification("lancarCompra", "Cliente nao encontrado"));
-                return null;
-            }
-            var compra = funcionario.Filial.InserirCompra(new Compra(obj.ValorCompra, funcionario.Filial, funcionario, cliente, null));
-            return Commit() ? new CompraBasicoViewModel(compra) : null;
-        }
         public void ResgatarCredito(ResgatarCreditoViewModel obj)
         {
             if (obj.ValorDesconto <= 0)

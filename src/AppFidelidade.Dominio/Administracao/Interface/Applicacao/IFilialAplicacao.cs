@@ -11,7 +11,6 @@ namespace AppFidelidade.Dominio.Administracao.Interface.Applicacao
         Entidade.Filial Adicionar(Entidade.Filial obj);
         void Atualizar(Entidade.Filial obj);
         void Remover(int id);
-        CompraBasicoViewModel LancarCompra(LancarCompraViewModel obj);
         void ResgatarCredito(ResgatarCreditoViewModel obj);
         decimal ObterMaximoCreditoPermitidoParaUso(int idFilial);
         InformcoesBasicaFilialViewModel ObterInformacoesBasicasFilial(int idFilial, int idFuncionarioLogado);

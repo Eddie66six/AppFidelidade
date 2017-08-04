@@ -1,6 +1,6 @@
 ﻿using AppFidelidade.Dominio.Cliente.Entidade;
 
-namespace AppFidelidade.Dominio.Administracao.ViewModel
+namespace AppFidelidade.Dominio.Cliente.ViewModel
 {
     public class CompraBasicoViewModel
     {

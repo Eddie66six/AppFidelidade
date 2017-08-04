@@ -1,4 +1,4 @@
-﻿namespace AppFidelidade.Dominio.Administracao.ViewModel
+﻿namespace AppFidelidade.Dominio.Cliente.ViewModel
 {
     public class LancarCompraViewModel
     {

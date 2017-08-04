@@ -187,7 +187,7 @@ namespace AppFidelidade_App_Adm.Services
         {
             try
             {
-                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/filial/lancarCompra", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/compra/lancarCompra", new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
                 var result = await response.Content.ReadAsStringAsync();
                 if (result == null)
                     return new Tuple<Errors, Models.Compras.Compra>(null, null);

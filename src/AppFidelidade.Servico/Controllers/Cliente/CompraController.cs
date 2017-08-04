@@ -1,4 +1,5 @@
 ﻿using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
+using AppFidelidade.Dominio.Cliente.ViewModel;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -25,6 +26,12 @@ namespace AppFidelidade.Servico.Controllers.Cliente
         public Task<HttpResponseMessage> ObterBasicoCreditoRetirarCliente(int idCliente)
         {
             return CreateResponse(HttpStatusCode.OK, _compraAplicacao.ObterBasicoCreditoRetirarCliente(idCliente));
+        }
+        [Route("lancarCompra")]
+        [HttpPost]
+        public Task<HttpResponseMessage> LancarCompra(LancarCompraViewModel obj)
+        {
+            return CreateResponse(HttpStatusCode.OK, _compraAplicacao.LancarCompra(obj));
         }
     }
 }

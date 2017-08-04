@@ -1,5 +1,4 @@
-﻿using AppFidelidade.Aplicacao.Aplicacao.Administracao;
-using AppFidelidade.Dominio.Administracao.Entidade;
+﻿using AppFidelidade.Dominio.Administracao.Entidade;
 using AppFidelidade.Dominio.Administracao.Interface.Applicacao;
 using AppFidelidade.Dominio.Administracao.ViewModel;
 using System.Net;
@@ -57,12 +56,6 @@ namespace AppFidelidade.Servico.Controllers.Administracao
         public Task<HttpResponseMessage> ObterResumo(int idFilial)
         {
             return CreateResponse(HttpStatusCode.OK, _filialAplicacao.ObterResumoPorId(idFilial));
-        }
-        [Route("lancarCompra")]
-        [HttpPost]
-        public Task<HttpResponseMessage> LancarCompra(LancarCompraViewModel obj)
-        {
-            return CreateResponse(HttpStatusCode.OK, _filialAplicacao.LancarCompra(obj));
         }
         [Route("resgatarCredito")]
         [HttpPost]
