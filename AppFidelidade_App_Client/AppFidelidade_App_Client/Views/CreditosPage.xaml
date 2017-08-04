@@ -11,7 +11,7 @@
     <StackLayout Spacing="0">
         <ListView ItemsSource="{Binding ClienteCredito.Creditos}"  HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.Header>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Label Text="Total: R$"></Label>
                     <Label Text="{Binding ClienteCredito.TotalCreditosParaRetirada}"></Label>
                 </StackLayout>
