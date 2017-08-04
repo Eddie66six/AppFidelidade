@@ -38,7 +38,7 @@ namespace AppFidelidade_App_Client.Services
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/obeterBasicoCreditosCliente/obter?idCliente={idCliente}");
+                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/compra/obeterBasicoCreditosCliente?idCliente={idCliente}");
                 var result = await response.Content.ReadAsStringAsync();
                 if (result == null)
                     return new Tuple<Errors, ClienteCredito>(null, null);
@@ -56,7 +56,7 @@ namespace AppFidelidade_App_Client.Services
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/obterBasicoCreditoRetirarCliente/obter?idCliente={idCliente}");
+                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/compra/obterBasicoCreditoRetirarCliente?idCliente={idCliente}");
                 var result = await response.Content.ReadAsStringAsync();
                 if (result == null)
                     return new Tuple<Errors, ClienteCreditosRetirar>(null, null);

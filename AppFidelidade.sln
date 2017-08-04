@@ -43,6 +43,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFidelidade_App_Client", "AppFidelidade_App_Client\AppFidelidade_App_Client\AppFidelidade_App_Client.csproj", "{B16D1EF0-E2BA-46B6-A779-3D32A7654F4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFidelidade_App_Client.Droid", "AppFidelidade_App_Client\AppFidelidade_App_Client.Droid\AppFidelidade_App_Client.Droid.csproj", "{901E050A-16B2-4F15-A98A-B144546540D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1BE01EDE-BA51-4AB8-B070-1F212EBE010E} = {1BE01EDE-BA51-4AB8-B070-1F212EBE010E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFidelidade_App_Client.iOS", "AppFidelidade_App_Client\AppFidelidade_App_Client.iOS\AppFidelidade_App_Client.iOS.csproj", "{C25477E6-5044-4F43-87C3-110EE49E2BB1}"
 EndProject

@@ -35,7 +35,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
         public ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente)
         {
             var compras = Db.Compra.Include("Filial")
-                .Where(p => p.IdCliente == idCliente && ((p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0) || p.DataRetiradaCredito == null)).ToList();
+                .Where(p => p.IdCliente == idCliente && (p.DataVencimentoCredito == null || DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.Today)) && ((p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0) || p.DataRetiradaCredito == null)).ToList();
             return new ClienteCreditoViewModel
             {
                 TotalCreditosParaRetirada = compras.Where(i => i.DataVencimentoCredito == null && i.DataRetiradaCredito == null).Sum(i => i.valorCredito ?? 0),

@@ -5,6 +5,33 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
              x:Class="AppFidelidade_App_Client.Views.CreditosPage"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             BackgroundColor="#dddddd"
              Title="Creditos">
-  
+    <StackLayout Spacing="0">
+        <ListView ItemsSource="{Binding ClienteCredito.Creditos}"  HasUnevenRows="True" SeparatorVisibility="None">
+            <ListView.Header>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Total: R$"></Label>
+                    <Label Text="{Binding ClienteCredito.TotalCreditosParaRetirada}"></Label>
+                </StackLayout>
+            </ListView.Header>
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior Command="{Binding NavigateCommand}" EventName="ItemTapped" EventArgsParameterPath="Item"/>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="White" Margin="5" Padding="10">
+                            <Label Text="{Binding NomeFilial}" TextColor="Black" FontSize="Large"></Label>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding DataVencimento}" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding TotalCreditos}"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </base:BasePage>
