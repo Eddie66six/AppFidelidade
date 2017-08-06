@@ -14,8 +14,9 @@
             <util:CurrencyConverter x:Key="currencyConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout Padding="10" VerticalOptions="FillAndExpand" Spacing="0">
-        <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Padding="10" VerticalOptions="FillAndExpand" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     Opacity="{Binding Opacity}">
             <Image Source="rewardApp.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="170" WidthRequest="170"></Image>
             <Label FontSize="Large" Text="{Binding Cliente.Detalhes}" HorizontalOptions="CenterAndExpand"></Label>
             <Label VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Default"
@@ -27,5 +28,9 @@
                 <Button IsEnabled="{Binding IsVisibleOrEnable}" Command="{Binding ResgatarCreditoCommand}" Text="Resgatar" Style="{StaticResource btnFinalizar}"></Button>
             </StackLayout>
         </StackLayout>
-    </StackLayout>
+        <StackLayout IsVisible="{Binding IsBusy}" Padding="12" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color ="#F3A626"/>
+            <Label Text="Carregando..." HorizontalOptions="Center" TextColor="Black"/>
+        </StackLayout>
+    </AbsoluteLayout>
 </base:BasePage>
