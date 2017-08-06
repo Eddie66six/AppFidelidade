@@ -1,6 +1,5 @@
 ﻿using AppFidelidade.Dominio.Administracao.Entidade;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace AppFidelidade.Dominio.Cliente.Entidade
@@ -18,7 +17,6 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             Funcionario = funcionario;
             Cliente = cliente;
             Data = DateTime.UtcNow;
-            valorCredito = desconto;
 
             _FinalizarCompra(desconto);
         }
@@ -33,7 +31,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             {
                 Regra = Filial.ObterRegra(ValorCompra);
                 if (Regra != null)
-                    ValorRestanteCredito = Regra.ValorDaRegra;
+                    valorCredito = Regra.ValorDaRegra;
             }
             else
             {
@@ -41,6 +39,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
                 {
                     Cliente.RetirarCredito(desconto.Value, Filial);
                     ValorCompra -= desconto.Value;
+                    valorCredito = 0;
                 }
             }
         }

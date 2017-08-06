@@ -35,6 +35,12 @@ namespace AppFidelidade.Servico.Controllers.Administracao
         {
             return CreateResponse(HttpStatusCode.OK, _regraAplicacao.Adicionar(obj));
         }
+        [Route("atualizar")]
+        [HttpPut]
+        public Task<HttpResponseMessage> Atualizar(RegraBasicoViewModel obj)
+        {
+            return CreateResponse(HttpStatusCode.OK, _regraAplicacao.Atualizar(obj));
+        }
         [Route("obterPorDesconto")]
         [HttpGet]
         public Task<HttpResponseMessage> ObterPorTipoDesconto(int idFilial, ETipoDesconto tipo, int take, int skip)

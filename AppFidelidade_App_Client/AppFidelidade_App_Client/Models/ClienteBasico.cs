@@ -11,5 +11,6 @@ namespace AppFidelidade_App_Client.Models
         public string TokenId { get; set; }
         //public Endereco Endereco { get; set; }
         public decimal ValorCreditoNaFilial { get; set; }
+        public string NomeCompleto => $"{Nome} {Sobrenome}";
     }
 }

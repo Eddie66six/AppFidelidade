@@ -17,15 +17,15 @@
                 <Image Source="https://ak5.picdn.net/shutterstock/videos/6963961/thumb/9.jpg" HeightRequest="200" Aspect="AspectFill"></Image>
                 <StackLayout Margin="10" VerticalOptions="Start">
                     <Label Text="Credito" TextColor="White" FontSize="30" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label Text="R$ 1.000.000,00" TextColor="White" FontSize="40" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Text="{Binding ClienteBasico.ValorCreditoNaFilial, StringFormat='R${0:N}'}" TextColor="White" FontSize="40" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                 </StackLayout>
                 <BoxView HeightRequest="50" BackgroundColor="Black" Opacity=".5" VerticalOptions="End"></BoxView>
-                <Label Text="Guilherme Rodrigues Souza" Margin="0,10,0,10" FontSize="Large" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="End"></Label>
+                <Label Text="{Binding ClienteBasico.NomeCompleto}" Margin="0,10,0,10" FontSize="Large" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="End"></Label>
             </Grid>
         </StackLayout>
         <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
             <Label Text="Token Id" HorizontalOptions="CenterAndExpand"></Label>
-            <Label Text="wJxT8UXe/kiuJ7S7yHRO5g==" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="{Binding ClienteBasico.TokenId}" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
             <StackLayout Padding="10">
                 <Button Text="Gerar Qr Code" BackgroundColor="#ff9933" Command="{Binding GerarQrCodeCommand}" VerticalOptions="EndAndExpand"></Button>
             </StackLayout>

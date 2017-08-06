@@ -6,15 +6,10 @@
              xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              x:Class="AppFidelidade_App_Adm.Views.LoginPage"
-             BackgroundImage="fidelidadeBackground.png}">
-    <!--<xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="White" StepPercentage="0" />
-            <xfg:GradientStep StepColor="#3847d4" StepPercentage="1" />
-        </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>-->
-    <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
-        <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0">
+             Style="{StaticResource background}">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     Opacity="{Binding Opacity}">
             <StackLayout Margin="0,5,0,0" VerticalOptions="StartAndExpand" Spacing="0">
                 <Image Source="logo.png" HeightRequest="180"></Image>
             </StackLayout>
@@ -34,10 +29,14 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout Margin="0,5,0,0" VerticalOptions="EndAndExpand" Spacing="0">
-                <Entry Placeholder="Usuario" TextColor="White" Text="{Binding Login.Usuario}"></Entry>
-                <Entry Placeholder="Senha" IsPassword="True" TextColor="White" Text="{Binding Login.Senha}"></Entry>
-                <Button IsEnabled="{Binding IsVisibleOrEnable}" Text="Login" FontSize="Large" TextColor="White" BackgroundColor="#f48947" Command="{Binding LoginCommand}"></Button>
+                <Entry Placeholder="Usuario" TextColor="Gray" Text="{Binding Login.Usuario}" IsEnabled="{Binding IsVisibleOrEnable}"></Entry>
+                <Entry Placeholder="Senha" IsPassword="True" TextColor="Gray" Text="{Binding Login.Senha}" IsEnabled="{Binding IsVisibleOrEnable}"></Entry>
+                <Button IsEnabled="{Binding IsVisibleOrEnable}" Text="Login" FontSize="Large" TextColor="White" BackgroundColor="#F3A626" Command="{Binding LoginCommand}"></Button>
             </StackLayout>
         </StackLayout>
-    </StackLayout>
+        <StackLayout IsVisible="{Binding IsBusy}" Padding="12" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color ="#F3A626"/>
+            <Label Text="Carregando..." HorizontalOptions="Center" TextColor="Black"/>
+        </StackLayout>
+    </AbsoluteLayout>
 </base:BasePage>

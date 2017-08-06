@@ -10,6 +10,7 @@ namespace AppFidelidade.Dominio.Administracao.Interface.Applicacao
         RegraListaViewModel ObterTodos(int idFilial, int take, int skip);
         RegraListaViewModel ObterPorValorInicialFinal(int idFilial, decimal valorInicial, decimal valorFinal, int take, int skip);
         RegraBasicoViewModel Adicionar(RegraBasicoViewModel obj);
+        RegraBasicoViewModel Atualizar(RegraBasicoViewModel obj);
         void AtivarDesativar(int idRegra, int idFuncionarioLogado);
     }
 }

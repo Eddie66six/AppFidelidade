@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System;
+using Newtonsoft.Json;
 
 namespace AppFidelidade_App_Adm.ViewModels
 {
@@ -13,6 +15,7 @@ namespace AppFidelidade_App_Adm.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IPageDialogService _dialogService;
         public ICommand NovoFuncionarioCommand { get; }
+        public ICommand NavigateCommand { get; }
         private int total = 0;
         private List<Funcionario> _funcionarios;
 
@@ -28,6 +31,13 @@ namespace AppFidelidade_App_Adm.ViewModels
             _navigationService = navigationService;
             _dialogService = dialogService;
             NovoFuncionarioCommand = new Command(NovoFuncionario);
+            NavigateCommand = new Command<Funcionario>(EditarFuncionario);
+        }
+
+        private async void EditarFuncionario(Funcionario obj)
+        {
+            obj.IdFuncionarioLogado = Data.ObterIdFuncionario();
+            await _navigationService.NavigateAsync($"NovoFuncionarioPage?obj={JsonConvert.SerializeObject(obj)}");
         }
 
         private void NovoFuncionario()

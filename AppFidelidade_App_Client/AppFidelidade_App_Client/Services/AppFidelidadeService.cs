@@ -9,7 +9,7 @@ namespace AppFidelidade_App_Client.Services
 {
     public class AppFidelidadeService
     {
-        private readonly string _baseUrl = "http://192.168.0.104:3000/";
+        private readonly string _baseUrl = "http://192.168.25.188:3000/";
         private HttpClient client = new HttpClient();
         public AppFidelidadeService()
         {
@@ -29,7 +29,7 @@ namespace AppFidelidade_App_Client.Services
                 else
                     return new Tuple<Errors, ClienteBasico>(null, JsonConvert.DeserializeObject<ClienteBasico>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -47,7 +47,7 @@ namespace AppFidelidade_App_Client.Services
                 else
                     return new Tuple<Errors, ClienteCredito>(null, JsonConvert.DeserializeObject<ClienteCredito>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -65,7 +65,7 @@ namespace AppFidelidade_App_Client.Services
                 else
                     return new Tuple<Errors, ClienteCreditosRetirar>(null, JsonConvert.DeserializeObject<ClienteCreditosRetirar>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

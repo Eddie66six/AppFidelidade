@@ -40,6 +40,33 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Administracao
             return Commit() ? new RegraBasicoViewModel(objSalvo) : null;
         }
 
+        public RegraBasicoViewModel Atualizar(RegraBasicoViewModel obj)
+        {
+            var funcionario = _funcionarioRepositorio.ObterPorId(obj.IdFuncionarioLogado, new string[] { });
+            if (funcionario == null || funcionario.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", funcionario == null ? "Usuario nao encontrado" : "Funcionario sem autorização"));
+                return null;
+            }
+            if (!obj.Inativo)
+            {
+                var contratoResumo = _contratoRepositorio.ObterResumoRegraFuncionario(funcionario.IdFilial);
+                if (contratoResumo == null || contratoResumo.RegrasCadastradas >= contratoResumo.MaxRegrasCadastradas)
+                {
+                    DomainEvent.Raise(new DomainNotification("adicionarRegra", contratoResumo == null ? "Contrato nao encontrado" : "Quantidade maxima da regra atingido"));
+                    return null;
+                }
+            }
+            var regra = _regraRepositorio.ObterPorId(obj.IdRegra, new string[] { });
+            if (regra == null)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Regra não encontrada"));
+                return null;
+            }
+            regra.Atualizar(obj);
+            return Commit() ? obj : null;
+        }
+
         public Regra ObterPorId(int id)
         {
             string[] includes = { };

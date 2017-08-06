@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Prism.Services;
 using AppFidelidade_App_Adm.Models.Regras;
 using AppFidelidade_App_Adm.Models.Contratos;
+using System;
+using Newtonsoft.Json;
 
 namespace AppFidelidade_App_Adm.ViewModels
 {
@@ -14,6 +16,7 @@ namespace AppFidelidade_App_Adm.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IPageDialogService _dialogService;
         public ICommand NovaRegraCommand { get; }
+        public ICommand NavigateCommand { get; }
         private int total = 0;
         private List<Regra> _regras;
 
@@ -44,7 +47,14 @@ namespace AppFidelidade_App_Adm.ViewModels
             _navigationService = navigationService;
             _dialogService = dialogService;
             NovaRegraCommand = new Command(NovaRegra);
+            NavigateCommand = new Command<Regra>(EditarRegar);
             PermiteCadastrar = Data.ObterTipoFuncionario() == 1;
+        }
+
+        private async void EditarRegar(Regra obj)
+        {
+            obj.IdFuncionarioLogado = Data.ObterIdFuncionario();
+            await _navigationService.NavigateAsync($"NovaRegraPage?obj={JsonConvert.SerializeObject(obj)}");
         }
 
         private async void NovaRegra()
@@ -62,6 +72,7 @@ namespace AppFidelidade_App_Adm.ViewModels
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");
                 AtivarLoad(false);
+                return;
             }
             else
             {
@@ -77,6 +88,7 @@ namespace AppFidelidade_App_Adm.ViewModels
             {
                 await _dialogService.DisplayAlertAsync("Erro", resultResumo?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");
                 AtivarLoad(false);
+                return;
             }
             else
             {

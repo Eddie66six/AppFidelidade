@@ -15,7 +15,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
 
         public Contrato ObterPorIdFilial(int idFilial)
         {
-            return Db.Contrato.FirstOrDefault(p=> p.IdFilial == idFilial);
+            return Db.Contrato.FirstOrDefault(p => p.IdFilial == idFilial);
         }
 
         public ResumoRegraFuncionarioViewModel ObterResumoRegraFuncionario(int idFilial)
@@ -25,7 +25,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
                 {
                     FuncionariosCadastrados = p.Filial.Funcionarios.Count(),
                     MaxFuncionariosCadastrados = p.MaxFuncionariosCadastrados,
-                    RegrasCadastradas = p.Filial.Regras.Count(),
+                    RegrasCadastradas = p.Filial.Regras.Count(i => i.Inativo == false),
                     MaxRegrasCadastradas = p.MaxRegrasCadastradas
                 }).FirstOrDefault();
         }

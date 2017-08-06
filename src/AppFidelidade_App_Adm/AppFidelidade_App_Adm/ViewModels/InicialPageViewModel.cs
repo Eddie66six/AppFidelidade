@@ -4,6 +4,9 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using Prism.Services;
 using AppFidelidade_App_Adm.Models.Contratos;
+using AppFidelidade_App_Adm.Services;
+using Newtonsoft.Json;
+using System;
 
 namespace AppFidelidade_App_Adm.ViewModels
 {
@@ -35,7 +38,7 @@ namespace AppFidelidade_App_Adm.ViewModels
             _dialogService = dialogService;
             ResgatarCreditoCommand = new Command(ResgatarCredito);
             GerarCreditoCommand = new Command(GerarCredito);
-            Adm = false;
+            Adm = Data.ObterTipoFuncionario() == 1;
         }
 
         private async void GerarCredito()

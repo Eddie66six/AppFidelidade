@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Style x:Key="background" TargetType="ContentPage">
-                <Setter Property="BackgroundColor" Value="#8690ea" />
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
             <!--label-->
             <Style x:Key="menuItem" TargetType="Label">
@@ -15,36 +15,43 @@
             </Style>
             <Style x:Key="labelTitulo" TargetType="Label">
                 <Setter Property="FontSize" Value="30" />
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextColor" Value="#7f8e9e" />
             </Style>
             <Style x:Key="labelDefault" TargetType="Label">
                 <Setter Property="FontSize" Value="Default" />
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextColor" Value="#7f8e9e" />
             </Style>
             <Style x:Key="labelMedium" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextColor" Value="#7f8e9e" />
             </Style>
             <Style x:Key="labelLarge" TargetType="Label">
                 <Setter Property="FontSize" Value="Large" />
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextColor" Value="#7f8e9e" />
             </Style>
             <!--button-->
-            <Style x:Key="baseButton" TargetType="Button">
+            <Style x:Key="baseButtonAcao" TargetType="Button">
                 <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="#3385c6" />
             </Style>
-            <Style x:Key="gerarCredito" TargetType="Button" BasedOn="{StaticResource baseButton}">
-                <Setter Property="Image" Value="gerar_credito_black.png" />
-                <Setter Property="Text" Value="Gerar Crédito" />
+            <Style x:Key="btnAcao" TargetType="Button" BasedOn="{StaticResource baseButtonAcao}">
             </Style>
-            <Style x:Key="resgatarCredito" TargetType="Button" BasedOn="{StaticResource baseButton}">
-                <Setter Property="Image" Value="resgatar_credito_black.png" />
-                <Setter Property="Text" Value="Resgatar Crédito" />
-            </Style>
-            <Style x:Key="salvar" TargetType="Button">
-                <Setter Property="Text" Value="Salvar" />
+
+            <Style x:Key="baseButtonFinalizar" TargetType="Button">
                 <Setter Property="FontSize" Value="Default" />
-                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="#AEC00B" />
+            </Style>
+            <Style x:Key="btnFinalizar" TargetType="Button" BasedOn="{StaticResource baseButtonFinalizar}">
+            </Style>
+
+            <Style x:Key="baseButtonExcluir" TargetType="Button">
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="#F54A3F" />
+            </Style>
+            <Style x:Key="btnExcluir" TargetType="Button" BasedOn="{StaticResource baseButtonExcluir}">
             </Style>
         </ResourceDictionary>
     </Application.Resources>

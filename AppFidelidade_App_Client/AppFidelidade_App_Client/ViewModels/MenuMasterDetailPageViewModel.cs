@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using System;
 
 namespace AppFidelidade_App_Client.ViewModels
 {
@@ -57,6 +59,16 @@ namespace AppFidelidade_App_Client.ViewModels
                     Parametro = "LoginPage"
                 }
             };
+        }
+
+        public override async Task LoadAsync()
+        {
+            if (Data.DataUltimoLogin != null && Data.DataUltimoLogin.Date == DateTime.Today.Date)
+                return;
+            if (!Data.ExisteCliente())
+            {
+                await _navigationService.NavigateAsync("LoginPage");
+            }
         }
     }
     public class ItemMenu

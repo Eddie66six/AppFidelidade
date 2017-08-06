@@ -45,21 +45,8 @@ namespace AppFidelidade_App_Adm
             var storage = new StorageService();
             var loginData = storage.ObterLogin();
             if (loginData == null) return false;
-
             var data = JsonConvert.DeserializeObject<Models.FuncionarioLogin>(loginData.LoginData);
-            if (data.LoginData == null || data.LoginData.ExpiresIn < DateTime.UtcNow.AddHours(5))
-            {
-                var login = JsonConvert.DeserializeObject<Models.Login>(loginData.LoginData);
-                if (login == null || login.Usuario == null || login.Senha == null)
-                {
-                    return false;
-                }
-                var api = new AppFidelidadeService();
-                var result = await api.FuncionarioLogin(login.Usuario, login.Senha);
-                if (result == null || result.Item1 != null) return false;
-                var sqlLogin = new Models.SqLiteLogin(login, result.Item2);
-                storage.InserirLogin(sqlLogin);
-            }
+            if (data.LoginData == null) return false;
             Data.SalvarLogin(data);
             return true;
         }

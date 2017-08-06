@@ -2,8 +2,6 @@
 using AppFidelidade.Infra.Data.Repositorio._Comum;
 using System.Linq;
 using AppFidelidade.Dominio.Funcionario.ViewModel;
-using AppFidelidade.Dominio.Funcionario.Entidade;
-using System;
 using System.Data.Entity;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
@@ -21,12 +19,12 @@ namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
             {
                 query = query.Include(include);
             }
-            return query.FirstOrDefault(p => p.IdFuncionario == idFuncionario);
+            return query.FirstOrDefault(p => p.IdFuncionario == idFuncionario && p.DataExclusao == null);
         }
 
         public FuncionarioListaViewModel ObterTodosPorFilial(int idFuncionarioLogado, int idFilial, int take, int skip, string[] includes)
         {
-            var funcionaros = Db.Funcionario.Where(p => p.IdFilial == idFilial && p.IdFuncionario != idFuncionarioLogado);
+            var funcionaros = Db.Funcionario.Where(p => p.IdFilial == idFilial && p.IdFuncionario != idFuncionarioLogado && p.DataExclusao == null);
             return new FuncionarioListaViewModel
             {
                 Total = funcionaros.Count(),
@@ -43,7 +41,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
         }
         public FuncionarioListaViewModel ObterTodosPorEmpresa(int idEmpresa, int take, int skip, string[] includes)
         {
-            var funcionaros = Db.Funcionario.Where(p => p.Filial.IdEmpresa == idEmpresa);
+            var funcionaros = Db.Funcionario.Where(p => p.Filial.IdEmpresa == idEmpresa && p.DataExclusao == null);
             return new FuncionarioListaViewModel
             {
                 Total = funcionaros.Count(),
@@ -59,12 +57,12 @@ namespace AppFidelidade.Infra.Data.Repositorio.Funcionario
 
         public Dominio.Funcionario.Entidade.Funcionario ObterPorLogin(string usuario, string senha, string[] includes)
         {
-            return Db.Funcionario.FirstOrDefault(p => p.Usuario == usuario && p.Senha == senha);
+            return Db.Funcionario.FirstOrDefault(p => p.Usuario == usuario && p.Senha == senha && p.DataExclusao == null);
         }
 
         public int ObterQuantidadeFuncionarioAtivosCadastrados(int idFilial)
         {
-            return Db.Funcionario.Count(p => p.IdFilial == idFilial);
+            return Db.Funcionario.Count(p => p.IdFilial == idFilial && p.DataExclusao == null);
         }
     }
 }

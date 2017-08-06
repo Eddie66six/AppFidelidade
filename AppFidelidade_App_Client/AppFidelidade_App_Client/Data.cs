@@ -1,16 +1,30 @@
-﻿namespace AppFidelidade_App_Client
+﻿using AppFidelidade_App_Client.Models;
+using System;
+
+namespace AppFidelidade_App_Client
 {
     public static class Data
     {
-        private static string QrCode { get; set; }
-        public static void SalvarQrCode()
+        public static DateTime DataUltimoLogin;
+        private static ClienteBasico Cliente { get; set; }
+        public static void SalvarCliente(ClienteBasico cliente)
         {
-            QrCode = "wJxT8UXe/kiuJ7S7yHRO5g==";
+            Cliente = cliente;
+            DataUltimoLogin = DateTime.Now;
         }
 
         public static string ObterQrCode()
         {
-            return QrCode;
+            return Cliente.TokenId;
+        }
+        public static bool ExisteCliente()
+        {
+            return Cliente != null;
+        }
+
+        public static ClienteBasico ObterDadosCliente()
+        {
+            return Cliente;
         }
     }
 }

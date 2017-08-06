@@ -40,7 +40,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Administracao
             {
                 query = query.Include(include);
             }
-            return query.FirstOrDefault(p => p.IdFilial == id);
+            return query.FirstOrDefault(p => p.IdRegra == id);
         }
 
         public RegraListaViewModel ObterPorTipoDesconto(int idFilial, ETipoDesconto tipo, int take, int skip, string[] includes)

@@ -9,5 +9,6 @@ namespace AppFidelidade.Dominio.Cliente.Interface.Repositorio
         List<Entidade.Cliente> ObterPorFilial(int idFilial, string[] includes);
         Entidade.Cliente ObeterPorTokenId(string tokenId, string[] includes);
         bool VerificaSeTokenIdJaExiste(string tokenId);
+        decimal ObterTotalCreditosCliente(int idCliente);
     }
 }

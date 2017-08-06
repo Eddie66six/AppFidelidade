@@ -19,7 +19,18 @@ namespace AppFidelidade_App_Client.ViewModels
 
         private async void Logar()
         {
-            await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
+            var api = new Services.AppFidelidadeService();
+            var result = await api.ClienteBasico(1);
+            if (result == null || result.Item1 != null)
+            {
+                await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");
+                AtivarLoad(false);
+            }
+            else
+            {
+                Data.SalvarCliente(result.Item2);
+                await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
+            }
         }
     }
 }

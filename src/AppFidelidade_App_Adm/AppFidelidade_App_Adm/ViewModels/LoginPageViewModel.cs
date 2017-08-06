@@ -32,6 +32,12 @@ namespace AppFidelidade_App_Adm.ViewModels
         private async void Logar()
         {
             AtivarLoad(true);
+            if(string.IsNullOrEmpty(Login.Usuario) || string.IsNullOrEmpty(Login.Senha))
+            {
+                AtivarLoad(false);
+                await _dialogService.DisplayAlertAsync("Erro", "Usuario e senha obrigatorios", "OK");
+                return;
+            }
             var api = new AppFidelidadeService();
             var result = await api.FuncionarioLogin(Login.Usuario, Login.Senha);
             if (result == null || result.Item1 != null)

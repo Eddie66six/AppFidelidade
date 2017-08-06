@@ -65,7 +65,9 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
                 DomainEvent.Raise(new DomainNotification("ObterPorId", "Cliente nao encontrado"));
                 return null;
             }
-            return new ClienteBasicoViewModel(cliente, null);
+            var retorno = new ClienteBasicoViewModel(cliente, null);
+            retorno.ValorCreditoNaFilial = _clienteRepositorio.ObterTotalCreditosCliente(id);
+            return retorno;
         }
     }
 }

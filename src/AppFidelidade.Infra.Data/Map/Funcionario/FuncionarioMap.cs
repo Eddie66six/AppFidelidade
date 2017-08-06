@@ -18,6 +18,9 @@ namespace AppFidelidade.Infra.Data.Map.Funcionario
             HasRequired(p => p.Filial)
                 .WithMany(p => p.Funcionarios)
                 .HasForeignKey(p => p.IdFilial);
+            HasOptional(p => p.FuncionarioExclusao)
+                .WithMany(p => p.FuncionariosExcluidos)
+                .HasForeignKey(p => p.IdFuncionarioExclusao);
         }
     }
 }

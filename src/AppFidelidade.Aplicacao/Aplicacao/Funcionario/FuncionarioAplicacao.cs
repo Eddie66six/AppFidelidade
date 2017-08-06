@@ -55,5 +55,49 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Funcionario
             var objSalvo = _funcionarioRepositorio.Adicionar(new Dominio.Funcionario.Entidade.Funcionario(obj.Nome, obj.Tipo, funcionario.IdFilial, obj.Usuario, obj.Senha));
             return Commit() ? new FuncionarioBasicoViewModel(objSalvo) : null;
         }
+        public FuncionarioBasicoViewModel Atualizar(FuncionarioBasicoViewModel obj)
+        {
+            var funcionario = _funcionarioRepositorio.ObterPorId(obj.IdFuncionarioLogado, new string[] { });
+            if (funcionario == null)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarFuncionario", "Usuario nao encontrado"));
+                return null;
+            }
+            if (funcionario.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Funcionario sem autorização"));
+                return null;
+            }
+            var novoFuncionario = _funcionarioRepositorio.ObterPorId(obj.IdFuncionario, new string[] { });
+            if (novoFuncionario == null)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Funcionario não encontrado"));
+                return null;
+            }
+            novoFuncionario.Atualizar(obj);
+            return Commit() ? obj : null;
+        }
+        public void Excluir(int idFuncionario, int idFuncionarioLogado)
+        {
+            var funcionario = _funcionarioRepositorio.ObterPorId(idFuncionarioLogado, new string[] { });
+            if (funcionario == null)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarFuncionario", "Usuario nao encontrado"));
+                return;
+            }
+            if (funcionario.Tipo != Dominio.Funcionario.Enum.ETipoFuncionario.Administrador)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Funcionario sem autorização"));
+                return;
+            }
+            var funcionarioDb = _funcionarioRepositorio.ObterPorId(idFuncionario, new string[] { });
+            if (funcionarioDb == null)
+            {
+                DomainEvent.Raise(new DomainNotification("adicionarRegra", "Funcionario não encontrado"));
+                return;
+            }
+            funcionarioDb.Excluir(idFuncionarioLogado);
+            Commit();
+        }
     }
 }

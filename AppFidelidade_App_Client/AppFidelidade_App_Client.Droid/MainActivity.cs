@@ -16,7 +16,8 @@ namespace AppFidelidade_App_Client.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            //ZXing.Net.Mobile.Forms.Android.Platform.Init();
+            ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);
             TabLayoutResource = Resource.Layout.tabs;
             ToolbarResource = Resource.Layout.toolbar;
 

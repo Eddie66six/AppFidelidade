@@ -9,25 +9,27 @@
              xmlns:base="clr-namespace:AppFidelidade_App_Adm.Views;assembly=AppFidelidade_App_Adm"
              Title="Novo funcionario"
              Style="{StaticResource background}">
-    <!--<xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="#5560c5" StepPercentage="0.2" />
-            <xfg:GradientStep StepColor="#021093" StepPercentage="1" />
-        </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>-->
-    <StackLayout Padding="10">
-        <StackLayout>
-            <Label Text="Nome do funcionario"></Label>
-            <control:CustomEntry Text="{Binding Funcionario.Nome}" MaxLength="40"></control:CustomEntry>
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Padding="10" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     Opacity="{Binding Opacity}">
+            <StackLayout>
+                <Label Text="Nome do funcionario"></Label>
+                <control:CustomEntry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Funcionario.Nome}" MaxLength="40"></control:CustomEntry>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Usuario"></Label>
+                <control:CustomEntry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Funcionario.Usuario}" MaxLength="12"></control:CustomEntry>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Senha"></Label>
+                <control:CustomEntry IsEnabled="{Binding IsVisibleOrEnable}" Text="{Binding Funcionario.Senha}" MaxLength="12"></control:CustomEntry>
+            </StackLayout>
+            <Button IsEnabled="{Binding IsVisibleOrEnable}" Command="{Binding SalvarFuncionarioCommand}" Text="Salvar" Style="{StaticResource btnFinalizar}"></Button>
+            <Button IsEnabled="{Binding IsVisibleOrEnable}" Command="{Binding ExcluirFuncionarioCommand}" Text="Excluir" Style="{StaticResource btnExcluir}" IsVisible="{Binding Editar}"></Button>
         </StackLayout>
-        <StackLayout>
-            <Label Text="Usuario"></Label>
-            <control:CustomEntry Text="{Binding Funcionario.Usuario}" MaxLength="12"></control:CustomEntry>
+        <StackLayout IsVisible="{Binding IsBusy}" Padding="12" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color ="#F3A626"/>
+            <Label Text="Carregando..." HorizontalOptions="Center" TextColor="Black"/>
         </StackLayout>
-        <StackLayout>
-            <Label Text="Senha"></Label>
-            <control:CustomEntry Text="{Binding Funcionario.Senha}" MaxLength="12"></control:CustomEntry>
-        </StackLayout>
-        <Button Style="{StaticResource salvar}" Command="{Binding SalvarFuncionarioCommand}"></Button>
-    </StackLayout>
+    </AbsoluteLayout>
 </base:BasePage>

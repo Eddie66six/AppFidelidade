@@ -1,6 +1,7 @@
 ﻿using Prism.Unity;
 using AppFidelidade_App_Client.Views;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace AppFidelidade_App_Client
 {
@@ -11,8 +12,14 @@ namespace AppFidelidade_App_Client
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            Data.SalvarQrCode();
-            await NavigationService.NavigateAsync("LoginPage");
+            if (await CheckLogin())
+            {
+                await NavigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
+            }
+            else
+            {
+                await NavigationService.NavigateAsync("LoginPage");
+            }
         }
 
         protected override void RegisterTypes()
@@ -26,6 +33,13 @@ namespace AppFidelidade_App_Client
             Container.RegisterTypeForNavigation<QrCodePage>();
             Container.RegisterTypeForNavigation<CreditosPage>();
             Container.RegisterTypeForNavigation<CreditosResgatePage>();
+        }
+        protected async Task<bool> CheckLogin()
+        {
+            //var storage = new StorageService();
+            //var loginData = storage.ObterLogin();
+            //if (loginData == null) return false;
+            return true;
         }
     }
 }

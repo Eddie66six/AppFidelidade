@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppFidelidade.Dominio.Administracao.ViewModel;
+using System;
 using System.Collections.Generic;
 
 namespace AppFidelidade.Dominio.Administracao.Entidade
@@ -25,6 +26,14 @@ namespace AppFidelidade.Dominio.Administracao.Entidade
         public void AtivarDesativar()
         {
             Inativo = !Inativo;
+        }
+
+        public void Atualizar(RegraBasicoViewModel obj)
+        {
+            Nome = obj.Nome;
+            ValorAcimaDe = obj.ValorAcimaDe;
+            ValorDaRegra = obj.ValorDaRegra;
+            Inativo = obj.Inativo;
         }
         #endregion
 

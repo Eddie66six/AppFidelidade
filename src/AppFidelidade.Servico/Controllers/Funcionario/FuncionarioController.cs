@@ -41,5 +41,18 @@ namespace AppFidelidade.Servico.Controllers.Funcionario
         {
             return CreateResponse(HttpStatusCode.OK, _funcionarioAplicacao.Adicionar(obj));
         }
+        [HttpPut]
+        [Route("atualizar")]
+        public Task<HttpResponseMessage> AtualizarFuncionario(FuncionarioBasicoViewModel obj)
+        {
+            return CreateResponse(HttpStatusCode.OK, _funcionarioAplicacao.Atualizar(obj));
+        }
+        [HttpDelete]
+        [Route("excluir")]
+        public Task<HttpResponseMessage> ExcluirFuncionario(int idFuncionario,int idFuncionarioLogado)
+        {
+            _funcionarioAplicacao.Excluir(idFuncionario, idFuncionarioLogado);
+            return CreateResponse(HttpStatusCode.OK, "");
+        }
     }
 }

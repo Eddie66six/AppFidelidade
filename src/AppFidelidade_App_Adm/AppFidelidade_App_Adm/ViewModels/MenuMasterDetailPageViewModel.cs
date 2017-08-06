@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using System;
+using Newtonsoft.Json;
 
 namespace AppFidelidade_App_Adm.ViewModels
 {
@@ -52,7 +55,7 @@ namespace AppFidelidade_App_Adm.ViewModels
                 new ItemMenu
                 {
                     Icone = "resgatar_credito_black.png",
-                    Nome = "Resgatar creito",
+                    Nome = "Resgatar credito",
                     Parametro = "MenuNavigationPage/ResgatarCreditoPage",
                     Visivel = true
                 },
@@ -86,6 +89,40 @@ namespace AppFidelidade_App_Adm.ViewModels
                     Visivel = true
                 }
             };
+        }
+
+        public override async Task LoadAsync()
+        {
+            if (Data.DataUltimoLogin != null && Data.DataUltimoLogin.Date == DateTime.Today.Date)
+                return;
+            var storage = new StorageService();
+            var loginData = storage.ObterLogin();
+            if (loginData == null)
+            {
+                storage.Limpar();
+                await _navigationService.NavigateAsync("LoginPage");
+            }
+
+            var data = JsonConvert.DeserializeObject<Models.FuncionarioLogin>(loginData.LoginData);
+            if (data.LoginData == null || data.LoginData.ExpiresIn < DateTime.UtcNow.AddHours(5))
+            {
+                var login = JsonConvert.DeserializeObject<Models.Login>(loginData.Login);
+                if (login == null || login.Usuario == null || login.Senha == null)
+                {
+                    storage.Limpar();
+                    await _navigationService.NavigateAsync("LoginPage");
+                }
+                var api = new AppFidelidadeService();
+                var result = await api.FuncionarioLogin(login.Usuario, login.Senha);
+                if (result == null || result.Item1 != null)
+                {
+                    storage.Limpar();
+                    await _navigationService.NavigateAsync("LoginPage");
+                }
+                var sqlLogin = new Models.SqLiteLogin(login, result.Item2);
+                storage.InserirLogin(sqlLogin);
+            }
+            Data.SalvarLogin(data);
         }
     }
 

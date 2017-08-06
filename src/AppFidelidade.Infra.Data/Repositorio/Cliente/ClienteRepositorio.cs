@@ -3,6 +3,7 @@ using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Infra.Data.Repositorio._Comum;
 using System.Linq;
 using System.Data.Entity;
+using System;
 
 namespace AppFidelidade.Infra.Data.Repositorio.Cliente
 {
@@ -40,6 +41,11 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
                 query = query.Include(include);
             }
             return query.FirstOrDefault(p => p.IdCliente == id);
+        }
+
+        public decimal ObterTotalCreditosCliente(int idCliente)
+        {
+            return Db.Compra.Where(p => p.IdCliente == idCliente && p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0 && DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.Today)).Sum(p=>p.ValorRestanteCredito);
         }
 
         public bool VerificaSeTokenIdJaExiste(string tokenId)

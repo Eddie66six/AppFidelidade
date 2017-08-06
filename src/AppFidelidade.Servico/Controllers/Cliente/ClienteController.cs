@@ -16,7 +16,7 @@ namespace AppFidelidade.Servico.Controllers.Cliente
         {
             _clienteAplicacao = clienteAplicacao;
         }
-
+        [AllowAnonymous]
         [Route("obter")]
         [HttpGet]
         public Task<HttpResponseMessage> ObterPorId(int id)
