@@ -6,5 +6,14 @@
              xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
              x:Class="AppFidelidade_App_Client.Views.SobrePage"
              Title="Sobre">
-  
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     Opacity="{Binding Opacity}">
+            <Label Text="Sobre"></Label>
+        </StackLayout>
+        <StackLayout IsVisible="{Binding IsBusy}" Padding="12" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color ="#F3A626"/>
+            <Label Text="Carregando..." HorizontalOptions="Center" TextColor="Black"/>
+        </StackLayout>
+    </AbsoluteLayout>
 </base:BasePage>

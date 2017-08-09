@@ -33,6 +33,7 @@ namespace AppFidelidade_App_Client
             Container.RegisterTypeForNavigation<QrCodePage>();
             Container.RegisterTypeForNavigation<CreditosPage>();
             Container.RegisterTypeForNavigation<CreditosResgatePage>();
+            Container.RegisterTypeForNavigation<CompartilharPage>();
         }
         protected async Task<bool> CheckLogin()
         {

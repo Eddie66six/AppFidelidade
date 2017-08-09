@@ -43,18 +43,14 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
                 }
             }
         }
-        private void Creditar()
+        public void Creditar()
         {
-            InserirCredito(Regra.ValorDaRegra);
+            ValorRestanteCredito = valorCredito ?? 0;
             DataRetiradaCredito = DateTime.UtcNow;
-            DataVencimentoCredito = DateTime.Today.AddMonths(Filial.QtdeMesesVencimentoCredito);
+            DataVencimentoCredito = DateTime.UtcNow.AddMonths(Filial.QtdeMesesVencimentoCredito);
             
         }
 
-        public void InserirCredito(decimal valor)
-        {
-            ValorRestanteCredito += valor;
-        }
         public void RetirarCredito(decimal valor)
         {
             ValorRestanteCredito -= valor;

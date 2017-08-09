@@ -46,6 +46,7 @@
     <Compile Include="Services\AppFidelidadeService.cs" />
     <Compile Include="Util\ByteImageConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CompartilharPageViewModel.cs" />
     <Compile Include="ViewModels\CreditosPageViewModel.cs" />
     <Compile Include="ViewModels\CreditosResgatePageViewModel.cs" />
     <Compile Include="ViewModels\InicialPageViewModel.cs" />
@@ -55,6 +56,9 @@
     <Compile Include="ViewModels\QrCodePageViewModel.cs" />
     <Compile Include="ViewModels\SobrePageViewModel.cs" />
     <Compile Include="Views\BasePage.cs" />
+    <Compile Include="Views\CompartilharPage.xaml.cs">
+      <DependentUpon>CompartilharPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreditosPage.xaml.cs">
       <DependentUpon>CreditosPage.xaml</DependentUpon>
     </Compile>
@@ -195,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CreditosResgatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CompartilharPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -13,7 +13,7 @@ namespace AppFidelidade_App_Client.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-
+            MyOnNavigatedTo(parameters);
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -24,6 +24,11 @@ namespace AppFidelidade_App_Client.ViewModels
         public virtual Task LoadAsync()
         {
             return Task.FromResult(0);
+        }
+
+        public virtual void MyOnNavigatedTo(NavigationParameters parameters)
+        {
+
         }
 
         private bool _isVisibleOrEnable = true;
@@ -40,8 +45,16 @@ namespace AppFidelidade_App_Client.ViewModels
             set { SetProperty(ref _isBusy, value); }
         }
 
+        private decimal _opacity;
+        public decimal Opacity
+        {
+            get { return _opacity == 0 ? 1.0m : _opacity; }
+            set { SetProperty(ref _opacity, value); }
+        }
+
         public void AtivarLoad(bool ativar)
         {
+            Opacity = ativar == true ? 0.5m : 1.0m;
             IsBusy = ativar;
             IsVisibleOrEnable = !ativar;
         }

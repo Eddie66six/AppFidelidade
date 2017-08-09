@@ -33,5 +33,12 @@ namespace AppFidelidade.Servico.Controllers.Cliente
         {
             return CreateResponse(HttpStatusCode.OK, _compraAplicacao.LancarCompra(obj));
         }
+        [Route("creditarCompra")]
+        [HttpPut]
+        public Task<HttpResponseMessage> CreditarCompra(CreditarCompraViewModel obj)
+        {
+            _compraAplicacao.CreditarCompra(obj);
+            return CreateResponse(HttpStatusCode.OK, "");
+        }
     }
 }

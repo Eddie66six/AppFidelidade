@@ -1,7 +1,10 @@
 ﻿using AppFidelidade_App_Client.Models;
+using Newtonsoft.Json;
 using Prism.Navigation;
 using Prism.Services;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace AppFidelidade_App_Client.ViewModels
 {
@@ -9,6 +12,8 @@ namespace AppFidelidade_App_Client.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IPageDialogService _dialogService;
+
+        public ICommand NavigateCommand { get; }
 
         private ClienteCreditosRetirar _clienteCreditosRetirar;
         public ClienteCreditosRetirar ClienteCreditosRetirar
@@ -21,6 +26,12 @@ namespace AppFidelidade_App_Client.ViewModels
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
+            NavigateCommand = new Command<ClienteCreditosRetirarBasico>(Compartilhar);
+        }
+
+        private async void Compartilhar(ClienteCreditosRetirarBasico obj)
+        {
+            await _navigationService.NavigateAsync($"CompartilharPage?obj={JsonConvert.SerializeObject(obj).Replace("/", "-")}");
         }
         public override async Task LoadAsync()
         {

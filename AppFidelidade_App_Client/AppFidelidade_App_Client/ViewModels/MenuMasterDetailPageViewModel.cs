@@ -63,12 +63,17 @@ namespace AppFidelidade_App_Client.ViewModels
 
         public override async Task LoadAsync()
         {
+            AtivarLoad(true);
             if (Data.DataUltimoLogin != null && Data.DataUltimoLogin.Date == DateTime.Today.Date)
+            {
+                AtivarLoad(false);
                 return;
+            }
             if (!Data.ExisteCliente())
             {
                 await _navigationService.NavigateAsync("LoginPage");
             }
+            AtivarLoad(false);
         }
     }
     public class ItemMenu

@@ -33,6 +33,7 @@ namespace AppFidelidade_App_Client.ViewModels
         }
         public override async Task LoadAsync()
         {
+            AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
             var result = await api.ClienteBasico(1);
             if (result == null || result.Item1 != null)
@@ -44,6 +45,7 @@ namespace AppFidelidade_App_Client.ViewModels
             {
                 Data.SalvarCliente(result.Item2);
             }
+            AtivarLoad(false);
         }
     }
 }

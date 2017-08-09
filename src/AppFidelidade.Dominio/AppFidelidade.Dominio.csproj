@@ -50,6 +50,7 @@
     <Compile Include="Cliente\ViewModel\CompraBasicoViewModel.cs" />
     <Compile Include="Administracao\ViewModel\FilialResumoViewModel.cs" />
     <Compile Include="Administracao\ViewModel\InformcoesBasicaFilialViewModel.cs" />
+    <Compile Include="Cliente\ViewModel\CreditarCompraViewModel.cs" />
     <Compile Include="Cliente\ViewModel\LancarCompraViewModel.cs" />
     <Compile Include="Administracao\ViewModel\RegraBasicoViewModel.cs" />
     <Compile Include="Administracao\ViewModel\RegraListaViewModel.cs" />

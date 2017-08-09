@@ -1,4 +1,5 @@
-﻿using AppFidelidade.Dominio._Comum.Interface.Repositorio;
+﻿using System;
+using AppFidelidade.Dominio._Comum.Interface.Repositorio;
 using AppFidelidade.Dominio.Cliente.Entidade;
 using AppFidelidade.Dominio.Cliente.Interface.Aplicacao;
 using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
@@ -50,6 +51,18 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
             }
             var compra = funcionario.Filial.InserirCompra(new Compra(obj.ValorCompra, funcionario.Filial, funcionario, cliente, null));
             return Commit() ? new CompraBasicoViewModel(compra) : null;
+        }
+
+        public void CreditarCompra(CreditarCompraViewModel obj)
+        {
+            var compra = _compraRepositorio.ObterPorId(obj.IdCompra, new string[] { "Filial", "Regra" });
+            if (compra == null || compra.IdCliente != obj.IdCliente)
+            {
+                DomainEvent.Raise(new DomainNotification("CreditarCompra", "Compra nao encontrado"));
+                return;
+            }
+            compra.Creditar();
+            Commit();
         }
     }
 }

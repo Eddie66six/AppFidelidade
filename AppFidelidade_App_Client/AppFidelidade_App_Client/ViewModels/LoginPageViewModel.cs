@@ -19,6 +19,7 @@ namespace AppFidelidade_App_Client.ViewModels
 
         private async void Logar()
         {
+            AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
             var result = await api.ClienteBasico(1);
             if (result == null || result.Item1 != null)
@@ -31,6 +32,7 @@ namespace AppFidelidade_App_Client.ViewModels
                 Data.SalvarCliente(result.Item2);
                 await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
             }
+            AtivarLoad(false);
         }
     }
 }

@@ -7,5 +7,6 @@ namespace AppFidelidade.Dominio.Cliente.Interface.Aplicacao
         ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente);
         ClienteCreditosRetirarViewModel ObterBasicoCreditoRetirarCliente(int idCliente);
         CompraBasicoViewModel LancarCompra(LancarCompraViewModel obj);
+        void CreditarCompra(CreditarCompraViewModel obj);
     }
 }

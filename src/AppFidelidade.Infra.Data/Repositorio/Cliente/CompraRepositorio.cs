@@ -79,7 +79,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
             return query.Where(p => p.IdFilial == idFilial).ToList();
         }
 
-        public Compra ObterPorId(int id, string[] includes)
+        public Compra ObterPorId(long id, string[] includes)
         {
             var query = Db.Compra.AsQueryable();
             foreach (var include in includes)
