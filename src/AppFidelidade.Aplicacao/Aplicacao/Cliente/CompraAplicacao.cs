@@ -21,9 +21,9 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
             _clienteRepositorio = clienteRepositorio;
         }
 
-        public ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente)
+        public ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente, int skip, int take)
         {
-            return _compraRepositorio.ObeterBasicoCreditosCliente(idCliente);
+            return _compraRepositorio.ObeterBasicoCreditosCliente(idCliente, skip, take);
         }
 
         public ClienteCreditosRetirarViewModel ObterBasicoCreditoRetirarCliente(int idCliente)

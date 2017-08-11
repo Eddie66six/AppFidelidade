@@ -32,20 +32,25 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
                 }).ToList()
             };
         }
-        public ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente)
+        public ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente, int skip, int take)
         {
+            Db.Database.ExecuteSqlCommand("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");
             var compras = Db.Compra.Include("Filial")
-                .Where(p => p.IdCliente == idCliente && (p.DataVencimentoCredito == null || DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.Today)) && ((p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0) || p.DataRetiradaCredito == null)).ToList();
+                .Where(p => p.IdCliente == idCliente &&
+                    (p.DataVencimentoCredito == null || DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.Today)) &&
+                    ((p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0) || p.DataRetiradaCredito == null)).AsNoTracking().ToList();
             return new ClienteCreditoViewModel
             {
                 TotalCreditosParaRetirada = compras.Where(i => i.DataVencimentoCredito == null && i.DataRetiradaCredito == null).Sum(i => i.valorCredito ?? 0),
-                Creditos = compras.Where(p => p.DataRetiradaCredito.HasValue).GroupBy(p => new { p.Filial, p.DataVencimentoCredito }).Select(p => new ClienteCreditoBasicoViewModel
+                TotalRegistros = compras.Where(p => p.DataRetiradaCredito.HasValue).GroupBy(p => new { p.IdFilial,p.Filial.NomeFantasia, p.DataVencimentoCredito }).Count(),
+                Creditos = compras.Where(p => p.DataRetiradaCredito.HasValue).GroupBy(p => new { p.IdFilial, p.Filial.NomeFantasia, p.DataVencimentoCredito })
+                .Select(p => new ClienteCreditoBasicoViewModel
                 {
-                    IdFilial = p.Key.Filial.IdFilial,
-                    NomeFilial = p.Key.Filial.NomeFantasia,
+                    IdFilial = p.Key.IdFilial,
+                    NomeFilial = p.Key.NomeFantasia,
                     DataVencimento = p.Key.DataVencimentoCredito,
-                    TotalCreditos = compras.Where(i => i.DataVencimentoCredito == p.Key.DataVencimentoCredito && i.DataRetiradaCredito.HasValue && i.ValorRestanteCredito > 0).Sum(i => i.ValorRestanteCredito),
-                }).ToList()
+                    TotalCreditos = p.Sum(i=>i.ValorRestanteCredito)
+                }).OrderBy(p=>p.DataVencimento).Skip(skip).Take(take).ToList()
             };
         }
 

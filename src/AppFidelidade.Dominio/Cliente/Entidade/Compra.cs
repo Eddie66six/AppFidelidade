@@ -47,7 +47,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         {
             ValorRestanteCredito = valorCredito ?? 0;
             DataRetiradaCredito = DateTime.UtcNow;
-            DataVencimentoCredito = DateTime.UtcNow.AddMonths(Filial.QtdeMesesVencimentoCredito);
+            DataVencimentoCredito = DateTime.UtcNow.AddMonths(Filial.QtdeMesesVencimentoCredito).Date;
             
         }
 

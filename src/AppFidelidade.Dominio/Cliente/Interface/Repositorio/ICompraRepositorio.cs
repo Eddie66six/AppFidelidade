@@ -11,7 +11,7 @@ namespace AppFidelidade.Dominio.Cliente.Interface.Repositorio
         List<Entidade.Compra> ObterPorCliente(int idCliente, string[] includes);
         List<Entidade.Compra> ObterComCreditoPorCliente(int idCliente, string[] includes);
         List<Entidade.Compra> ObterSemCreditoPorCliente(int idCliente, string[] includes);
-        ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente);
+        ClienteCreditoViewModel ObeterBasicoCreditosCliente(int idCliente, int skip, int take);
         ClienteCreditosRetirarViewModel ObterBasicoCreditoRetirarCliente(int idCliente);
     }
 }

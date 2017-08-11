@@ -17,9 +17,9 @@ namespace AppFidelidade.Servico.Controllers.Cliente
         }
         [Route("obeterBasicoCreditosCliente")]
         [HttpGet]
-        public Task<HttpResponseMessage> ObeterBasicoCreditosCliente(int idCliente)
+        public Task<HttpResponseMessage> ObeterBasicoCreditosCliente(int idCliente, int skip, int take)
         {
-            return CreateResponse(HttpStatusCode.OK, _compraAplicacao.ObeterBasicoCreditosCliente(idCliente));
+            return CreateResponse(HttpStatusCode.OK, _compraAplicacao.ObeterBasicoCreditosCliente(idCliente, skip, take));
         }
         [Route("obterBasicoCreditoRetirarCliente")]
         [HttpGet]

@@ -36,11 +36,11 @@ namespace AppFidelidade_App_Client.Services
                 return null;
             }
         }
-        public async Task<Tuple<Errors, ClienteCredito>> ObterCreditoBasico(int idCliente)
+        public async Task<Tuple<Errors, ClienteCredito>> ObterCreditoBasico(int idCliente, int skip, int take)
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/compra/obeterBasicoCreditosCliente?idCliente={idCliente}");
+                HttpResponseMessage response = await client.GetAsync($"{_baseUrl}api/v1/compra/obeterBasicoCreditosCliente?idCliente={idCliente}&skip={skip}&take={take}");
                 var result = await response.Content.ReadAsStringAsync();
                 if (result == null || (response.StatusCode != System.Net.HttpStatusCode.BadRequest && response.StatusCode != System.Net.HttpStatusCode.OK))
                     return new Tuple<Errors, ClienteCredito>(null, null);

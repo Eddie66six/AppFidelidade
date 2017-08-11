@@ -7,6 +7,9 @@ namespace AppFidelidade_App_Client.Views
         public CreditosPage()
         {
             InitializeComponent();
+            listView.ItemSelected += (sender, e) => {
+                ((ListView)sender).SelectedItem = null;
+            };
         }
     }
 }

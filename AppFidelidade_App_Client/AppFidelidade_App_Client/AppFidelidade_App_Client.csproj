@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\InfiniteListView.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Models\ClienteBasico.cs" />
     <Compile Include="Models\ClienteCredito.cs" />
