@@ -22,19 +22,25 @@ namespace AppFidelidade_App_Client.ViewModels
             set { SetProperty(ref _clienteCreditosRetirar, value); }
         }
 
+        private int Click { get; set; }
+
         public CreditosResgatePageViewModel(INavigationService navigationService, IPageDialogService dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
             NavigateCommand = new Command<ClienteCreditosRetirarBasico>(Compartilhar);
+            Click = 0;
         }
 
-        private async void Compartilhar(ClienteCreditosRetirarBasico obj)
+        private void Compartilhar(ClienteCreditosRetirarBasico obj)
         {
-            await _navigationService.NavigateAsync($"CompartilharPage?obj={JsonConvert.SerializeObject(obj).Replace("/", "-")}");
+            Click++;
+            if(Click == 1)
+                _navigationService.NavigateAsync($"CompartilharPage?obj={JsonConvert.SerializeObject(obj).Replace("/", "-")}");
         }
         public override async Task LoadAsync()
         {
+            Click = 0;
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
             var result = await api.ObterCreditoResgatarBasico(1);

@@ -28,7 +28,8 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
                     NomeFilial = p.Filial.NomeFantasia,
                     IdCompra = p.IdCompra,
                     DataCompra = p.Data,
-                    Creditos = p.valorCredito ?? 0
+                    Creditos = p.valorCredito ?? 0,
+                    ValorCompra = p.ValorCompra
                 }).ToList()
             };
         }
@@ -49,7 +50,8 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
                     IdFilial = p.Key.IdFilial,
                     NomeFilial = p.Key.NomeFantasia,
                     DataVencimento = p.Key.DataVencimentoCredito,
-                    TotalCreditos = p.Sum(i=>i.ValorRestanteCredito)
+                    TotalCreditos = p.Sum(i=>i.ValorRestanteCredito),
+                    TotalCompras = p.Sum(i=> i.ValorCompra)
                 }).OrderBy(p=>p.DataVencimento).Skip(skip).Take(take).ToList()
             };
         }

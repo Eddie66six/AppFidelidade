@@ -9,5 +9,6 @@ namespace AppFidelidade.Dominio.Cliente.ViewModel
         public long IdCompra { get; set; }
         public DateTime? DataCompra { get; set; }
         public decimal Creditos { get; set; }
+        public decimal ValorCompra { get; set; }
     }
 }

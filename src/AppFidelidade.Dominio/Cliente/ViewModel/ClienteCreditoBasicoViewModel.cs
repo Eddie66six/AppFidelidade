@@ -8,5 +8,6 @@ namespace AppFidelidade.Dominio.Cliente.ViewModel
         public string NomeFilial { get; set; }
         public DateTime? DataVencimento { get; set; }
         public decimal TotalCreditos { get; set; }
+        public decimal TotalCompras { get; set; }
     }
 }

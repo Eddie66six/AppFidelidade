@@ -16,7 +16,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Image Source="https://ak5.picdn.net/shutterstock/videos/6963961/thumb/9.jpg" HeightRequest="200" Aspect="AspectFill"></Image>
+                    <Image Source="clientInicialBackground.png" HeightRequest="200" Aspect="AspectFill"></Image>
                     <StackLayout Margin="10" VerticalOptions="Start">
                         <Label Text="Credito" TextColor="White" FontSize="30" HorizontalOptions="CenterAndExpand"></Label>
                         <Label Text="{Binding ClienteBasico.ValorCreditoNaFilial, StringFormat='R${0:N}'}" TextColor="White" FontSize="40" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
