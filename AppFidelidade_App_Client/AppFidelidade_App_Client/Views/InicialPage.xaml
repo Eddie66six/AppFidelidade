@@ -7,6 +7,7 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
              x:Class="AppFidelidade_App_Client.Views.InicialPage"
+             BackgroundColor="White"
              Title="Inicio">
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout Spacing="0" VerticalOptions="FillAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
@@ -16,20 +17,20 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Image Source="clientInicialBackground.png" HeightRequest="200" Aspect="AspectFill"></Image>
+                    <BoxView HeightRequest="200" Margin="0,0,0,5" BackgroundColor="#f3a626"></BoxView>
                     <StackLayout Margin="10" VerticalOptions="Start">
                         <Label Text="Credito" TextColor="White" FontSize="30" HorizontalOptions="CenterAndExpand"></Label>
                         <Label Text="{Binding ClienteBasico.ValorCreditoNaFilial, StringFormat='R${0:N}'}" TextColor="White" FontSize="40" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                     </StackLayout>
-                    <BoxView HeightRequest="50" BackgroundColor="Black" Opacity=".5" VerticalOptions="End"></BoxView>
-                    <Label Text="{Binding ClienteBasico.NomeCompleto}" Margin="0,10,0,10" FontSize="Large" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="End"></Label>
+                    <Image Source="background_redondo.png" Aspect="AspectFill" VerticalOptions="End"></Image>
+                    <Label Text="{Binding ClienteBasico.NomeCompleto}" FontSize="Large" TextColor="Gray" HorizontalOptions="CenterAndExpand" VerticalOptions="End"></Label>
                 </Grid>
             </StackLayout>
             <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
                 <Label Text="Token Id" HorizontalOptions="CenterAndExpand"></Label>
                 <Label Text="{Binding ClienteBasico.TokenId}" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
                 <StackLayout Padding="10">
-                    <Button Text="Gerar Qr Code" BackgroundColor="#ff9933" Command="{Binding GerarQrCodeCommand}" VerticalOptions="EndAndExpand"></Button>
+                    <Button Text="Gerar Qr Code" BackgroundColor="#3385c6" Command="{Binding GerarQrCodeCommand}" VerticalOptions="EndAndExpand"></Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
