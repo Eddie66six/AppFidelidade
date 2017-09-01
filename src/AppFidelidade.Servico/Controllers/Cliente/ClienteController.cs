@@ -30,11 +30,11 @@ namespace AppFidelidade.Servico.Controllers.Cliente
             return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.ObeterPorTokenId(tokenId, idFilial));
         }
         [AllowAnonymous]
-        [Route("adicionar")]
+        [Route("adicionarAtualizar")]
         [HttpPost]
-        public Task<HttpResponseMessage> Adicionar(ClienteBasicoViewModel cliente)
+        public Task<HttpResponseMessage> AdicionarAtualizar(ClienteBasicoViewModel cliente)
         {
-            return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.Adicionar(cliente));
+            return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.AdicionarAtualizar(cliente));
         }
     }
 }

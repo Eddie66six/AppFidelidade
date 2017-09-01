@@ -4,11 +4,17 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using Prism.Services;
+using System;
+using AppFidelidade_App_Client.Helpers;
+using AppFidelidade_App_Client.Services;
 
 namespace AppFidelidade_App_Client.ViewModels
 {
     public class InicialPageViewModel : BaseViewModel
     {
+        AzureServices azureService;
+        AppFidelidadeService appFidelidadeService;
+
         private readonly INavigationService _navigationService;
         private readonly IPageDialogService _dialogService;
         public ICommand GerarQrCodeCommand { get; }
@@ -22,10 +28,12 @@ namespace AppFidelidade_App_Client.ViewModels
 
         public InicialPageViewModel(IPageDialogService dialogService, INavigationService navigationService)
         {
+            azureService = Xamarin.Forms.DependencyService.Get<AzureServices>();
+            appFidelidadeService = Xamarin.Forms.DependencyService.Get<AppFidelidadeService>();
             _navigationService = navigationService;
             _dialogService = dialogService;
             GerarQrCodeCommand = new Command(GerarQrCode);
-            ClienteBasico = Data.ObterDadosCliente();
+            ClienteBasico = new ClienteBasico();
         }
         private async void GerarQrCode()
         {
@@ -34,17 +42,17 @@ namespace AppFidelidade_App_Client.ViewModels
         public override async Task LoadAsync()
         {
             AtivarLoad(true);
-            var api = new Services.AppFidelidadeService();
-            var result = await api.ClienteBasico(1);
+            //cria o cliente
+            var result = await appFidelidadeService.AdicionarAtualizar(Settings.Nome, Settings.UserId);
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");
                 AtivarLoad(false);
+                return;
             }
-            else
-            {
-                Data.SalvarCliente(result.Item2);
-            }
+            ClienteBasico = result.Item2;
+            Settings.UsuarioTokenId = ClienteBasico.TokenId;
+            Settings.IdCliente = ClienteBasico.IdCliente.ToString();
             AtivarLoad(false);
         }
     }

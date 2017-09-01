@@ -4,16 +4,26 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System;
+using AppFidelidade_App_Client.Helpers;
+using AppFidelidade_App_Client.Services;
 
 namespace AppFidelidade_App_Client.ViewModels
 {
     public class MenuMasterDetailPageViewModel : BaseViewModel
     {
+        AzureServices azureService;
         public List<ItemMenu> ItensMenu { get; }
         INavigationService _navigationService;
         public ICommand NavigateCommand { get; set; }
+
+        public string UrlFoto { get; set; }
+        public string Nome { get; set; }
+
         public MenuMasterDetailPageViewModel(INavigationService navigationService)
         {
+            azureService = Xamarin.Forms.DependencyService.Get<AzureServices>();
+            UrlFoto = Settings.Foto;
+            Nome = Settings.Nome;
             _navigationService = navigationService;
             NavigateCommand = new Command<ItemMenu>(Navigate);
             ItensMenu = ObterMenus();
@@ -21,7 +31,27 @@ namespace AppFidelidade_App_Client.ViewModels
 
         private void Navigate(ItemMenu parametro)
         {
-            _navigationService.NavigateAsync(parametro.Parametro);
+            if(parametro.Parametro != "LoginPage")
+            {
+                _navigationService.NavigateAsync(parametro.Parametro);
+            }
+            else
+            {
+                Settings.Clear();
+                _navigationService.NavigateAsync(parametro.Parametro);
+            }
+        }
+
+        public override async Task LoadAsync()
+        {
+            if (Convert.ToDateTime(Settings.LoginDate).Date != DateTime.UtcNow.Date)
+            {
+                if (!await azureService.LoginAsync())
+                {
+                    await _navigationService.NavigateAsync("LoginPage");
+                    return;
+                }
+            }
         }
 
         private List<ItemMenu> ObterMenus()
@@ -59,21 +89,6 @@ namespace AppFidelidade_App_Client.ViewModels
                     Parametro = "LoginPage"
                 }
             };
-        }
-
-        public override async Task LoadAsync()
-        {
-            AtivarLoad(true);
-            if (Data.DataUltimoLogin != null && Data.DataUltimoLogin.Date == DateTime.Today.Date)
-            {
-                AtivarLoad(false);
-                return;
-            }
-            if (!Data.ExisteCliente())
-            {
-                await _navigationService.NavigateAsync("LoginPage");
-            }
-            AtivarLoad(false);
         }
     }
     public class ItemMenu

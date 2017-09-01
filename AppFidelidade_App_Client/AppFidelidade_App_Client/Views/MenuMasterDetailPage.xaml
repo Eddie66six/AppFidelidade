@@ -4,12 +4,21 @@
                   xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   prism:ViewModelLocator.AutowireViewModel="True"
                   x:Class="AppFidelidade_App_Client.Views.MenuMasterDetailPage"
+                  xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
                   xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms">
     <MasterDetailPage.Master>
         <ContentPage Title="Default">
             <StackLayout Spacing="0">
-                <StackLayout Margin="0,20,0,0">
-                    <Image Source="logo.png" HeightRequest="150"></Image>
+                <StackLayout Margin="0,20,0,20">
+                    <circleImage:CircleImage
+                        BorderThickness="3"
+                        BorderColor = "White"
+                        HeightRequest = "130"
+                        WidthRequest = "130"
+                        Aspect ="AspectFill"
+                        HorizontalOptions = "Center"
+                        Source="{Binding UrlFoto}"></circleImage:CircleImage>
+                    <Label Text="{Binding Nome}" HorizontalOptions="Center" VerticalOptions="End"></Label>
                 </StackLayout>
                 <StackLayout Spacing="0">
                     <ListView ItemsSource="{Binding ItensMenu}">

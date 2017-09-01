@@ -1,7 +1,9 @@
-﻿using AppFidelidade_App_Client.Models;
+﻿using AppFidelidade_App_Client.Helpers;
+using AppFidelidade_App_Client.Models;
 using Newtonsoft.Json;
 using Prism.Navigation;
 using Prism.Services;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -43,7 +45,7 @@ namespace AppFidelidade_App_Client.ViewModels
             Click = 0;
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
-            var result = await api.ObterCreditoResgatarBasico(1);
+            var result = await api.ObterCreditoResgatarBasico(Convert.ToInt32(Settings.IdCliente));
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");

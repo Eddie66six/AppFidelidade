@@ -18,13 +18,30 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
             _filialRepositorio = filialRepositorio;
         }
 
-        public ClienteBasicoViewModel Adicionar(ClienteBasicoViewModel obj)
+        public ClienteBasicoViewModel AdicionarAtualizar(ClienteBasicoViewModel obj)
         {
-            var cliente = new Dominio.Cliente.Entidade.Cliente(obj.Nome, obj.Sobrenome, obj.DataNascimento, obj.Endereco);
+            //verifica se ja tem cadastro
+            var clienteDb = _clienteRepositorio.ObterPorAuth(obj.UserId);
+            if (clienteDb != null)
+            {
+                clienteDb.Atualizar(obj);
+                var retorno = new ClienteBasicoViewModel(clienteDb, null);
+                retorno.ValorCreditoNaFilial = _clienteRepositorio.ObterTotalCreditosCliente(clienteDb.IdCliente);
+                return Commit() ? retorno : null;
+
+            }
+            //cria um novo
+            var cliente = new Dominio.Cliente.Entidade.Cliente(obj.Nome, obj.Sobrenome, obj.DataNascimento, new Dominio._Comum.Entidade.Endereco(null, null, null, null, null), obj.UserId);
             while (_clienteRepositorio.VerificaSeTokenIdJaExiste(cliente.TokenId))
                 cliente.GerarTokenId();
             var dbCliente = _clienteRepositorio.Adicionar(cliente);
-            return Commit() ? new ClienteBasicoViewModel(cliente, null) : null;
+            if (Commit())
+            {
+                var retorno = new ClienteBasicoViewModel(dbCliente, null);
+                retorno.ValorCreditoNaFilial = _clienteRepositorio.ObterTotalCreditosCliente(dbCliente.IdCliente);
+                return retorno;
+            }
+            return null;
         }
 
         public Dominio.Cliente.Entidade.Cliente Adicionar(Dominio.Cliente.Entidade.Cliente obj)

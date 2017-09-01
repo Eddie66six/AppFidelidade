@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using System;
 using System.Linq;
 using System.Collections.ObjectModel;
+using AppFidelidade_App_Client.Helpers;
 
 namespace AppFidelidade_App_Client.ViewModels
 {
@@ -48,7 +49,7 @@ namespace AppFidelidade_App_Client.ViewModels
                 return;
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
-            var result = await api.ObterCreditoBasico(1, ((page - 1) * pageSize), pageSize);
+            var result = await api.ObterCreditoBasico(Convert.ToInt32(Settings.IdCliente), ((page - 1) * pageSize), pageSize);
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");
@@ -69,7 +70,7 @@ namespace AppFidelidade_App_Client.ViewModels
         {
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
-            var result = await api.ObterCreditoBasico(1, 0, pageSize);
+            var result = await api.ObterCreditoBasico(Convert.ToInt32(Settings.IdCliente), 0, pageSize);
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");

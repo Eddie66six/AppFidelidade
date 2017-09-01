@@ -5,6 +5,7 @@ using Prism.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System;
+using AppFidelidade_App_Client.Helpers;
 
 namespace AppFidelidade_App_Client.ViewModels
 {
@@ -35,7 +36,7 @@ namespace AppFidelidade_App_Client.ViewModels
             //TODO compratilhou
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
-            var result = await api.CreditarCompra(Data.ObterDadosCliente().IdCliente, ClienteCreditosRetirarBasico.IdCompra);
+            var result = await api.CreditarCompra(Convert.ToInt32(Settings.IdCliente), ClienteCreditosRetirarBasico.IdCompra);
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");

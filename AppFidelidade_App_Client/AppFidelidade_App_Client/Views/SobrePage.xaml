@@ -9,7 +9,16 @@
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
                      Opacity="{Binding Opacity}">
-            <Label Text="Sobre"></Label>
+            <StackLayout>
+                <Image x:Name="logoImage" Source="logo.png" VerticalOptions="CenterAndExpand" HeightRequest="200">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClickLogoCommand}" CommandParameter="{Reference Name=logoImage}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding EasterEggsVisibility}">
+                <Label Text="Surprise motherfucker" FontSize="Large" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+            </StackLayout>
         </StackLayout>
         <StackLayout IsVisible="{Binding IsBusy}" Padding="12" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
             <ActivityIndicator IsRunning="{Binding IsBusy}" Color ="#F3A626"/>

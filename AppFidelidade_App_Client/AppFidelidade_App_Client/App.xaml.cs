@@ -2,6 +2,7 @@
 using AppFidelidade_App_Client.Views;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using AppFidelidade_App_Client.Helpers;
 
 namespace AppFidelidade_App_Client
 {
@@ -12,13 +13,15 @@ namespace AppFidelidade_App_Client
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            if (await CheckLogin())
+            if (Settings.IsLoggedIn)
             {
                 await NavigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
+                return;
             }
             else
             {
                 await NavigationService.NavigateAsync("LoginPage");
+                return;
             }
         }
 
@@ -34,13 +37,6 @@ namespace AppFidelidade_App_Client
             Container.RegisterTypeForNavigation<CreditosPage>();
             Container.RegisterTypeForNavigation<CreditosResgatePage>();
             Container.RegisterTypeForNavigation<CompartilharPage>();
-        }
-        protected async Task<bool> CheckLogin()
-        {
-            //var storage = new StorageService();
-            //var loginData = storage.ObterLogin();
-            //if (loginData == null) return false;
-            return true;
         }
     }
 }

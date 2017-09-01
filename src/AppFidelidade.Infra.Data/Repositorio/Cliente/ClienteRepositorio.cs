@@ -45,12 +45,17 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
 
         public decimal ObterTotalCreditosCliente(int idCliente)
         {
-            return Db.Compra.Where(p => p.IdCliente == idCliente && p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0 && DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.Today)).Sum(p=>p.ValorRestanteCredito);
+            return Db.Compra.Where(p => p.IdCliente == idCliente && p.DataRetiradaCredito != null && p.ValorRestanteCredito > 0 && DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.UtcNow))?.Sum(p => (decimal?)p.ValorRestanteCredito) ?? 0;
         }
 
         public bool VerificaSeTokenIdJaExiste(string tokenId)
         {
             return Db.Cliente.Any(p => p.TokenId == tokenId);
+        }
+
+        public Dominio.Cliente.Entidade.Cliente ObterPorAuth(string userId)
+        {
+            return Db.Cliente.FirstOrDefault(p => p.UserId == userId);
         }
     }
 }

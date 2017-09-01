@@ -1,5 +1,6 @@
 ﻿using AppFidelidade.Dominio._Comum.Entidade;
 using AppFidelidade.Dominio.Administracao.Entidade;
+using AppFidelidade.Dominio.Cliente.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             Filiais = new List<FilialCliente>();
             Compras = new List<Compra>();
         }
-        public Cliente(string nome, string sobrenome, DateTime dataNascimento, Endereco endereco)
+        public Cliente(string nome, string sobrenome, DateTime? dataNascimento, Endereco endereco, string userId)
         {
             Filiais = new List<FilialCliente>();
             Compras = new List<Compra>();
@@ -22,6 +23,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             DataNascimento = dataNascimento;
             Endereco = endereco;
             DataCadastro = DateTime.UtcNow;
+            UserId = userId;
             GerarTokenId();
         }
         #region Metodos
@@ -59,13 +61,23 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             }
             return true;
         }
+
+        public void Atualizar(ClienteBasicoViewModel obj)
+        {
+            Nome = obj.Nome;
+            Sobrenome = obj.Sobrenome;
+            DataNascimento = obj.DataNascimento;
+            UserId = obj.UserId;
+            //Endereco = obj.Endereco;
+        }
         #endregion
         #region attr
         public int IdCliente { get; private set; }
         public string Nome { get; private set; }
         public string Sobrenome { get; private set; }
-        public DateTime DataNascimento { get; private set; }
+        public DateTime? DataNascimento { get; private set; }
         public string TokenId { get; private set; }
+        public string UserId { get; private set; }
         public virtual Endereco Endereco { get; private set; }
         public DateTime DataCadastro { get; private set; }
         public List<Compra> Compras { get; private set; }

@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AppFidelidade_App_Client.Helpers;
+using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 
 namespace AppFidelidade_App_Client.Views
@@ -18,7 +19,7 @@ namespace AppFidelidade_App_Client.Views
             barcode.BarcodeOptions.Width = 500;
             barcode.BarcodeOptions.Height = 500;
             barcode.BarcodeOptions.Margin = 5;
-            barcode.BarcodeValue = Data.ObterQrCode();
+            barcode.BarcodeValue = Settings.UsuarioTokenId;
             Content = barcode;
         }
     }

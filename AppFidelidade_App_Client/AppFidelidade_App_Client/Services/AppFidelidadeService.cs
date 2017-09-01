@@ -1,4 +1,5 @@
 ﻿using AppFidelidade_App_Client.Models;
+using AppFidelidade_App_Client.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,13 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
+[assembly: Xamarin.Forms.Dependency(typeof(AppFidelidadeService))]
 namespace AppFidelidade_App_Client.Services
 {
     public class AppFidelidadeService
     {
-        private readonly string _baseUrl = "http://192.168.0.104:3000/";
+        //private readonly string _baseUrl = "http://appfidelidadeapi.azurewebsites.net/";
+        private readonly string _baseUrl = "http://192.168.15.8:3000/";
         private HttpClient client = new HttpClient();
         public AppFidelidadeService()
         {
@@ -84,6 +87,25 @@ namespace AppFidelidade_App_Client.Services
                     return new Tuple<Errors, string>(JsonConvert.DeserializeObject<Errors>(result), null);
                 else
                     return new Tuple<Errors, string>(null, result);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<Tuple<Errors, ClienteBasico>> AdicionarAtualizar(string nome, string userId)
+        {
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/cliente/adicionarAtualizar", new StringContent(JsonConvert.SerializeObject(new { Nome = nome, UserId = userId }), Encoding.UTF8, "application/json"));
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null || (response.StatusCode != System.Net.HttpStatusCode.BadRequest && response.StatusCode != System.Net.HttpStatusCode.OK))
+                    return null;
+                if (result.Contains("errors"))
+                    return new Tuple<Errors, ClienteBasico>(JsonConvert.DeserializeObject<Errors>(result), null);
+                else
+                    return new Tuple<Errors, ClienteBasico>(null, JsonConvert.DeserializeObject<ClienteBasico>(result));
             }
             catch (Exception e)
             {

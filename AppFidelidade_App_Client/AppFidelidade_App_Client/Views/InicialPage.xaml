@@ -5,6 +5,7 @@
              xmlns:util="clr-namespace:AppFidelidade_App_Client.Util;assembly=AppFidelidade_App_Client"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:control="clr-namespace:AppFidelidade_App_Client.Controls;assembly=AppFidelidade_App_Client"
              xmlns:base="clr-namespace:AppFidelidade_App_Client.Views;assembly=AppFidelidade_App_Client"
              x:Class="AppFidelidade_App_Client.Views.InicialPage"
              BackgroundColor="White"
@@ -30,7 +31,7 @@
                 <Label Text="Token Id" HorizontalOptions="CenterAndExpand"></Label>
                 <Label Text="{Binding ClienteBasico.TokenId}" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
                 <StackLayout Padding="10">
-                    <Button Text="Gerar Qr Code" BackgroundColor="#3385c6" Command="{Binding GerarQrCodeCommand}" VerticalOptions="EndAndExpand"></Button>
+                    <control:RoundedButton Text="Gerar Qr Code" BackgroundColor="#3385c6" Command="{Binding GerarQrCodeCommand}" VerticalOptions="EndAndExpand"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>
