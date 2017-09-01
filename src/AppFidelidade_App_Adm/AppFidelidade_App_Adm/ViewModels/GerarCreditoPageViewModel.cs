@@ -44,7 +44,6 @@ namespace AppFidelidade_App_Adm.ViewModels
             _dialogService = dialogService;
             LerQrCodeCommand = new Command(LerQrCode);
             GerarCreditoCommand = new Command(GerarCredito);
-            QrCode = "wJxT8UXe/kiuJ7S7yHRO5g==";
         }
 
         private async void GerarCredito()
