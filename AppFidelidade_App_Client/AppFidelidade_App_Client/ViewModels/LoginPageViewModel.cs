@@ -31,16 +31,11 @@ namespace AppFidelidade_App_Client.ViewModels
             var loginFacebook = await azureService.LoginAsync();
             if(loginFacebook)
             {
-                //cria o cliente
-                var result = await appFidelidadeService.AdicionarAtualizar(Settings.Nome, Settings.UserId);
-                if (result == null || result.Item1 != null)
-                {
-                    await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");
-                    AtivarLoad(false);
-                    return;
-                }
-                Settings.TokenId = result.Item2.TokenId;
                 await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
+            }
+            else
+            {
+                await _dialogService.DisplayAlertAsync("Erro", "Não foi possivel logar com o facebook", "OK");
             }
             AtivarLoad(false);
         }

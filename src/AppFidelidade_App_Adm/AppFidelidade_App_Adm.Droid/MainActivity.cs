@@ -11,7 +11,7 @@ using Microsoft.Practices.Unity;
 
 namespace AppFidelidade_App_Adm.Droid
 {
-    [Activity(Label = "AppFidelidade_App_Adm", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Reward ADM", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

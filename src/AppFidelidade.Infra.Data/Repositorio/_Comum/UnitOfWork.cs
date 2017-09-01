@@ -21,7 +21,7 @@ namespace AppFidelidade.Infra.Data.Repositorio._Comum
             }
             catch (Exception e)
             {
-                DomainEvent.Raise(new DomainNotification("SaveChanges", e.Message));
+                DomainEvent.Raise(new DomainNotification("SaveChanges", e.ToString()));
                 return false;
             }
         }

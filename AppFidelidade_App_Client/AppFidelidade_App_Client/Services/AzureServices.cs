@@ -45,12 +45,6 @@ namespace AppFidelidade_App_Client.Services
                 Settings.AuthToken = string.Empty;
                 Settings.UserId = string.Empty;
                 Settings.Foto = string.Empty;
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var dialogService = DependencyService.Get<Prism.Services.IPageDialogService>();
-                    await dialogService.DisplayAlertAsync("Erro", "Login facebook","OK");
-
-                });
                 return false;
             }
             identities = await Client.InvokeApiAsync<List<AppServiceIdentity>>("/.auth/me");
