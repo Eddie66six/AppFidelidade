@@ -68,7 +68,12 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             Sobrenome = obj.Sobrenome;
             DataNascimento = obj.DataNascimento;
             UserId = obj.UserId;
+            TokenPush = obj.TokenPush;
             //Endereco = obj.Endereco;
+        }
+        public void RemoverTokenPush()
+        {
+            TokenPush = null;
         }
         #endregion
         #region attr
@@ -78,6 +83,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
         public DateTime? DataNascimento { get; private set; }
         public string TokenId { get; private set; }
         public string UserId { get; private set; }
+        public string TokenPush { get; private set; }
         public virtual Endereco Endereco { get; private set; }
         public DateTime DataCadastro { get; private set; }
         public List<Compra> Compras { get; private set; }

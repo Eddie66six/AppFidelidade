@@ -43,7 +43,7 @@ namespace AppFidelidade_App_Client.ViewModels
         {
             AtivarLoad(true);
             //cria o cliente
-            var result = await appFidelidadeService.AdicionarAtualizar(Settings.Nome, Settings.UserId);
+            var result = await appFidelidadeService.AdicionarAtualizar(Settings.Nome, Settings.UserId, Settings.TokenPush);
             if (result == null || result.Item1 != null)
             {
                 await _dialogService.DisplayAlertAsync("Erro", result?.Item1.errors[0].Value ?? "Ocorreu um erro", "OK");

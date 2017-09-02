@@ -36,5 +36,13 @@ namespace AppFidelidade.Servico.Controllers.Cliente
         {
             return CreateResponse(HttpStatusCode.OK, _clienteAplicacao.AdicionarAtualizar(cliente));
         }
+        [AllowAnonymous]
+        [Route("removerTokenPush")]
+        [HttpPost]
+        public Task<HttpResponseMessage> RemoverTokenPush(int idCliente)
+        {
+            _clienteAplicacao.RemoverTokenPush(idCliente);
+            return CreateResponse(HttpStatusCode.OK, "");
+        }
     }
 }

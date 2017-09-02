@@ -92,6 +92,15 @@ namespace AppFidelidade_App_Client.Helpers
             set { _appSettings.AddOrUpdateValue(_idCliente, value); }
         }
 
+        private const string _tokenPush = "tokenPush";
+        private static readonly string _tokenPushDefault = string.Empty;
+
+        public static string TokenPush
+        {
+            get { return _appSettings.GetValueOrDefault(_tokenPush, _tokenPushDefault); }
+            set { _appSettings.AddOrUpdateValue(_tokenPush, value); }
+        }
+
         private const string _usuarioTokenId = "usuarioTokenId";
         private static readonly string _usuarioTokenIdDefault = string.Empty;
 

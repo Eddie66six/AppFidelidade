@@ -11,6 +11,7 @@ namespace AppFidelidade_App_Client.ViewModels
 {
     public class MenuMasterDetailPageViewModel : BaseViewModel
     {
+        AppFidelidadeService appFidelidadeService;
         AzureServices azureService;
         public List<ItemMenu> ItensMenu { get; }
         INavigationService _navigationService;
@@ -21,6 +22,7 @@ namespace AppFidelidade_App_Client.ViewModels
 
         public MenuMasterDetailPageViewModel(INavigationService navigationService)
         {
+            appFidelidadeService = Xamarin.Forms.DependencyService.Get<AppFidelidadeService>();
             azureService = Xamarin.Forms.DependencyService.Get<AzureServices>();
             UrlFoto = Settings.Foto;
             Nome = Settings.Nome;
@@ -29,16 +31,17 @@ namespace AppFidelidade_App_Client.ViewModels
             ItensMenu = ObterMenus();
         }
 
-        private void Navigate(ItemMenu parametro)
+        private async void Navigate(ItemMenu parametro)
         {
             if(parametro.Parametro != "LoginPage")
             {
-                _navigationService.NavigateAsync(parametro.Parametro);
+                await _navigationService.NavigateAsync(parametro.Parametro);
             }
             else
             {
+                appFidelidadeService.RemoverTokenPush(Convert.ToInt32(Settings.IdCliente));
                 Settings.Clear();
-                _navigationService.NavigateAsync(parametro.Parametro);
+                await _navigationService.NavigateAsync(parametro.Parametro);
             }
         }
 

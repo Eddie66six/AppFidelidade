@@ -76,6 +76,10 @@
       <HintPath>..\..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
@@ -115,9 +119,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -143,6 +144,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Cliente\ClienteController.cs" />
     <Compile Include="Controllers\Cliente\CompraController.cs" />
+    <Compile Include="Controllers\Externo\TesteController.cs" />
     <Compile Include="Controllers\Funcionario\FuncionarioController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleAuthorizationServerProvider.cs" />
@@ -177,6 +179,10 @@
     <ProjectReference Include="..\AppFidelidade.Dominio\AppFidelidade.Dominio.csproj">
       <Project>{34916704-ECEB-461B-A711-BFDDE881F287}</Project>
       <Name>AppFidelidade.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppFidelidade.Infra.Externo\AppFidelidade.Infra.Externo.csproj">
+      <Project>{9DAB25F1-34DC-4A85-8CC5-FC2974CEA646}</Project>
+      <Name>AppFidelidade.Infra.Externo</Name>
     </ProjectReference>
     <ProjectReference Include="..\AppFidelidade.Infra.Ioc\AppFidelidade.Infra.Ioc.csproj">
       <Project>{2878E4C6-BD37-46BF-90E7-A15D96605433}</Project>

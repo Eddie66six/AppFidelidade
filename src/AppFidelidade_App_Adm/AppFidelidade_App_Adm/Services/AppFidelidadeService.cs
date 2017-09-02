@@ -17,8 +17,8 @@ namespace AppFidelidade_App_Adm.Services
 {
     public class AppFidelidadeService
     {
-        private readonly string _baseUrl = "http://appfidelidadeapi.azurewebsites.net/";
-        //private readonly string _baseUrl = "http://192.168.15.8:3000/";
+        //private readonly string _baseUrl = "http://appfidelidadeapi.azurewebsites.net/";
+        private readonly string _baseUrl = "http://192.168.15.8:3000/";
 
         private HttpClient client = new HttpClient();
         public AppFidelidadeService(string token = null)

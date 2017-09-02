@@ -3,6 +3,8 @@ using AppFidelidade_App_Client.Views;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using AppFidelidade_App_Client.Helpers;
+using PushNotification.Plugin;
+using System;
 
 namespace AppFidelidade_App_Client
 {
@@ -25,6 +27,11 @@ namespace AppFidelidade_App_Client
             }
         }
 
+        public static void SalvarTokenPush(string token)
+        {
+            Settings.TokenPush = token;
+        }
+
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<NavigationPage>();
@@ -37,6 +44,11 @@ namespace AppFidelidade_App_Client
             Container.RegisterTypeForNavigation<CreditosPage>();
             Container.RegisterTypeForNavigation<CreditosResgatePage>();
             Container.RegisterTypeForNavigation<CompartilharPage>();
+        }
+
+        protected override void OnStart()
+        {
+            CrossPushNotification.Current.Register();
         }
     }
 }

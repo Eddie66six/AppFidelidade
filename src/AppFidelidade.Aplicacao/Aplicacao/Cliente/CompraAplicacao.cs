@@ -6,6 +6,7 @@ using AppFidelidade.Dominio.Cliente.Interface.Repositorio;
 using AppFidelidade.Dominio.Cliente.ViewModel;
 using AppFidelidade.Dominio.Compartilhado.DomainEvent;
 using AppFidelidade.Dominio.Funcionario.Interface.Repositorio;
+using AppFidelidade.Infra.Externo.Servicos;
 
 namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
 {
@@ -50,7 +51,17 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
                 return null;
             }
             var compra = funcionario.Filial.InserirCompra(new Compra(obj.ValorCompra, funcionario.Filial, funcionario, cliente, null));
-            return Commit() ? new CompraBasicoViewModel(compra) : null;
+            if (Commit())
+            {
+                //push sobre a compra caso ganhe credito
+                if (compra.valorCredito > 0)
+                {
+                    var push = new PushNotification();
+                    push.SendGooglePush(cliente.TokenPush, "Nova Compra", $"Você ganhou {compra.valorCredito:C} de credito");
+                }
+                return new CompraBasicoViewModel(compra);
+            }
+            return null;
         }
 
         public void CreditarCompra(CreditarCompraViewModel obj)

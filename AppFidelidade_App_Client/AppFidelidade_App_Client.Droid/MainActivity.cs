@@ -8,6 +8,8 @@ using Android.Widget;
 using Android.OS;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using PushNotification.Plugin;
+using Android.Content;
 
 namespace AppFidelidade_App_Client.Droid
 {
@@ -16,7 +18,6 @@ namespace AppFidelidade_App_Client.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            //ZXing.Net.Mobile.Forms.Android.Platform.Init();
             ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);
             TabLayoutResource = Resource.Layout.tabs;
             ToolbarResource = Resource.Layout.toolbar;
@@ -25,6 +26,18 @@ namespace AppFidelidade_App_Client.Droid
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
+        }
+
+        protected override void OnDestroy()
+        {
+            try
+            {
+                base.OnDestroy();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 

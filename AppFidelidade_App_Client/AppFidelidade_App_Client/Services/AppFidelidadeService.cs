@@ -13,8 +13,8 @@ namespace AppFidelidade_App_Client.Services
 {
     public class AppFidelidadeService
     {
-        private readonly string _baseUrl = "http://appfidelidadeapi.azurewebsites.net/";
-        //private readonly string _baseUrl = "http://192.168.15.8:3000/";
+        //private readonly string _baseUrl = "http://appfidelidadeapi.azurewebsites.net/";
+        private readonly string _baseUrl = "http://192.168.15.8:3000/";
         private HttpClient client = new HttpClient();
         public AppFidelidadeService()
         {
@@ -93,12 +93,11 @@ namespace AppFidelidade_App_Client.Services
                 return null;
             }
         }
-
-        public async Task<Tuple<Errors, ClienteBasico>> AdicionarAtualizar(string nome, string userId)
+        public async Task<Tuple<Errors, ClienteBasico>> AdicionarAtualizar(string nome, string userId, string tokenPush)
         {
             try
             {
-                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/cliente/adicionarAtualizar", new StringContent(JsonConvert.SerializeObject(new { Nome = nome, UserId = userId }), Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync($"{_baseUrl}api/v1/cliente/adicionarAtualizar", new StringContent(JsonConvert.SerializeObject(new { Nome = nome, UserId = userId, TokenPush = tokenPush }), Encoding.UTF8, "application/json"));
                 var result = await response.Content.ReadAsStringAsync();
                 if (result == null || (response.StatusCode != System.Net.HttpStatusCode.BadRequest && response.StatusCode != System.Net.HttpStatusCode.OK))
                     return null;
@@ -110,6 +109,18 @@ namespace AppFidelidade_App_Client.Services
             catch (Exception e)
             {
                 return null;
+            }
+        }
+        public async void RemoverTokenPush(int idCliente)
+        {
+            try
+            {
+                var request = new HttpRequestMessage(HttpMethod.Post, $"{_baseUrl}api/v1/cliente/removerTokenPush?idCliente={idCliente}");
+                var response = await client.SendAsync(request);
+            }
+            catch (Exception e)
+            {
+                return;
             }
         }
     }

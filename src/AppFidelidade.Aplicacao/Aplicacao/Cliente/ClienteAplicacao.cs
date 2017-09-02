@@ -86,5 +86,15 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
             retorno.ValorCreditoNaFilial = _clienteRepositorio.ObterTotalCreditosCliente(id);
             return retorno;
         }
+
+        public void RemoverTokenPush(int idCliente)
+        {
+            var clienteDb = _clienteRepositorio.ObterPorId(idCliente, new string[] { });
+            if (clienteDb != null)
+            {
+                clienteDb.RemoverTokenPush();
+                Commit();
+            }
+        }
     }
 }

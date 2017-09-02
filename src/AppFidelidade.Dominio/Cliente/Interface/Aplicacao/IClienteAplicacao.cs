@@ -11,5 +11,6 @@ namespace AppFidelidade.Dominio.Cliente.Interface.Aplicacao
         void Atualizar(Entidade.Cliente obj);
         ClienteBasicoViewModel AdicionarAtualizar(ClienteBasicoViewModel obj);
         ClienteBasicoViewModel ObeterPorTokenId(string tokenId, int idFilial);
+        void RemoverTokenPush(int idCliente);
     }
 }

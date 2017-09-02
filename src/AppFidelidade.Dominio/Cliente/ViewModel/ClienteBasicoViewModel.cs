@@ -19,6 +19,7 @@ namespace AppFidelidade.Dominio.Cliente.ViewModel
             DataNascimento = obj.DataNascimento;
             UserId = obj.UserId;
             TokenId = obj.TokenId;
+            TokenPush = obj.TokenPush;
             Endereco = obj.Endereco;
             ValorCreditoNaFilial = filial != null ? obj.ObterCreditoNaFilial(filial) : 0;
         }
@@ -27,6 +28,7 @@ namespace AppFidelidade.Dominio.Cliente.ViewModel
         public string Sobrenome { get; set; }
         public DateTime? DataNascimento { get; set; }
         public string TokenId { get; set; }
+        public string TokenPush { get; set; }
         public string UserId { get; set; }
         public Endereco Endereco { get; set; }
         public decimal ValorCreditoNaFilial { get; set; }

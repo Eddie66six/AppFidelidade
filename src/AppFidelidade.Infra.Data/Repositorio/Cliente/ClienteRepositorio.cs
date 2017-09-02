@@ -20,7 +20,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
             {
                 query = query.Include(include);
             }
-            return query.FirstOrDefault(p=>p.TokenId == tokenId && p.Compras.Any(i=>i.ValorRestanteCredito > 0));
+            return query.FirstOrDefault(p=>p.TokenId == tokenId);
         }
 
         public List<Dominio.Cliente.Entidade.Cliente> ObterPorFilial(int idFilial, string[] includes)
@@ -45,7 +45,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
 
         public decimal ObterTotalCreditosCliente(int idCliente)
         {
-            return Db.Compra.Where(p => p.IdCliente == idCliente && p.DataRetiradaCredito != null && p.ValorRestanteCredito > 0 && DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.UtcNow))?.Sum(p => (decimal?)p.ValorRestanteCredito) ?? 0;
+            return Db.Compra.Where(p => p.IdCliente == idCliente && p.DataRetiradaCredito != null && p.ValorRestanteCredito > 0 && DbFunctions.TruncateTime(p.DataVencimentoCredito) >= DbFunctions.TruncateTime(DateTime.UtcNow))?.Sum(p => (decimal?)p.ValorRestanteCredito) ?? 0;
         }
 
         public bool VerificaSeTokenIdJaExiste(string tokenId)

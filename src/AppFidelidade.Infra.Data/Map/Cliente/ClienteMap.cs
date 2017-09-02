@@ -7,6 +7,7 @@ namespace AppFidelidade.Infra.Data.Map.Cliente
         public ClienteMap()
         {
             Property(p => p.UserId).HasMaxLength(500);
+            Property(p => p.TokenPush).HasMaxLength(500);
         }
     }
 }

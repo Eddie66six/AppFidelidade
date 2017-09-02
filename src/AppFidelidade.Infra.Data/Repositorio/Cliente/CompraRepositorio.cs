@@ -18,7 +18,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
         public ClienteCreditosRetirarViewModel ObterBasicoCreditoRetirarCliente(int idCliente)
         {
             var compras = Db.Compra.Include("Filial")
-                .Where(p => p.IdCliente == idCliente && p.DataRetiradaCredito == null).ToList();
+                .Where(p => p.IdCliente == idCliente && p.DataRetiradaCredito == null && p.IdRegra != null).ToList();
             return new ClienteCreditosRetirarViewModel
             {
                 TotalCreditos = compras.Sum(i => i.valorCredito ?? 0),
@@ -38,7 +38,7 @@ namespace AppFidelidade.Infra.Data.Repositorio.Cliente
             Db.Database.ExecuteSqlCommand("SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED");
             var compras = Db.Compra.Include("Filial")
                 .Where(p => p.IdCliente == idCliente &&
-                    (p.DataVencimentoCredito == null || DbFunctions.TruncateTime(p.DataVencimentoCredito) > DbFunctions.TruncateTime(DateTime.Today)) &&
+                    (p.DataVencimentoCredito == null || DbFunctions.TruncateTime(p.DataVencimentoCredito) >= DbFunctions.TruncateTime(DateTime.UtcNow)) &&
                     ((p.DataRetiradaCredito.HasValue && p.ValorRestanteCredito > 0) || p.DataRetiradaCredito == null)).AsNoTracking().ToList();
             return new ClienteCreditoViewModel
             {
