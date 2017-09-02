@@ -43,7 +43,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, FuncionarioLogin>(null, JsonConvert.DeserializeObject<FuncionarioLogin>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -62,7 +62,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, RegrasLista>(null, JsonConvert.DeserializeObject<RegrasLista>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -81,7 +81,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, Regra>(null, JsonConvert.DeserializeObject<Regra>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -100,7 +100,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, Regra>(null, JsonConvert.DeserializeObject<Regra>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -123,7 +123,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, string>(null, result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -142,7 +142,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, FuncionariosLista>(null, JsonConvert.DeserializeObject<FuncionariosLista>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -160,7 +160,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, ResumoRegraFuncionario>(null, JsonConvert.DeserializeObject<ResumoRegraFuncionario>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -179,7 +179,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, Models.Funcionarios.Funcionario>(null, JsonConvert.DeserializeObject<Models.Funcionarios.Funcionario>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -197,7 +197,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, Models.Funcionarios.Funcionario>(null, JsonConvert.DeserializeObject<Models.Funcionarios.Funcionario>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -216,7 +216,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, Cliente>(null, JsonConvert.DeserializeObject<Cliente>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -235,7 +235,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, Models.Compras.Compra>(null, JsonConvert.DeserializeObject<Models.Compras.Compra>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -253,7 +253,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, string>(null, result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -272,7 +272,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, decimal?>(null, Convert.ToDecimal(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -291,7 +291,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, InformcoesBasicaFilial>(null, JsonConvert.DeserializeObject<InformcoesBasicaFilial>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -309,7 +309,7 @@ namespace AppFidelidade_App_Adm.Services
                 else
                     return new Tuple<Errors, string>(null, result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

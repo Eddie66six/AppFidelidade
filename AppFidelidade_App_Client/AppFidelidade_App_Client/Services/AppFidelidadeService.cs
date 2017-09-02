@@ -87,7 +87,7 @@ namespace AppFidelidade_App_Client.Services
                 else
                     return new Tuple<Errors, string>(null, result);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -105,7 +105,7 @@ namespace AppFidelidade_App_Client.Services
                 else
                     return new Tuple<Errors, ClienteBasico>(null, JsonConvert.DeserializeObject<ClienteBasico>(result));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -117,7 +117,7 @@ namespace AppFidelidade_App_Client.Services
                 var request = new HttpRequestMessage(HttpMethod.Post, $"{_baseUrl}api/v1/cliente/removerTokenPush?idCliente={idCliente}");
                 var response = await client.SendAsync(request);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return;
             }
