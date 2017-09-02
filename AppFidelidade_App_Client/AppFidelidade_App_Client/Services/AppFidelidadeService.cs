@@ -2,7 +2,6 @@
 using AppFidelidade_App_Client.Services;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -13,8 +12,8 @@ namespace AppFidelidade_App_Client.Services
 {
     public class AppFidelidadeService
     {
-        //private readonly string _baseUrl = "http://appfidelidadeapi.azurewebsites.net/";
-        private readonly string _baseUrl = "http://192.168.15.8:3000/";
+        private readonly string _baseUrl = "http://appfidelidadeapi.azurewebsites.net/";
+        //private readonly string _baseUrl = "http://192.168.15.8:3000/";
         private HttpClient client = new HttpClient();
         public AppFidelidadeService()
         {
