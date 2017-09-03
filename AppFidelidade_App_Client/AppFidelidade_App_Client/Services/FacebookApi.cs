@@ -44,5 +44,26 @@ namespace AppFidelidade_App_Client.Services
                 return null;
             }
         }
+
+        public async Task<bool> Publicar(string userToken)
+        {
+            try
+            {
+                var content = new StringContent("message=For all Math geniuses", System.Text.Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync($"https://graph.facebook.com/me/feed?message=Teste&access_token={userToken}", content);
+                var result = await response.Content.ReadAsStringAsync();
+                if (result == null || (response.StatusCode != System.Net.HttpStatusCode.BadRequest && response.StatusCode != System.Net.HttpStatusCode.OK))
+                    return false;
+                if (result.Contains("error"))
+                    return false;
+                else
+                    return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

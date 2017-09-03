@@ -52,7 +52,8 @@ namespace AppFidelidade_App_Client.Services
             Settings.Id = identities[0].UserClaims.Find(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")).Value;
             Settings.AuthToken = user.MobileServiceAuthenticationToken;
             Settings.UserId = user.UserId;
-            Settings.Foto = await facebookApi.ObterFotoPerfil(identities[0].AccessToken);
+            Settings.TokenAuth = identities[0].AccessToken;
+            Settings.Foto = await facebookApi.ObterFotoPerfil(Settings.TokenAuth);
             Settings.LoginDate = DateTime.UtcNow.ToString("dd/MM/yyyy");
             return true;
         }

@@ -1,5 +1,6 @@
 ﻿using Prism.Mvvm;
 using Prism.Navigation;
+using System;
 using System.Threading.Tasks;
 
 namespace AppFidelidade_App_Client.ViewModels

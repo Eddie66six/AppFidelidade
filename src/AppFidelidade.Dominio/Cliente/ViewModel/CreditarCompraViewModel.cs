@@ -4,5 +4,6 @@
     {
         public int IdCliente { get; set; }
         public long IdCompra { get; set; }
+        public string AccessToken { get; set; }
     }
 }

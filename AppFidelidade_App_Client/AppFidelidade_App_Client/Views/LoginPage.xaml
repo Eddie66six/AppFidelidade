@@ -9,8 +9,19 @@
     <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout Padding="20,0,10,0" VerticalOptions="CenterAndExpand" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
                      Opacity="{Binding Opacity}">
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <control:RoundedButton BackgroundColor="#3385c6" Text="Login facebook" Command="{Binding LoginCommand}"/>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="Start" Margin="0,20,0,50">
+                    <Image Source="logo.png" HeightRequest="250" WidthRequest="250"></Image>
+                </StackLayout>
+                <StackLayout>
+                    <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="End">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <control:RoundedButton BackgroundColor="#3a5998" TextColor="White" Text="Entrar com facebook" Command="{Binding LoginCommand}"/>
+                        <Image HorizontalOptions="Start" HeightRequest="50" WidthRequest="50" Source="fBBtn.png" Grid.Column="0"></Image>
+                    </Grid>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
         <StackLayout IsVisible="{Binding IsBusy}" Padding="12" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">

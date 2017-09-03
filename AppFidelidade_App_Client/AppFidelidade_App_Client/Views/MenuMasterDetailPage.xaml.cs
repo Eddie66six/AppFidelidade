@@ -10,10 +10,6 @@ namespace AppFidelidade_App_Client.Views
         {
             InitializeComponent();
         }
-        protected override bool OnBackButtonPressed()
-        {
-            return true;
-        }
 
         protected override async void OnAppearing()
         {

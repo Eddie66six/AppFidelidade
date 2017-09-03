@@ -54,6 +54,9 @@ namespace AppFidelidade_App_Client.Helpers
         #endregion
 
         #region facebook
+        private const string _tokenAuth = "tokenAuth";
+        private static readonly string _tokenAuthDefault = string.Empty;
+
         private const string _id = "id";
         private static readonly string _idDefault = string.Empty;
 
@@ -62,6 +65,12 @@ namespace AppFidelidade_App_Client.Helpers
 
         private const string _photo = "photo";
         private static readonly string _photoDefault = string.Empty;
+
+        public static string TokenAuth
+        {
+            get { return _appSettings.GetValueOrDefault(_tokenAuth, _tokenAuthDefault); }
+            set { _appSettings.AddOrUpdateValue(_tokenAuth, value); }
+        }
 
         public static string Nome
         {

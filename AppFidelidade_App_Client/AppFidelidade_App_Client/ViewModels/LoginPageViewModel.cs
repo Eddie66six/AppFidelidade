@@ -1,5 +1,6 @@
 ﻿using AppFidelidade_App_Client.Helpers;
 using AppFidelidade_App_Client.Services;
+using AppFidelidade_App_Client.Views;
 using Prism.Navigation;
 using Prism.Services;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace AppFidelidade_App_Client.ViewModels
             var loginFacebook = await azureService.LoginAsync();
             if(loginFacebook)
             {
-                await _navigationService.NavigateAsync("MenuMasterDetailPage/MenuNavigationPage/InicialPage");
+                await _navigationService.NavigateAsync("app:///MenuMasterDetailPage/MenuNavigationPage/InicialPage");
             }
             else
             {

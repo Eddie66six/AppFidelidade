@@ -72,6 +72,13 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
                 DomainEvent.Raise(new DomainNotification("CreditarCompra", "Compra nao encontrado"));
                 return;
             }
+            var facebookApi = new Facebook(obj.AccessToken);
+            var compartilhado = facebookApi.Compartilhar("Reward teste", "https://www.facebook.com/g2xsoftware/");
+            if (!compartilhado)
+            {
+                DomainEvent.Raise(new DomainNotification("CreditarCompra", "Erro ao compartilhar, caso tenha negado a permissao saia e entre no app novamente"));
+                return;
+            }
             compra.Creditar();
             Commit();
         }

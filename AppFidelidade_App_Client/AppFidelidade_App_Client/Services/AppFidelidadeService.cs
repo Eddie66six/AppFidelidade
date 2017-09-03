@@ -1,4 +1,5 @@
-﻿using AppFidelidade_App_Client.Models;
+﻿using AppFidelidade_App_Client.Helpers;
+using AppFidelidade_App_Client.Models;
 using AppFidelidade_App_Client.Services;
 using Newtonsoft.Json;
 using System;
@@ -78,7 +79,7 @@ namespace AppFidelidade_App_Client.Services
         {
             try
             {
-                HttpResponseMessage response = await client.PutAsync($"{_baseUrl}api/v1/compra/creditarCompra", new StringContent(JsonConvert.SerializeObject(new { IdCliente = idCliente, IdCompra = idCompra }), Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PutAsync($"{_baseUrl}api/v1/compra/creditarCompra", new StringContent(JsonConvert.SerializeObject(new { IdCliente = idCliente, IdCompra = idCompra, AccessToken = Settings.TokenAuth }), Encoding.UTF8, "application/json"));
                 var result = await response.Content.ReadAsStringAsync();
                 if (result == null || (response.StatusCode != System.Net.HttpStatusCode.BadRequest && response.StatusCode != System.Net.HttpStatusCode.OK))
                     return null;

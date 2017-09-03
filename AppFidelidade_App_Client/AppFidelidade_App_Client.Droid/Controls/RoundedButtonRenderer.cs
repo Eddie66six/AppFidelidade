@@ -1,4 +1,6 @@
-﻿using Android.Graphics.Drawables;
+﻿using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.Util;
 using AppFidelidade_App_Client.Controls;
 using AppFidelidade_App_Client.Droid.Controls;
 using System;
@@ -20,6 +22,7 @@ namespace AppFidelidade_App_Client.Droid.Controls
 
                 button.SizeChanged += (s, args) =>
                 {
+                    //imagem size
                     var radius = (float)Math.Min(button.Width, button.Height);
 
                     // Create a drawable for the button's normal state
@@ -34,13 +37,13 @@ namespace AppFidelidade_App_Client.Droid.Controls
 
                     // Create a drawable for the button's pressed state
                     _pressed = new Android.Graphics.Drawables.GradientDrawable();
-                    var highlight = Context.ObtainStyledAttributes(new int[] { Android.Resource.Attribute.ColorActivatedHighlight }).GetColor(0, Android.Graphics.Color.Gray);
+                    var highlight = Context.ObtainStyledAttributes(new int[] { Android.Resource.Attribute.ColorActivatedHighlight }).GetColor(0, button.BackgroundColor.ToAndroid());
                     _pressed.SetColor(highlight);
                     _pressed.SetCornerRadius(radius);
 
                     // Add the drawables to a state list and assign the state list to the button
                     var sld = new StateListDrawable();
-                    sld.AddState(new int[] { Android.Resource.Attribute.StatePressed }, _pressed);
+                    //sld.AddState(new int[] { Android.Resource.Attribute.StatePressed }, _pressed);
                     sld.AddState(new int[] { }, _normal);
                     Control.Background = sld;
                     Control.SetIncludeFontPadding(false);
