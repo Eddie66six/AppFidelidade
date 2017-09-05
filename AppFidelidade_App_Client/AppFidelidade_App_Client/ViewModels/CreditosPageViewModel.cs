@@ -68,6 +68,7 @@ namespace AppFidelidade_App_Client.ViewModels
 
         public override async Task LoadAsync()
         {
+            if (Creditos.Count > 0) return;
             AtivarLoad(true);
             var api = new Services.AppFidelidadeService();
             var result = await api.ObterCreditoBasico(Convert.ToInt32(Settings.IdCliente), 0, pageSize);

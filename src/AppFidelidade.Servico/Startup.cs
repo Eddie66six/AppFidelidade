@@ -3,6 +3,7 @@ using Microsoft.Owin;
 using Owin;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.ApplicationInsights.Extensibility;
 
 [assembly: OwinStartup(typeof(AppFidelidade.Servico.Startup))]
 
@@ -21,6 +22,10 @@ namespace AppFidelidade.Servico
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
             //GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            #if DEBUG
+                TelemetryConfiguration.Active.DisableTelemetry = true;
+            #endif
         }
 
         public void ConfigureOAuth(IAppBuilder app)
