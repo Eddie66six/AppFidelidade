@@ -31,7 +31,7 @@ namespace AppFidelidade.Dominio.Cliente.Entidade
             {
                 Regra = Filial.ObterRegra(ValorCompra);
                 if (Regra != null)
-                    valorCredito = Regra.ValorDaRegra;
+                    valorCredito = Regra.ValorDaRegra > 0 ? Regra.ValorDaRegra / 100 * ValorCompra : 0;
             }
             else
             {

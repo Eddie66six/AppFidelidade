@@ -57,7 +57,7 @@ namespace AppFidelidade.Aplicacao.Aplicacao.Cliente
                 if (compra.valorCredito > 0)
                 {
                     var push = new PushNotification();
-                    push.SendGooglePush(cliente.TokenPush, "Nova Compra", $"Você ganhou {compra.valorCredito:C} de credito");
+                    push.SendGooglePush(cliente.TokenPush, "Nova Compra", $"Você ganhou {compra.valorCredito:C} de credito, acesse o menu Resgate de credito.");
                 }
                 return new CompraBasicoViewModel(compra);
             }
